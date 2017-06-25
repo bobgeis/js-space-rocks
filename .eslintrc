@@ -46,7 +46,6 @@
     "no-trailing-spaces":"warn",
     "no-underscore-dangle":"off",
     "no-unused-vars": ["warn", {"args": "none"}],
-    "no-use-before-define": ["warn", {"functions":false}],
     "no-useless-constructor":"error",
     "no-var":"warn",
     "no-whitespace-before-property":"warn",

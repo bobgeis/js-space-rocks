@@ -4,7 +4,7 @@ import webpack from 'webpack';
 
 export default {
   entry: [
-    './src/index.js'
+    './src/index.jsx'
   ],
   output: {
     filename: 'bundle.js',
