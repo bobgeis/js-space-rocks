@@ -4,25 +4,38 @@ export const CANVAS = {
   WIDTH: 800
 };
 
-export const KEY = {
-  UP: 38,
-  LEFT: 37,
-  DOWN: 40,
-  RIGHT: 39,
-  W: 87,
-  A: 65,
-  S: 83,
-  D: 68,
-  SPACE: 32,
-  BACKSPACE: 8,
-  ENTER: 13,
-  ESCAPE: 27,
-  COMMA: 188,
-  PERIOD: 190,
-  TAB: 9,
-  ALT: 18,
-  SHIFT: 16,
-  CTRL: 17
+export const KEYS = [
+  'KeyW',
+  'KeyA',
+  'KeyS',
+  'KeyD',
+  'KeyP',
+  // 'KeyZ',
+  'KeyR',
+  'Enter',
+  'Escape',
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowUp',
+  'ArrowDown',
+  'Space'
+];
+
+export const KEYS_TO_COMMANDS = {
+  'KeyW': 'up',
+  'KeyA': 'left',
+  'KeyS': 'down',
+  'KeyD': 'right',
+  'KeyP': 'pause',
+  // 'KeyZ': 'omega',
+  'KeyR': 'reset',
+  'Enter': 'enter',
+  'Escape':' escape',
+  'ArrowLeft': 'left',
+  'ArrowRight': 'right',
+  'ArrowUp': 'up',
+  'ArrowDown': 'down',
+  'Space': 'fire'
 };
 
 export const PLAYER = {
@@ -34,6 +47,6 @@ export const PLAYER = {
   radius: 10,
   reload: 0,
   delay: 10,
-  isAlive: true,
-  isFiring: false
+  alive: true,
+  firing: false
 };

@@ -21,26 +21,15 @@ export const tick = () => {
   };
 };
 
-// export const omega13 = () => {
-//   return {
-//     type: types.OMEGA13
-//   };
-// };
-
 export const omega13 = () => {
   return UndoActions.jumpToPast(13);
 };
 
-export const keyDown = (key) => {
-  return {
-    type: types.KEY_DOWN,
-    key: key
-  };
-};
 
-export const keyUp = (key) => {
+export const keyAction = (e) => {
   return {
-    type: types.KEY_UP,
-    key: key
+    type: types.KEY_ACTION,
+    key: e.code,
+    value: e.type === 'keydown'
   };
 };

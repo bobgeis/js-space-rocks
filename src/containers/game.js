@@ -6,8 +6,9 @@ import * as actions from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-    data: state.present,
-    omegaReady: state.past.length > 13
+    data: state.game.present,
+    keys: state.keys,
+    omegaReady: state.game.past.length > 13
   };
 };
 
