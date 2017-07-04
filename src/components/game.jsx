@@ -1,17 +1,17 @@
 
 import React from 'react';
-import Immutable from 'immutable';
-import Redux from 'redux';
 
-import { CANVAS } from './constant';
+import { CANVAS } from '../constants';
 
-export class Game extends React.Component {
-  constructor() {
-    super();
-    this.x = 1;
+export default class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
   }
 
+
   render() {
+    // console.log(this.props);
     return (
       <div>
         <span>Hello world!</span>

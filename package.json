@@ -5,9 +5,9 @@
   "author": "Bob Geis <bobgeis@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --watch",
     "clean": "rimraf dist",
-    "build:once": "yarn clean && webpack",
+    "dev": "yarn clean && webpack --watch",
+    "prod": "yarn clean && webpack",
     "lint": "eslint src --ext .js, .jsx",
     "test": "yarn lint && jest --coverage"
   },

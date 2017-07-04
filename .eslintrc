@@ -54,6 +54,11 @@
     "jsx-quotes": ["warn", "prefer-double"],
     "semi":"warn",
     "scrit":"off",
-    "spaced-comment":"warn"
+    "spaced-comment":"warn",
+    "react/jsx-uses-react": "warn",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-equals-spacing": "warn",
+    "react/jsx-indent": ["warn", 2],
+    "react/jsx-indent-props": ["warn", 2]
   }
 }

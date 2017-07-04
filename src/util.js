@@ -1,14 +1,14 @@
 
-import { Record } from 'immutable';
+import * as imm from 'immutable';
 
 // export const point = (x, y) => {
 //   return Record({x: x, y: y});
 // }
 export const point = (x,y) => {
-    return newPoint({x:x,y:y});
-}
+  return newPoint({x: x, y: y});
+};
 
-export const newPoint = Record({x: 0, y: 0});
+export const newPoint = imm.Record({x: 0, y: 0});
 
 /**
  *
@@ -49,4 +49,14 @@ export const distSq = (p1, p2) => {
  */
 export const dist = (p1, p2) => {
   return Math.sqrt(distSq(p1,p2));
+};
+
+
+ /**
+  *
+  *
+  * @param {any} immObj
+  */
+export const immlog = (immObj) => {
+  console.log(immObj.toJS());
 };

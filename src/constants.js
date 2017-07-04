@@ -24,3 +24,16 @@ export const KEY = {
   SHIFT: 16,
   CTRL: 17
 };
+
+export const PLAYER = {
+  x0: 0,
+  y0: 0,
+  vx0: 0,
+  vy0: 0,
+  ang0: 90,
+  radius: 10,
+  reload: 0,
+  delay: 10,
+  isAlive: true,
+  isFiring: false
+};
