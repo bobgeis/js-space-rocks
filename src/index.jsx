@@ -8,7 +8,7 @@ import { createStore, compose } from 'redux';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-import reducer from './reducer';
+import reducers from './reducers';
 import Game from './containers/game';
 import * as actions from './actions';
 
@@ -19,7 +19,7 @@ const gameElement = document.getElementById('game');
 const createStoreDev = compose(
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 )(createStore);
-const store = createStoreDev(reducer);
+const store = createStoreDev(reducers);
 store.dispatch(actions.initStore());
 
 render(

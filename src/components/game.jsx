@@ -13,9 +13,12 @@ export default class Game extends React.Component {
     // if we don't bind 'this' then we won't have access to props in the handler
     window.addEventListener('keyup', this.handleKeys.bind(this));
     window.addEventListener('keydown', this.handleKeys.bind(this));
+    // call rAF
+    requestAnimationFrame(() => this.updateGame());
   }
 
   componentWillUnmount() {
+    // remove listeners
     window.removeEventListener('keyup', this.handleKeys);
     window.removeEventListener('keydown', this.handleKeys);
   }
@@ -25,10 +28,15 @@ export default class Game extends React.Component {
     // but i wasn't sure of a better way to do this.
     if (e.code === 'KeyZ' && this.props.omegaReady) {
       this.props.omega13();
-    // there are a whole lot of keys we don't care about
+    // check the whitelist of keys we care about
     } else if (KEYS.includes(e.code)) {
       this.props.keyAction(e);
     }
+  }
+
+  updateGame() {
+    this.props.tick(this.props.keys);
+    requestAnimationFrame(() => this.updateGame());
   }
 
   render() {

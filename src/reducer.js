@@ -24,7 +24,6 @@ const keyReducer = (state = Map(), action) => {
 const gameReducer = (state = Map(), action) => {
   switch (action.type) {
     case types.TICK:
-      console.log('tick!');
       return state;
     case types.INIT_STORE:
       return initStore(state);

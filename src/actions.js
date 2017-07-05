@@ -15,9 +15,10 @@ export const startGame = () => {
   };
 };
 
-export const tick = () => {
+export const tick = (keys) => {
   return {
-    type: types.TICK
+    type: types.TICK,
+    keys
   };
 };
 
