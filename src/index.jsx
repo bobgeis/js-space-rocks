@@ -11,21 +11,25 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import Game from './containers/game';
 import * as actions from './actions';
+import { loadAllImages } from './canvas';
 
+// load the game sprites
+// loadAllImages();
 
+// const gameElement = document.getElementById('game');
 
-const gameElement = document.getElementById('game');
-
+// create the store
 const createStoreDev = compose(
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 )(createStore);
 const store = createStoreDev(reducers);
 store.dispatch(actions.initStore());
 
+// render
 render(
   <Provider store={store}>
     <Game />
   </Provider>,
-  gameElement
+  document.getElementById('game')
 );
 

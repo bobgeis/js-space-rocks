@@ -40,6 +40,7 @@ const renderShips = (ctx) => {
 };
 
 const renderPlayer = (ctx) => {
+  ctx.drawImage(playerImg.canvas, 200, 200);
   return;
 };
 
@@ -50,9 +51,11 @@ const renderBooms = (ctx) => {
 const loadImage = (source) => {
   const img = new Image();
   img.src = source;
-  const ctx = document.createCanvas("canvas").getContext('2D');
+  const ctx = document.createElement("canvas").getContext('2d');
+  console.log(img);
   img.onload = () => {
-    // const ctx = document.createCanvas("canvas").getContext('2D');
+    console.log(img);
+    // const ctx = document.createElement("canvas").getContext('2d');
     ctx.canvas.width = img.width;
     ctx.canvas.height = img.height;
     ctx.save();
@@ -62,4 +65,10 @@ const loadImage = (source) => {
   };
   // when on load gets called, the context will have the image drawn to it
   return ctx;
+};
+
+const playerImg = loadImage('./res/img/player.png');
+
+export const loadAllImages = () => {
+  const playerImg = loadImage('./res/img/player.png');
 };

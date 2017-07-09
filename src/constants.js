@@ -27,7 +27,7 @@ export const KEYS_TO_COMMANDS = {
   'KeyS': 'down',
   'KeyD': 'right',
   'KeyP': 'pause',
-  // 'KeyZ': 'omega',
+  // 'KeyZ': 'omega', // handled separately
   'KeyR': 'reset',
   'Enter': 'enter',
   'Escape':' escape',
