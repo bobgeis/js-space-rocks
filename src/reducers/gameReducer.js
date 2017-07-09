@@ -12,7 +12,7 @@ const initStore = (state) => {
 const gameReducer = (state = Map(), action) => {
   switch (action.type) {
     case types.TICK:
-      return state;
+      return state.update('ticks', (x) => x + 1 );
     case types.INIT_STORE:
       return initStore(state);
     default:

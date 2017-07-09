@@ -33,6 +33,6 @@ A Redux Undo TodoMVC example [link](https://github.com/omnidan/redux-undo/tree/m
 
 Another implementation of asteroids in React [link](https://github.com/chriz001/Reacteroids)
 
-Asteroids and similar games (eg: Escape Velocity, SPAZ, Endless Sky, etc).
+Asteroids and similar games (eg: Escape Velocity, Endless Sky, etc).
 
 And previous practice projects in other languages (eg [Elm](https://github.com/bobgeis/LookOutSpaceRocks), [CoffeeScript](https://github.com/bobgeis/coffeeAsteroids)).

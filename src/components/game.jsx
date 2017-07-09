@@ -2,6 +2,7 @@
 import React from 'react';
 
 import { CANVAS, KEYS } from '../constants';
+import { renderCanvas } from '../canvas';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -13,6 +14,9 @@ export default class Game extends React.Component {
     // if we don't bind 'this' then we won't have access to props in the handler
     window.addEventListener('keyup', this.handleKeys.bind(this));
     window.addEventListener('keydown', this.handleKeys.bind(this));
+    // get the canvas context and put it into the React component state,
+    // we need to do this, otherwise it gets lost when the state changes!
+    this.setState({ context: this.refs.canvas.getContext('2d') });
     // call rAF
     requestAnimationFrame(() => this.updateGame());
   }
@@ -36,13 +40,20 @@ export default class Game extends React.Component {
 
   updateGame() {
     this.props.tick(this.props.keys);
+    renderCanvas(this.state.context, this.props.data);
     requestAnimationFrame(() => this.updateGame());
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
+    const styleBg = {
+      "background": "url(./res/img/stars.jpg) no-repeat center",
+      "backgroundSize": "cover",
+      "width": `${CANVAS.WIDTH}px`,
+      "height": `${CANVAS.HEIGHT}px`
+    };
     return (
-      <div>
+      <div style={styleBg}>
         <span>Hello world!</span>
         <canvas ref="canvas"
           width={CANVAS.WIDTH}
