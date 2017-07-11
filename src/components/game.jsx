@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { CANVAS, KEYS } from '../constants';
-import { renderCanvas } from '../canvas';
+import { renderCanvas } from '../canvas/render';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -47,8 +47,8 @@ export default class Game extends React.Component {
   render() {
     // console.log(this.props);
     const styleBg = {
-      "background": "url(./res/img/stars.jpg) no-repeat center",
-      "backgroundSize": "cover",
+      // "background": "url(./res/img/stars.jpg) no-repeat center",
+      // "backgroundSize": "cover",
       "width": `${CANVAS.WIDTH}px`,
       "height": `${CANVAS.HEIGHT}px`
     };

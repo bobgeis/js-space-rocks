@@ -4,6 +4,11 @@ export const CANVAS = {
   WIDTH: 800
 };
 
+export const CENTER = {
+  CX: Math.floor(CANVAS.WIDTH),
+  CY: Math.floor(CANVAS.HEIGHT)
+};
+
 export const KEYS = [
   'KeyW',
   'KeyA',

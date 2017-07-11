@@ -17,8 +17,6 @@ Intended Keys:
 <!--
 ## Attributions
 
-For any assets...
-
 Background image of Carina Nebula is available [here](https://commons.wikimedia.org/w/index.php?search=carina+nebula&title=Special:Search&go=Go&uselang=en&searchToken=79al97qlirmupg5bpga22jvj2#/media/File:Carina_Nebula.jpg) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 -->
 

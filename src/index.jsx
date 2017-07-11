@@ -11,10 +11,10 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import Game from './containers/game';
 import * as actions from './actions';
-import { loadAllImages } from './canvas';
+import { loadAllImages } from './canvas/images';
 
 // load the game sprites
-// loadAllImages();
+loadAllImages();
 
 // const gameElement = document.getElementById('game');
 
