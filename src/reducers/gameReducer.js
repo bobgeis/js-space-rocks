@@ -4,17 +4,14 @@ import undoable from 'redux-undo';
 
 import * as types from '../actionTypes';
 import { initialStore } from '../store';
-
-const initStore = (state) => {
-  return state.merge(initialStore);
-};
+import { updateGame } from '../update/game';
 
 const gameReducer = (state = Map(), action) => {
   switch (action.type) {
     case types.TICK:
-      return state.update('ticks', (x) => x + 1 );
+      return updateGame(state, action.keys);
     case types.INIT_STORE:
-      return initStore(state);
+      return state.merge(initialStore);
     default:
       return state;
   }

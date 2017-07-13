@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import Game from './containers/game';
 import * as actions from './actions';
-import { loadAllImages } from './canvas/images';
+import { loadAllImages, loadingFinished } from './canvas/images';
 
 // load the game sprites
 loadAllImages();
@@ -28,7 +28,7 @@ store.dispatch(actions.initStore());
 // render
 render(
   <Provider store={store}>
-    <Game />
+    <Game loadingFinished={loadingFinished}/>
   </Provider>,
   document.getElementById('game')
 );

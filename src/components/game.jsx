@@ -30,7 +30,7 @@ export default class Game extends React.Component {
   handleKeys(e) {
     // i don't like that we're handling this here,
     // but i wasn't sure of a better way to do this.
-    if (e.code === 'KeyZ' && this.props.omegaReady) {
+    if (KEYS[e.code] === 'omega13' && this.props.omegaReady) {
       this.props.omega13();
     // check the whitelist of keys we care about
     } else if (KEYS.includes(e.code)) {
@@ -45,10 +45,17 @@ export default class Game extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
+    // console.log(this.props.loadingFinished());
+    // if (!this.props.loadingFinished()) {
+    //   return (
+    //     <p>
+    //     Preparing...
+    //     </p>
+    //   );
+    // }
     const styleBg = {
-      // "background": "url(./res/img/stars.jpg) no-repeat center",
-      // "backgroundSize": "cover",
+      "background": "url(./res/img/stars.jpg) no-repeat center",
+      "backgroundSize": "cover",
       "width": `${CANVAS.WIDTH}px`,
       "height": `${CANVAS.HEIGHT}px`
     };

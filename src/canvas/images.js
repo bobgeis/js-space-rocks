@@ -1,5 +1,6 @@
 
-import { CANVAS } from '../constants';
+// import { CANVAS } from '../constants';
+import * as player from './player';
 
 export const img = {};
 
@@ -11,11 +12,11 @@ export const loadingFinished = () => {
 };
 
 export const loadAllImages = () => {
-  img.bg = loadImage('./res/img/starsSmall.jpg', 0);
-  img.player = loadImage('./res/img/player.png');
+  img.bg = loadImageFile('./res/img/starsSmall.jpg', 0);  // is this necessary?
+  img.player = player.loadImage();
 };
 
-const loadImage = (source, rotation=Math.PI/2, width, height) => {
+export const loadImageFile = (source, rotation=Math.PI/2, width, height) => {
   thingsToLoad++;
   const img = new Image();
   img.src = source;
