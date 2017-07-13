@@ -7,8 +7,6 @@ import { drawPlayer } from './player';
 export const renderCanvas = (ctx, state) => {
   // things drawn onto a canvas will cover anything already drawn
   // console.log(state);
-  const tick = state.get('ticks');
-  // console.log(tick);
   clearCanvas(ctx);
   renderBg(ctx);
   renderBases(ctx);
@@ -16,7 +14,6 @@ export const renderCanvas = (ctx, state) => {
   renderBullets(ctx);
   renderRocks(ctx);
   renderShips(ctx);
-  renderPlayer(ctx, tick);
   drawPlayer(ctx, state);
   renderBooms(ctx);
 };
