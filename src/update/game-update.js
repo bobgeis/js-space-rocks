@@ -2,6 +2,7 @@
 import _ from 'lodash';
 
 import * as player from './player-update';
+import * as base from './base-update';
 
 let keys = null;
 
@@ -21,6 +22,7 @@ const mode = (state) => {
 
 const flowFunction = _.flow(
   player.update,
+  base.update,
   tick,
   mode
 );

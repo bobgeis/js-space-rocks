@@ -50,30 +50,34 @@ export const PLAYER = {
   vx: 0,  // starting x velocity (px/tick)
   vy: 0,  // starting y velocity (px/tick)
   a: Math.PI/2, // starting angle (rad)
-  turn: 0.1, // turn rate in rad/tick
-  thrust: 0.02, // acceleration px/tick/tick
   r: 10,  // radius (px)
   cd: 0,  // remaining weapon cooldown (ticks)
-  delay: 10,  // max weapon cooldown (ticks)
-  alive: true,  // default to alive
-  firing: false   // weapon trigger is not being held
+  alive: true  // default to alive
 };
+
+export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
+export const TURN = 0.1; // turn rate in (rad/tick)
+export const THRUST = 0.02; // acceleration (px/tick/tick)
+export const RETRO = 0.004; // acceleration while reversing (px/tick/tick)
+export const DAMP = 1 - 0.0004; // drag (fraction/tick)
 
 // base initial state
-export const baseGuild = {
-  x: 0,
-  y: 0,
-  a: 0,
-  va: 0,
-  r: 0
+export const BASE_GUILD = {
+  x: 200,
+  y: CANVAS.HEIGHT - 200,
+  a: 2,
+  va: -0.008,
+  r: 35,
+  img: 'baseGuild'
 };
 
-export const baseMed = {
-  x: 0,
-  y: 0,
-  a: 0,
-  va: 0,
-  r: 0
+export const BASE_MED = {
+  x: CANVAS.WIDTH - 200,
+  y: 200,
+  a: 5,
+  va: 0.002,
+  r: 40,
+  img: 'baseMed'
 };
 
 
@@ -87,4 +91,3 @@ export const SHIP = {
   speed: 10,
   r: 7
 };
-
