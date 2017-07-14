@@ -2,9 +2,9 @@
 import { Map } from 'immutable';
 import undoable from 'redux-undo';
 
-import * as types from '../actionTypes';
+import * as types from '../action-types';
 import { initialStore } from '../store';
-import { updateGame } from '../update/game';
+import { updateGame } from '../update/game-update';
 
 const gameReducer = (state = Map(), action) => {
   switch (action.type) {

@@ -1,6 +1,6 @@
 
 // import { CANVAS } from '../constants';
-import * as player from './player';
+import * as player from './player-canvas';
 
 export const img = {};
 

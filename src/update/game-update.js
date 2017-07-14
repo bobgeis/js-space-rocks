@@ -1,7 +1,7 @@
 
 import _ from 'lodash';
 
-import * as player from './player';
+import * as player from './player-update';
 
 let keys = null;
 

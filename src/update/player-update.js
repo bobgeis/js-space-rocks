@@ -1,5 +1,6 @@
 
 import { CANVAS } from '../constants';
+import { getVecX, getVecY, wrap } from './physics';
 
 export const update = (state, keys) => {
   if ( state.get('mode') !== 'play' || !state.get('player') ) {
@@ -33,22 +34,4 @@ export const update = (state, keys) => {
     .update('y', (y) => wrap(y + player.get('vy'), CANVAS.HEIGHT))
     .update('a', (a) => a + player.get('va'));
   return state.set('player', player.asImmutable());
-};
-
-const getVecX = (a) => {
-  return Math.cos(a);
-};
-
-const getVecY = (a) => {
-  return Math.sin(a);
-};
-
-const wrap = (x, dimension) => {
-  if (x > dimension) {
-    return x - dimension;
-  } else if (x < 0) {
-    return x + dimension;
-  } else {
-    return x;
-  }
 };

@@ -1,10 +1,10 @@
 
-import Immutable, { List, Map } from 'immutable';
+import { List, Map } from 'immutable';
 
 import { PLAYER } from './constants';
 
 
-export const initialStore = {
+export const initialStore = Map({
   rocks: List(),
   shots: List(),
   booms: List(),
@@ -17,4 +17,4 @@ export const initialStore = {
   score: Map({pod: 0, crystal: 0, ship: 0}),
   hiscore: Map({pod: 0, crystal: 0, ship: 0}),
   mode: 'play'
-};
+});

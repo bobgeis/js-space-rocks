@@ -1,7 +1,7 @@
 
 import { img, draw } from './images';
 import { CANVAS } from '../constants';
-import { drawPlayer } from './player';
+import { drawPlayer } from './player-canvas';
 
 // given a game state and a canvas context, draw onto the canvas everthing that belongs there
 export const renderCanvas = (ctx, state) => {

@@ -1,6 +1,7 @@
 
-import * as types from './actionTypes';
 import { ActionCreators as UndoActions } from 'redux-undo';
+
+import * as types from './action-types';
 
 // actions
 export const initStore = () => {

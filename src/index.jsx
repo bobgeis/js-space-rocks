@@ -8,8 +8,8 @@ import { createStore, compose } from 'redux';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-import reducers from './reducers';
-import Game from './containers/game';
+import reducers from './reducers/reducer';
+import Game from './containers/game-container';
 import * as actions from './actions';
 import { loadAllImages, loadingFinished } from './canvas/images';
 
