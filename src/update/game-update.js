@@ -3,12 +3,10 @@ import _ from 'lodash';
 
 import * as player from './player-update';
 import * as base from './base-update';
+import * as rock from './rock-update';
 
-let keys = null;
-
-export const updateGame = (state, argKeys) => {
+export const updateGame = (state, keys) => {
   // console.log(state);
-  keys = argKeys;
   return flowFunction(state.asMutable(), keys).asImmutable();
 };
 
@@ -18,11 +16,12 @@ const tick = (state) => {
 
 const mode = (state) => {
   return state;
-}
+};
 
 const flowFunction = _.flow(
   player.update,
   base.update,
+  rock.update,
   tick,
   mode
 );
