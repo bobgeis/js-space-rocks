@@ -24,8 +24,7 @@ export const tick = (keys) => {
 };
 
 export const omega13 = () => {
-  return UndoActions.jumpToPast(1);
-  // return UndoActions.jumpToPast(0);
+  return UndoActions.jumpToPast(0);
 };
 
 export const keyAction = (e) => {
