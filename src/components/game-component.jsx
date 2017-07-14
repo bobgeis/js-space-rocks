@@ -1,8 +1,11 @@
 
 import React from 'react';
 
-import { CANVAS, KEYS } from '../constants';
+import { CANVAS, KEYS, KEYS_TO_COMMANDS } from '../constants';
 import { renderCanvas } from '../canvas/render';
+
+import Description from './description-component';
+import Omega from './omega-component';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -30,7 +33,7 @@ export default class Game extends React.Component {
   handleKeys(e) {
     // i don't like that we're handling this here,
     // but i wasn't sure of a better way to do this.
-    if (KEYS[e.code] === 'omega13' && this.props.omegaReady) {
+    if (KEYS_TO_COMMANDS[e.code] === 'omega13' && this.props.omegaReady) {
       this.props.omega13();
     // check the whitelist of keys we care about
     } else if (KEYS.includes(e.code)) {
@@ -53,15 +56,12 @@ export default class Game extends React.Component {
     //     </p>
     //   );
     // }
-    const styleBg = {
-      "background": "url(./res/img/stars.jpg) no-repeat center",
-      "backgroundSize": "cover",
-      "width": `${CANVAS.WIDTH}px`,
-      "height": `${CANVAS.HEIGHT}px`
-    };
     return (
       <div style={styleBg}>
-        <span>Hello world!</span>
+        <Omega
+          omegaCount={this.props.omegaCount}
+          omegaReady={this.props.omegaReady}
+        />
         <canvas ref="canvas"
           width={CANVAS.WIDTH}
           height={CANVAS.HEIGHT}
@@ -70,3 +70,10 @@ export default class Game extends React.Component {
     );
   }
 }
+
+const styleBg = {
+  "background": "url(./res/img/stars.jpg) no-repeat center",
+  "backgroundSize": "cover",
+  "width": `${CANVAS.WIDTH}px`,
+  "height": `${CANVAS.HEIGHT}px`
+};

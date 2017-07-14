@@ -1,11 +1,16 @@
 
-import { img, draw } from './images';
 import { CANVAS } from '../constants';
+import * as mode from '../mode-types';
+import { img, draw } from './images';
 import { drawPlayer } from './player-canvas';
 import { drawBases } from './base-canvas';
 
 // given a game state and a canvas context, draw onto the canvas everthing that belongs there
 export const renderCanvas = (ctx, state) => {
+  if (!modeList.includes(state.get('mode'))) {
+    console.log(state);
+    return state;
+  }
   // things drawn onto a canvas will cover anything already drawn
   clearCanvas(ctx);
   // drawBg(ctx);
@@ -30,3 +35,10 @@ const drawBg = (ctx) => {
   // ctx.drawImage(img.bg, 0, 0);
   return;
 };
+
+
+const modeList = [
+  mode.PLAY,
+  mode.GAMEOVER,
+  mode.PAUSE
+];

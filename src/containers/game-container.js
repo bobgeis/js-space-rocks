@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
   return {
     data: state.game.present,
     keys: state.keys,
-    omegaReady: state.game.past.length > 13
+    omegaReady: state.game.past.length >= 13,
+    omegaCount: state.game.past.length
   };
 };
 

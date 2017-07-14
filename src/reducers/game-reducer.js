@@ -19,9 +19,15 @@ const gameReducer = (state = Map(), action) => {
 
 const undoConfig = {
   filter: (action, currentState, previousHistory) => {
+    if (currentState.get('mode') !== 'PLAY') {
+      return false;
+    }
+    if (currentState.get('ticks') % 60 !== 0) {
+      return false;
+    }
     return true;
   },
-  limit: 15
+  limit: 14
 };
 
 export default undoable(gameReducer, undoConfig);

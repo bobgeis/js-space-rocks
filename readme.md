@@ -23,14 +23,16 @@ Background image of Carina Nebula is available [here](https://commons.wikimedia.
 
 ## Influences
 
+Asteroids and similar games (eg: Escape Velocity, Endless Sky, etc).
+
+Previous practice projects in other languages (eg [Elm](https://github.com/bobgeis/LookOutSpaceRocks), [CoffeeScript](https://github.com/bobgeis/coffeeAsteroids)).
+
+Another implementation of asteroids in React [link](https://github.com/chriz001/Reacteroids)
+
 Various Redux examples [link](https://github.com/reactjs/redux/tree/master/examples)
 
 A Redux Immuble TodoMVC example [link](https://github.com/phacks/redux-todomvc)
 
 A Redux Undo TodoMVC example [link](https://github.com/omnidan/redux-undo/tree/master/examples/todos-with-undo)
 
-Another implementation of asteroids in React [link](https://github.com/chriz001/Reacteroids)
-
-Asteroids and similar games (eg: Escape Velocity, Endless Sky, etc).
-
-And previous practice projects in other languages (eg [Elm](https://github.com/bobgeis/LookOutSpaceRocks), [CoffeeScript](https://github.com/bobgeis/coffeeAsteroids)).
+The Elm Graphics.Collage library [link](https://github.com/evancz/elm-graphics)
