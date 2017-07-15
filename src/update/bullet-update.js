@@ -22,7 +22,7 @@ export const update = (state) => {
     'bullets',
     (bullets) => bullets
       .filter((bullet) => bullet.get('life') > 0)
-      .map(flow)
+      .map(updateBullet)
   );
 };
 
@@ -31,7 +31,7 @@ const modeList = [
   mode.GAMEOVER
 ];
 
-const flow = (bullet) => {
+const updateBullet = (bullet) => {
   return bullet.asMutable()
     .update('x', (x) => wrap(x + bullet.get('vx'), CANVAS.WIDTH))
     .update('y', (y) => wrap(y + bullet.get('vy'), CANVAS.HEIGHT))

@@ -64,10 +64,10 @@ export const THRUST = 0.02; // acceleration (px/tick/tick)
 export const RETRO = 0.004; // acceleration while reversing (px/tick/tick)
 export const DAMP = 1 - 0.0004; // drag (fraction/tick)
 export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
+
 export const BULLET_LIFETIME = 70; // lifetime of a bullet (ticks)
 export const BULLET_SPEED = 6; // muzzle velocity of a bullet (px/tick)
 export const BULLET_RADIUS = 1; // radius (px)
-
 
 // ship initial state
 export const SHIP = {
@@ -79,3 +79,6 @@ export const SHIP = {
   speed: 10,
   r: 7
 };
+
+export const SHIP_RADIUS = 7; // radius of transport ship (px)
+export const SHIP_SPEED = 3; // speed of transport ship (px/tick)

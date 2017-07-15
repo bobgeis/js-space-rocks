@@ -2,6 +2,7 @@
 // import { CANVAS } from '../constants';
 import * as player from './player-canvas';
 import * as base from './base-canvas';
+import * as ship from './ship-canvas';
 
 export const img = {};
 
@@ -17,6 +18,7 @@ export const loadAllImages = () => {
   img.player = player.loadImage();
   img.baseGuild = base.loadImageGuild();
   img.baseMed = base.loadImageMed();
+  img.ships = ship.loadImages()
 };
 
 export const loadImageFile = (source, rotation=Math.PI/2, width, height) => {

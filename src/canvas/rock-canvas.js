@@ -10,8 +10,8 @@ export const loadImage = () => {
 
 // draw rock images to ctx from map
 export const drawRocks = (ctx, state) => {
-  const list = state.get('rocks');
-  list.map((rock) => {
+  const rocks = state.get('rocks');
+  rocks.map((rock) => {
     const r = rock.get('r');
     const x = rock.get('x');
     const y = rock.get('y');

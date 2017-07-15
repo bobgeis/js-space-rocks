@@ -2,7 +2,7 @@
 
 ## Considerations
 
-This is a learning project, so not everything may be best practice, or the best way to do things.  The goal was to practice with javascript es6, react, and redux.
+This is a learning project, so not everything may be best practice, or the best way to do things.  The goal was to practice with javascript/es6, react, redux, and immutable.
 
 
 ## Some Anticipated Questions
@@ -35,17 +35,21 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * The way I did this, it seems like there is a lot of game logic mixed in with (what I think is) display code.  I'm not totally comfortable with that, but I didn't see an obvious better way.  If it works I'll leave it be for now.  Could it be avoided using Elm or reagent/re-frame in cljs?  For reference: [Elm lang](http://elm-lang.org/) and also [re-frame](https://github.com/Day8/re-frame) and a [doc](https://purelyfunctional.tv/guide/re-frame-building-blocks/) about it.
 
-* Call console.log every rAF can slow things down.  I believe redux dev tools that track actions can also do this if there is an action every rAF.  Either way, try turning limiting those if there are performance issues.  If performance issues persist, then it may just be that my usage of redux is to slow for this type of game.  If that is the case, consider making a simple civ-in-space game like Mast of Orion.
+* I believe redux dev tools that track actions can slow things down if there is an action every rAF.  Either way, try hiding that if there are performance issues.  If performance issues persist, then it may just be that my usage of redux is to slow for this type of game.
 
-* On the topic of redux being too slow, I encountered [this](https://reactrocket.com/post/react-redux-optimization/) article.  It includes links to two libraries that try to mimic good things from functional languages.  [reselect](https://github.com/reactjs/reselect) has some commonalities with re-frame's subscriptions, and [ramda](http://ramdajs.com/) has some higher order functions that act on immutable data structures. Ramda has a [cookbook](https://github.com/ramda/ramda/wiki/Cookbook) with suggestions on how to use it as well.  Unfortunately, Ramda does NOT integrate with Immutable, so probably not useful here (reselect still might be though).
+* On the topic of redux being too slow, I encountered [this](https://reactrocket.com/post/react-redux-optimization/) article.  It includes links to two libraries that try to mimic good things from functional languages.  [reselect](https://github.com/reactjs/reselect) has some commonalities with re-frame's subscriptions, and [ramda](http://ramdajs.com/) has some higher order functions that act on immutable data structures. Ramda has a [cookbook](https://github.com/ramda/ramda/wiki/Cookbook) with suggestions on how to use it as well.  Unfortunately, Ramda does NOT integrate with ImmutableJs, so probably not useful here (reselect still might be though).
 
 * Some other maybe useful chrome extensions: [Github Repo Size viewer](https://chrome.google.com/webstore/detail/github-repository-size/apnjnioapinblneaedefcnopcjepgkci), and [Github Repo Tree viewer "Octotree"](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc)
 
-* If you want to have react components with local state that persists between renders, use this.setState({}) to put it in that component's this.state object.  This was necessary to keep game.jsx's canvas context from being emptied.
+* If you want to have react components with local state that persists between renders, use this.setState({}) to put it in that component's this.state object.  This was necessary to keep game-component.jsx's canvas context from being emptied.
 
-* If you use redux' combineReducers, then the different reducers don't have access to one another's state.  I was planning on having separate reducers for handle the tick actions (undoably update an immutable map) and for handling user key presses (store active keys in a mutable object).  But the tick reducer would need access to the current key state.  Redux is aware of this stumblingn block, see [discussion](http://redux.js.org/docs/faq/Reducers.html#reducers-share-state.) Middleware? Or I could just have the keys object be part of the tick action and have that passed into the reducer that way (y).
+* If you use redux' combineReducers, then the different reducers don't have access to one another's state.  I was planning on having separate reducers for handle the tick actions (undoably update an immutable map) and for handling user key presses (store active keys in a mutable object).  But the tick reducer would need access to the current key state.  Redux is aware of this stumblingn block, see [discussion](http://redux.js.org/docs/faq/Reducers.html#reducers-share-state.) Middleware?
+
+* I handled the above issue by having the keys object be part of the tick action and have that passed into the reducer that way.  Works.
 
 * I actually kind of like nesting ternary expressions, that is code like: ```isColliding() ? die() : bang ? makeBullet() : return``` which is basically a more concise way of writing ```if () {} else if () {} else {}```  My eslint doesn't like it though, I assume because it can be confusing, but I've had some practice reading code composed of punctuation.  I'll leave it in a couple places and see if I agree that it's confusing when I come back to it later.
+
+* In asteroids you have to write code that collides bullets with asteroids and remove items from both lists if they collide.  Using mutable data structures, you probably have objects representing both items, and you can just set a kill flag and cull them later.  Using immutable objects you need to be more clever.  In Elm, which enforced purity to a high degree, we wrote a function that would return a list of all colliding pairs.  In this case, I was able to write a pair of nested filter loops that would call side effects if needed.  This isn't ideal: we're filter looping over the second list many times.  Consider better approaches in the future.
 
 
 ## TODO
