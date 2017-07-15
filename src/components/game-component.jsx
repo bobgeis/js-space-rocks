@@ -3,6 +3,7 @@ import React from 'react';
 
 import { CANVAS, KEYS, KEYS_TO_COMMANDS } from '../constants';
 import { renderCanvas } from '../canvas/render';
+import * as modes from '../mode-types';
 
 import Description from './description-component';
 import Omega from './omega-component';
@@ -33,12 +34,17 @@ export default class Game extends React.Component {
   handleKeys(e) {
     // i don't like that we're handling this here,
     // but i wasn't sure of a better way to do this.
-    if (KEYS_TO_COMMANDS[e.code] === 'omega13' && this.props.omegaReady) {
+    if (this.omegaCheck(e)) {
       this.props.omega13();
     // check the whitelist of keys we care about
     } else if (KEYS.includes(e.code)) {
       this.props.keyAction(e);
     }
+  }
+
+  omegaCheck(e) {
+    const mode = this.props.data.get('mode')
+    return KEYS_TO_COMMANDS[e.code] === 'omega13' && this.props.omegaReady && (mode === modes.GAMEOVER || mode === modes.PLAY);
   }
 
   updateGame() {
@@ -48,14 +54,6 @@ export default class Game extends React.Component {
   }
 
   render() {
-    // console.log(this.props.loadingFinished());
-    // if (!this.props.loadingFinished()) {
-    //   return (
-    //     <p>
-    //     Preparing...
-    //     </p>
-    //   );
-    // }
     return (
       <div style={styleBg}>
         <Omega

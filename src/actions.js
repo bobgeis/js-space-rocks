@@ -31,6 +31,7 @@ export const keyAction = (e) => {
   return {
     type: types.KEY_ACTION,
     key: e.code,
+    repeat: e.repeat,
     value: e.type === 'keydown'
   };
 };
