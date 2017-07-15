@@ -7,8 +7,7 @@ export const update = (state, keys) => {
   if (!modeList.includes(state.get('mode'))) {
     return state;
   }
-  return state.asMutable()
-    .update('rocks', (rocks) =>  rocks.map(flow));
+  return state.update('rocks', (rocks) =>  rocks.map(flow));
 };
 
 const flow = (rock) => {

@@ -67,9 +67,11 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Rocks~~
 
-* Bullets
+* ~~Pause~~
 
 * Bullet Spawning
+
+* Bullets
 
 * Rock Spawning
 

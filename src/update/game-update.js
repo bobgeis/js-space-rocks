@@ -28,7 +28,7 @@ const updateMode = (state, keys) => {
   if (keys.get('pause') && currMode === modes.PLAY) {
     return state.set('mode', modes.PAUSE);
   }
-  if (keys.get('fire') && currMode === modes.PAUSE) {
+  if (keys.get('unpause') && currMode === modes.PAUSE) {
     return state.set('mode', modes.PLAY);
   }
   return state;

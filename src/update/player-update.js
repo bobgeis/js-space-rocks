@@ -9,21 +9,19 @@ import {
 } from '../constants';
 import * as mode from '../mode-types';
 import { getVecX, getVecY, wrap } from './physics';
+import { newBullet } from './bullet-update';
 
 export const update = (state, keys) => {
   if (!modeList.includes(state.get('mode')) || !state.get('player') ) {
     return state;
   }
 
-  const acc = keys.get('up') ? THRUST : keys.get('down') ? -RETRO : 0;
-  const turn = keys.get('left') ? TURN : keys.get('right') ? -TURN : 0;
+  let newState = state;
   let player = state.get('player').asMutable();
 
-  let bang = false;
-  if (keys.get('fire') && player.get('cd') === 0) {
-    bang = true;
-    // make a new bullet here
-  }
+  const acc = keys.get('up') ? THRUST : keys.get('down') ? -RETRO : 0;
+  const turn = keys.get('left') ? TURN : keys.get('right') ? -TURN : 0;
+  const bang = keys.get('fire') && player.get('cd') === 0
 
   player = player
     .update('vx', (vx) => vx + acc * getVecX(player.get('a')))
@@ -36,7 +34,14 @@ export const update = (state, keys) => {
     .update('cd', (cd) => {
       return bang ? WPN_COOLDOWN : Math.max(cd - 1, 0)
     });
-  return state.set('player', player.asImmutable());
+  newState = newState.set('player', player.asImmutable());
+
+  if(bang) {
+    const bullet = newBullet(player);
+    newState = newState.update('bullets', (bullets) => bullets.push(bullet));
+  }
+
+  return newState;
 };
 
 const modeList = [

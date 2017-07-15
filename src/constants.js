@@ -16,6 +16,7 @@ export const KEYS = [
   'KeyD',
   'KeyR',
   'KeyP',
+  'KeyU',
   'KeyL',
   // 'KeyZ',
   'Enter',
@@ -33,6 +34,7 @@ export const KEYS_TO_COMMANDS = {
   'KeyS': 'down',
   'KeyD': 'right',
   'KeyP': 'pause',
+  'KeyU': 'unpause',
   'KeyZ': 'omega13', // handled separately
   'KeyL': 'log',
   'KeyR': 'reset',
@@ -62,8 +64,8 @@ export const THRUST = 0.02; // acceleration (px/tick/tick)
 export const RETRO = 0.004; // acceleration while reversing (px/tick/tick)
 export const DAMP = 1 - 0.0004; // drag (fraction/tick)
 export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
-export const BULLET_LIFETIME = 300; // lifetime of a bullet (ticks)
-export const BULLET_SPEED = 8; // muzzle velocity of a bullet (px/tick)
+export const BULLET_LIFETIME = 70; // lifetime of a bullet (ticks)
+export const BULLET_SPEED = 6; // muzzle velocity of a bullet (px/tick)
 
 
 // ship initial state

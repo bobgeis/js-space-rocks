@@ -11,8 +11,9 @@ Intended Keys:
 * Left (or A) and Right (or D) rotate the player ship
 * Up (or W) accelerates the player ship
 * Space fires bullets
-* P pauses
+* P pauses and U unpauses
 * Z activates the Omega 13: "Enough time to undo a single mistake"
+<!-- * R resets the high score to all zeros -->
 
 
 ## "Story" & Objectives
