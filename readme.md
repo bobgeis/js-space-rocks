@@ -4,7 +4,7 @@
 
 This is a learning project made while learning javascript.  It's an asteroids clone, because whenever one learns a new language, it's fun to make a game in it, and I happen to like asteroids.
 
-<!--
+
 ## Controls
 
 Intended Keys:
@@ -12,8 +12,24 @@ Intended Keys:
 * Up (or W) accelerates the player ship
 * Space fires bullets
 * P pauses
-* Z (or dying) activates the Omega 13: "Enough time to undo a single mistake"
--->
+* Z activates the Omega 13: "Enough time to undo a single mistake"
+
+
+## "Story"
+
+Oh No! Some hooligans are dumping space rocks in to Subspace Locus 1457 again!
+
+Luckily, because this has happened before, a dedicated destroy and rescue ship is posted there.  That's you!
+
+Try to keep the Locus safe for travelers.  Good luck!
+
+
+## Objectives
+
+* Ships - try to help the transports cross the zone safely.
+* Lifepods - bring any lifepods you collect to the medbay in the upper right.
+* Crystals - bring any crystals you collect to the prospector post in the lower left.
+
 
 ## Attributions
 

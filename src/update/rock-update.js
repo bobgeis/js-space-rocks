@@ -1,6 +1,7 @@
 
-import { updateAngle, updatePos } from './physics';
+import { updateAngle, updatePos, wrap } from './physics';
 import * as mode from '../mode-types';
+import { CANVAS } from '../constants';
 
 export const update = (state, keys) => {
   if (!modeList.includes(state.get('mode'))) {
@@ -11,7 +12,10 @@ export const update = (state, keys) => {
 };
 
 const flow = (rock) => {
-  return updateAngle(updatePos(rock.asMutable())).asImmutable();
+  return updatePos(rock.asMutable())
+    .update('x', (x) => wrap(x, CANVAS.WIDTH))
+    .update('y', (y) => wrap(y, CANVAS.HEIGHT))
+    .asImmutable();
 };
 
 const modeList = [

@@ -5,7 +5,7 @@
 This is a learning project, so not everything may be best practice, or the best way to do things.  The goal was to practice with javascript es6, react, and redux.
 
 
-## Anticipated Questions
+## Some Anticipated Questions
 
 * What is this?  This is basically a re-make of an earlier learning project I wrote in Elm, [link](https://github.com/bobgeis/LookOutSpaceRocks), but in javascript using js libraries instead.
 
@@ -17,9 +17,12 @@ This is a learning project, so not everything may be best practice, or the best 
 ## Architecture
 
 * index.html loads the bundle produced by webpack
-* index.jsx is the entry point for webpack so everying must start there.  It creates the redux store, and renders the app using the react-redux Provider and the Game component.
-* containers/game.js contains the game.jsx component and passes it props and actions.
-* components/game.jsx contains the canvas and other UI elements.
+* index.jsx is the entry point for webpack so everying must start there.  It creates the redux store, and renders the app using the react-redux Provider and game-container.js.
+* game-container.js contains game-component.jsx and passes it props and actions.
+* game-component.jsx contains the canvas and other UI elements.  It also calls the canvas render functions and dispatches key actions.  This component does a lot!
+* canvas/render.js has the primary functions for drawing things to the canvas.  canvas/images.js has some utilities and preloading stuff.
+* reduers/reducer.js has the main reducer which combines reducers from key-reducer.js and game-reducer.js
+* update/game-update.js is called by the tick action on the game-reducer.  It does all the time-step updates of the game model which is a large portion of the code.
 
 
 ## Things Learned
@@ -44,4 +47,4 @@ This is a learning project, so not everything may be best practice, or the best 
 
 ## TODO
 
-* Previously I used a graphics library (Elm) or drawing sprites onto the canvas (CoffeeScript).  The plan for this is to go the sprites on canvas route first, but then perhaps change them to using the path methods.  SVGs are another option to consider.
+* Previously I used a graphics library (Elm) or drawing sprites onto the canvas (CoffeeScript).  The plan for this is to go the sprites on canvas route first, but then perhaps change them to using the canvas' path methods.  SVGs in react are another option to consider.

@@ -5,12 +5,23 @@ import * as mode from './mode-types';
 import {
   PLAYER,
   BASE_GUILD,
-  BASE_MED
+  BASE_MED,
+  CANVAS
 } from './constants';
 
+const initialRocks = List([
+  Map({
+    x: CANVAS.WIDTH - 200,
+    y: CANVAS.HEIGHT - 200,
+    vx: 0.6,
+    vy: -0.6,
+    r: 40,
+    size: 'huge'
+  })
+]);
 
 export const initialStore = Map({
-  rocks: List(),
+  rocks: initialRocks,
   shots: List(),
   booms: List(),
   loot: List(),
