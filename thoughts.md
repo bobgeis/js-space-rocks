@@ -75,7 +75,7 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Rock Spawning
 
-* Bullet-Rock Collisions
+* ~~Bullet-Rock Collisions~~
 
 * Rock Calving
 

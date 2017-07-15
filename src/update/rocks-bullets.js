@@ -12,30 +12,51 @@ export const collideRocksBullets = (state, keys) => {
   if (!modeList.includes(state.get('mode'))) {
     return state;
   }
-  // let rocks = state.get('rocks');
-  // let bullets = state.get('bullets');
-  // for (const rock in rocks) {
-  //   let alive = true;
-  //   for (const bullet in bullets) {
-  //     if (areColliding(rock, bullet)) {
-  //       alive = false;
-  //     }
-  //   }
-  // }
-  // const {rocks, bullets, calves, loot}
-  return state;
+  let newState = state;
+  let rocks = state.get('rocks');
+  let bullets = state.get('bullets');
+  const calves = [];
+  const newLoot = [];
+  const newBooms = [];
+
+  rocks = rocks.filter((rock) => {
+    let alive = true;
+    bullets = bullets.filter((bullet) => {
+      if (areColliding(rock, bullet)) {
+        alive = false;
+        pushCalves(calves, rock);
+        pushLoot(newLoot, rock);
+        pushBooms(newBooms, rock);
+        return false;
+      } else {
+        return true;
+      }
+    });
+    return alive;
+  });
+  if (calves.length > 0) {
+    rocks = rocks.concat(calves);
+  }
+  if (newLoot.length > 0) {
+    newState = newState.update('loot', (loot) => loot.concat(newLoot));
+  }
+  if (newBooms.length >0) {
+    newState = newState.update('booms', (booms) => booms.concat(newBooms));
+  }
+  return newState.set('rocks', rocks).set('bullets', bullets);
 };
 
-const reducer = (reduction, rock) => {
+const pushCalves = (calves, rock) => {
+  // TODO
   return;
 };
 
-const initReducer = () => {
-  return {
-    rocks: [],  // rocks that survived
-    bullets: [],  // bullets that survived
-    booms: [],  // explosions that resulted
-    calves: [],  // calves from rocks that did not survive
-    loot: []  // any crystals produced
-  };
+const pushLoot = (loot, rock) => {
+  // TODO
+  return;
+};
+
+const pushBooms = (booms, rock) => {
+  // TODO
+  return;
 };

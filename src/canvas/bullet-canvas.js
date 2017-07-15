@@ -23,7 +23,7 @@ const drawBullet = (ctx, x, y, color) => {
 };
 
 const getColor = (life) => {
-  const dec = Math.floor(50 + 200 * life / BULLET_LIFETIME);
+  const dec = Math.floor(100 + 150 * life / BULLET_LIFETIME);
   // return `rgba(0, ${255 * ratio}, ${255 * ratio}, 1)`;
   return `#55${dec.toString(16)}FF`
 }

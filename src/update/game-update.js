@@ -7,6 +7,7 @@ import * as player from './player-update';
 import * as base from './base-update';
 import * as rock from './rock-update';
 import * as bullet from './bullet-update';
+import { collideRocksBullets } from './rocks-bullets';
 
 const modesForTick = [
   modes.PLAY
@@ -40,7 +41,8 @@ const updateFunctionsList = [
   player.update,
   base.update,
   rock.update,
-  bullet.update
+  bullet.update,
+  collideRocksBullets
 ];
 
 export const updateGame = (state, keys) => {

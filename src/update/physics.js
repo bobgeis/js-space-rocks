@@ -70,7 +70,7 @@ export const dist = (p1, p2) => {
  */
 export const areColliding = (p1, p2) => {
   const r = p1.get('r') + p2.get('r');
-  return r * r < distSq(p1, p2);
+  return r * r > distSq(p1, p2);
 };
 
 
