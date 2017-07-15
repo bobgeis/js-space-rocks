@@ -3,6 +3,12 @@ import { updateAngle, updatePos, wrap } from './physics';
 import * as mode from '../mode-types';
 import { CANVAS } from '../constants';
 
+const modeList = [
+  mode.PLAY,
+  mode.GAMEOVER
+];
+
+
 export const update = (state, keys) => {
   if (!modeList.includes(state.get('mode'))) {
     return state;
@@ -16,8 +22,3 @@ const flow = (rock) => {
     .update('y', (y) => wrap(y + rock.get('vy'), CANVAS.HEIGHT))
     .asImmutable();
 };
-
-const modeList = [
-  mode.PLAY,
-  mode.GAMEOVER
-];

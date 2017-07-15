@@ -66,6 +66,7 @@ export const DAMP = 1 - 0.0004; // drag (fraction/tick)
 export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
 export const BULLET_LIFETIME = 70; // lifetime of a bullet (ticks)
 export const BULLET_SPEED = 6; // muzzle velocity of a bullet (px/tick)
+export const BULLET_RADIUS = 1; // radius (px)
 
 
 // ship initial state

@@ -69,9 +69,9 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Pause~~
 
-* Bullet Spawning
+* ~~Bullet Spawning~~
 
-* Bullets
+* ~~Bullets~~
 
 * Rock Spawning
 
@@ -92,6 +92,8 @@ This is a learning project, so not everything may be best practice, or the best 
 * Rock Loot
 
 * Ship Loot
+
+* Player-Loot Collisions
 
 * FTL Flashes
 
