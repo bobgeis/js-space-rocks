@@ -55,30 +55,13 @@ export const PLAYER = {
   alive: true  // default to alive
 };
 
-export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
 export const TURN = 0.1; // turn rate in (rad/tick)
 export const THRUST = 0.02; // acceleration (px/tick/tick)
 export const RETRO = 0.004; // acceleration while reversing (px/tick/tick)
 export const DAMP = 1 - 0.0004; // drag (fraction/tick)
-
-// base initial state
-export const BASE_GUILD = {
-  x: 200,
-  y: CANVAS.HEIGHT - 200,
-  a: 2,
-  va: -0.008,
-  r: 35,
-  img: 'baseGuild'
-};
-
-export const BASE_MED = {
-  x: CANVAS.WIDTH - 200,
-  y: 200,
-  a: 5,
-  va: 0.002,
-  r: 40,
-  img: 'baseMed'
-};
+export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
+export const BULLET_LIFETIME = 300; // lifetime of a bullet (ticks)
+export const BULLET_SPEED = 8; // muzzle velocity of a bullet (px/tick)
 
 
 // ship initial state

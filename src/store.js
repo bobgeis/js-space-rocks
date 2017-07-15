@@ -4,8 +4,6 @@ import { List, Map } from 'immutable';
 import * as mode from './mode-types';
 import {
   PLAYER,
-  BASE_GUILD,
-  BASE_MED,
   CANVAS
 } from './constants';
 
@@ -20,15 +18,34 @@ const initialRocks = List([
   })
 ]);
 
+// base initial state
+export const initialBaseGuild = Map({
+  x: 200,
+  y: CANVAS.HEIGHT - 200,
+  a: 2,
+  va: -0.008,
+  r: 35,
+  img: 'baseGuild'
+});
+
+export const initialBaseMed = Map({
+  x: CANVAS.WIDTH - 200,
+  y: 200,
+  a: 5,
+  va: 0.002,
+  r: 40,
+  img: 'baseMed'
+});
+
 export const initialStore = Map({
   rocks: initialRocks,
-  shots: List(),
+  bullets: List(),
   booms: List(),
   loot: List(),
   ships: List(),
   bases: List([
-    Map(BASE_GUILD),
-    Map(BASE_MED)
+    initialBaseGuild,
+    initialBaseMed
   ]),
   player: Map(PLAYER),
   ticks: 0,

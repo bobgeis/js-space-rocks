@@ -12,9 +12,9 @@ export const update = (state, keys) => {
 };
 
 const flow = (rock) => {
-  return updatePos(rock.asMutable())
-    .update('x', (x) => wrap(x, CANVAS.WIDTH))
-    .update('y', (y) => wrap(y, CANVAS.HEIGHT))
+  return rock.asMutable()
+    .update('x', (x) => wrap(x + rock.get('vx'), CANVAS.WIDTH))
+    .update('y', (y) => wrap(y + rock.get('vy'), CANVAS.HEIGHT))
     .asImmutable();
 };
 

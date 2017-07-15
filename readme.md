@@ -15,20 +15,13 @@ Intended Keys:
 * Z activates the Omega 13: "Enough time to undo a single mistake"
 
 
-## "Story"
+## "Story" & Objectives
 
 Oh No! Some hooligans are dumping space rocks in to Subspace Locus 1457 again!
 
-Luckily, because this has happened before, a dedicated destroy and rescue ship is posted there.  That's you!
+Luckily, a dedicated rescue and rock-buster ship is already prepped and on-site.  That's you!
 
-Try to keep the Locus safe for travelers.  Good luck!
-
-
-## Objectives
-
-* Ships - try to help the transports cross the zone safely.
-* Lifepods - bring any lifepods you collect to the medbay in the upper right.
-* Crystals - bring any crystals you collect to the prospector post in the lower left.
+Try to keep the toroidal Subspace Locus 1457 safe for travelers.  If any ships get hit by rocks, pick up the lifepods and deliver them to the medbay in the North East quadrant for treatment.  If you pick up any crystallized minerals from busted rocks, deliver those to the prospector base in the South West quadrant for analysis.  If you get into a jam, hopefully you have enough charge on your Omega-13 to try again.  Good luck!
 
 
 ## Attributions

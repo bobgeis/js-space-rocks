@@ -45,6 +45,56 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * If you use redux' combineReducers, then the different reducers don't have access to one another's state.  I was planning on having separate reducers for handle the tick actions (undoably update an immutable map) and for handling user key presses (store active keys in a mutable object).  But the tick reducer would need access to the current key state.  Redux is aware of this stumblingn block, see [discussion](http://redux.js.org/docs/faq/Reducers.html#reducers-share-state.) Middleware? Or I could just have the keys object be part of the tick action and have that passed into the reducer that way (y).
 
+* I actually kind of like nesting ternary expressions, that is code like: ```isColliding() ? die() : bang ? makeBullet() : return``` which is basically a more concise way of writing ```if () {} else if () {} else {}```  My eslint doesn't like it though, I assume because it can be confusing, but I've had some practice reading code composed of punctuation.  I'll leave it in a couple places and see if I agree that it's confusing when I come back to it later.
+
+
 ## TODO
 
 * Previously I used a graphics library (Elm) or drawing sprites onto the canvas (CoffeeScript).  The plan for this is to go the sprites on canvas route first, but then perhaps change them to using the canvas' path methods.  SVGs in react are another option to consider.
+
+* An asteroids game doesn't really benefit much from being written in react/redux using immutable data structures (even if the undo/time travel is kind of neat).  If another game is to be done with those libraries, consider something more turn and/or text based.
+
+
+### Feature Checklist
+
+* ~~Background~~
+
+* ~~Player~~
+
+* ~~Omega13~~
+
+* ~~Bases~~
+
+* ~~Rocks~~
+
+* Bullets
+
+* Bullet Spawning
+
+* Rock Spawning
+
+* Bullet-Rock Collisions
+
+* Rock Calving
+
+* Player-Rock Collisions
+
+* Ships
+
+* Ship Spawning
+
+* Ship-Rock Collisions
+
+* Explosions
+
+* Rock Loot
+
+* Ship Loot
+
+* FTL Flashes
+
+* Cargo Delivery
+
+* Score
+
+* High Score
