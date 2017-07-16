@@ -4,8 +4,7 @@ import * as mode from '../mode-types';
 import { CANVAS } from '../constants';
 
 const modeList = [
-  mode.PLAY,
-  mode.GAMEOVER
+  mode.PLAY
 ];
 
 export const collidePlayerBases = (state, keys) => {

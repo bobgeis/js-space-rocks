@@ -13,10 +13,12 @@ import { collideRocksBullets } from './rocks-bullets';
 import { collideShipsRocks } from './ships-rocks';
 import { collideLootPlayer } from './loot-player';
 import { collidePlayerBases } from './player-bases';
+import { collidePlayerRocks } from './player-rocks';
 import timerSpawn from './timer-spawn';
 
 const modesForTick = [
-  modes.PLAY
+  modes.PLAY,
+  modes.GAMEOVER
 ];
 
 const tick = (state, keys) => {
@@ -54,6 +56,7 @@ const updateFunctionsList = [
   collideShipsRocks,
   collideLootPlayer,
   collidePlayerBases,
+  collidePlayerRocks,
   timerSpawn
 ];
 

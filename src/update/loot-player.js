@@ -4,8 +4,7 @@ import * as mode from '../mode-types';
 import { CANVAS, LOOT_TYPE_CRYSTAL, LOOT_TYPE_LIFEPOD } from '../constants';
 
 const modeList = [
-  mode.PLAY,
-  mode.GAMEOVER
+  mode.PLAY
 ];
 
 export const collideLootPlayer = (state, keys) => {

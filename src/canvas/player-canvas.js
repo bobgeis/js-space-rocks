@@ -1,14 +1,22 @@
 
 import { img, draw, loadImageFile } from './images';
 import { CANVAS } from '../constants';
+import * as mode from '../mode-types';
 
 // prepare player image
 export const loadImage = () => {
   return loadImageFile('./res/img/player.png');
 };
 
+const modeList = [
+  mode.PLAY
+];
+
 // draw player image to ctx from map
 export const drawPlayer = (ctx, state) => {
+  if (!modeList.includes(state.get('mode'))) {
+    return;
+  }
   const player = state.get('player');
   const x = player.get('x');
   const y = player.get('y');

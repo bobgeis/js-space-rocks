@@ -11,6 +11,10 @@ import * as mode from '../mode-types';
 import { getVecX, getVecY, wrap } from './physics';
 import { newBullet } from './bullet-update';
 
+const modeList = [
+  mode.PLAY
+];
+
 export const update = (state, keys) => {
   if (!modeList.includes(state.get('mode')) || !state.get('player') ) {
     return state;
@@ -43,7 +47,3 @@ export const update = (state, keys) => {
 
   return newState;
 };
-
-const modeList = [
-  mode.PLAY
-];
