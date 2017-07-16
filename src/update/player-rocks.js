@@ -30,8 +30,7 @@ export const collidePlayerRocks = (state, keys) => {
   });
 
   if (!alive) {
-    return state.set('player', player.set('alive', false))
-      .set('mode', mode.GAMEOVER)
+    return state.set('mode', mode.GAMEOVER)
       .update('booms', (booms) => pushBooms(booms, player))
       .update('loot', (loot) => pushLoot(loot, player));
   }

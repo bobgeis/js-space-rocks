@@ -13,7 +13,7 @@ import { drawBooms } from './boom-canvas';
 // given a game state and a canvas context, draw onto the canvas everthing that belongs there
 export const renderCanvas = (ctx, state) => {
   if (!modeList.includes(state.get('mode'))) {
-    console.log(state);
+    // console.log(state);
     return state;
   }
   // things drawn onto a canvas will cover anything already drawn
@@ -40,5 +40,6 @@ const drawBg = (ctx) => {
 const modeList = [
   mode.PLAY,
   mode.GAMEOVER,
-  mode.PAUSE
+  mode.PAUSE,
+  mode.SPLASH
 ];

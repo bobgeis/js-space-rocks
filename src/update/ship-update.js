@@ -35,9 +35,12 @@ export const update = (state) => {
   if (newFlashes.length > 0) {
     newState = newState.update('booms', (booms) => booms.concat(newFlashes));
   }
-  return newState.update('score', (score) => score.update(
-    'ship', (ship) => ship + newScore
-  ));
+  if (newScore > 0 && state.get('mode') === mode.PLAY) {
+    newState = newState.update('score', (score) => score.update(
+      'ship', (ship) => ship + newScore
+    ));
+  }
+  return newState;
 };
 
 const modeList = [

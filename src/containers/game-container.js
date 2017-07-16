@@ -8,9 +8,20 @@ const mapStateToProps = (state) => {
   return {
     data: state.game.present,
     keys: state.keys,
-    omegaReady: state.game.past.length >= 13,
-    omegaCount: state.game.past.length
+    omegaReady: omegaReady(state),
+    omegaCount: omegaCount(state)
   };
+};
+
+const omegaReady = (state) => {
+  return omegaCount(state) >= 13;
+};
+
+const omegaCount = (state) => {
+  return Math.min(
+    state.game.past.length,
+    Math.floor(state.game.present.get('ticks') / 60)
+  );
 };
 
 export default connect(mapStateToProps, actions)(Game);

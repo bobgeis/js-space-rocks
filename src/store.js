@@ -56,5 +56,5 @@ export const initialStore = Map({
   cargo: Map({lifepod: 0, crystal: 0}),
   score: Map({lifepod: 0, crystal: 0, ship: 0}),
   hiscore: Map({lifepod: 0, crystal: 0, ship: 0}),
-  mode: mode.PLAY
+  mode: mode.SPLASH
 });

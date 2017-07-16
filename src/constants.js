@@ -55,8 +55,7 @@ export const PLAYER = {
   vy: 0,  // starting y velocity (px/tick)
   a: Math.PI/2, // starting angle (rad)
   r: 10,  // radius (px)
-  cd: 0,  // remaining weapon cooldown (ticks)
-  alive: true  // default to alive
+  cd: 0  // remaining weapon cooldown (ticks)
 };
 
 export const TURN = 0.1; // turn rate in (rad/tick)

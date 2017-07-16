@@ -25,5 +25,7 @@ const style = {
   "left": CANVAS.WIDTH/2,
   "transform": "translate(-50%, 0)",
   "textAlign": "center",
-  "fontSize": "small"
+  "fontSize": "small",
+  "backgroundColor": "rgba(0,0,50,0.7)",
+  "padding": 5
 };

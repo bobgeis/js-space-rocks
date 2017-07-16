@@ -43,8 +43,9 @@ const updateMode = (state, keys) => {
     if (currMode === modes.PAUSE) {
       return state.set('mode', modes.PLAY);
     } else if (currMode === modes.SPLASH) {
-      return initialStore;
+      return initialStore.set('mode', modes.PLAY);
     } else if (currMode === modes.GAMEOVER) {
+      console.log(initialStore);
       return initialStore;
     }
   }
