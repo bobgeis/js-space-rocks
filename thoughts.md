@@ -77,7 +77,7 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Bullets~~
 
-* Rock Spawning
+* ~~Rock Spawning~~
 
 * ~~Bullet-Rock Collisions~~
 
@@ -85,9 +85,9 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Player-Rock Collisions
 
-* Ships
+* ~~Ships~~
 
-* Ship Spawning
+* ~~Ship Spawning~~
 
 * Ship-Rock Collisions
 

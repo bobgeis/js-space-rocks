@@ -4,7 +4,9 @@ import { List, Map } from 'immutable';
 import * as mode from './mode-types';
 import {
   PLAYER,
-  CANVAS
+  CANVAS,
+  ROCK_SIZES,
+  ROCK_SIZE_TO_RADIUS
 } from './constants';
 
 const initialRocks = List([
@@ -13,8 +15,8 @@ const initialRocks = List([
     y: CANVAS.HEIGHT - 200,
     vx: 0.6,
     vy: -0.6,
-    r: 40,
-    size: 'huge'
+    r: ROCK_SIZE_TO_RADIUS[ROCK_SIZES[ROCK_SIZES.length - 1]],
+    size: ROCK_SIZES[ROCK_SIZES.length - 1]
   })
 ]);
 

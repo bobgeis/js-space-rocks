@@ -1,7 +1,8 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS } from '../constants';
+import { CANVAS, ROCK_SIZES, ROCK_SIZE_STEP, ROCK_CALF_SPEED } from '../constants';
+import { newRock } from './rock-update';
 
 const modeList = [
   mode.PLAY,
@@ -47,8 +48,20 @@ export const collideRocksBullets = (state, keys) => {
 };
 
 const pushCalves = (calves, rock) => {
-  // TODO
-  return;
+  const newSize = ROCK_SIZE_STEP[rock.get('size')];
+  if (!newSize) {
+    return;
+  }
+  const a = Math.random() * Math.PI * 2;
+  const dv = Math.random() * ROCK_CALF_SPEED;
+  const dvx = dv * Math.cos(a);
+  const dvy = dv * Math.sin(a);
+  const x = rock.get('x');
+  const y = rock.get('y');
+  const vx = rock.get('vx');
+  const vy = rock.get('vy');
+  calves.push(newRock(x, y, vx + dvx, vy + dvy, newSize));
+  calves.push(newRock(x, y, vx - dvx, vy - dvy, newSize));
 };
 
 const pushLoot = (loot, rock) => {
