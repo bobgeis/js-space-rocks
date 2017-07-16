@@ -9,6 +9,7 @@ import * as rock from './rock-update';
 import * as bullet from './bullet-update';
 import * as ship from './ship-update';
 import { collideRocksBullets } from './rocks-bullets';
+import { collideShipsRocks } from './ships-rocks';
 import timerSpawn from './timer-spawn';
 
 const modesForTick = [
@@ -46,6 +47,7 @@ const updateFunctionsList = [
   bullet.update,
   ship.update,
   collideRocksBullets,
+  collideShipsRocks,
   timerSpawn
 ];
 
