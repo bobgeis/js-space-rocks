@@ -87,9 +87,11 @@ export const SHIP_SPAWN_CHANCE = 0.4; // chance of a ship spawning (probability)
 export const SHIP_SPAWN_DELAY = 5;
 export const SHIP_NUM_TYPES = 4 // number of different ship types
 
+export const LOOT_TYPE_LIFEPOD = 'lifepod';
 export const LIFEPOD_LIFETIME = 300; // lifetime of lifepods (ticks)
 export const LIFEPOD_SPEED = 50 / 60; // lifepod launch speed (px/tick)
 
+export const LOOT_TYPE_CRYSTAL = 'crystal';
 export const CRYSTAL_LIFETIME = 300; // lifetime of lifepods (ticks)
 export const CRYSTAL_SPEED = 50 / 60; // lifepod launch speed (px/tick)
 

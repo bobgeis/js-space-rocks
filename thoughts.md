@@ -81,17 +81,13 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Bullet-Rock Collisions~~
 
-* Rock Calving
-
-* Player-Rock Collisions
+* ~~Rock Calving~~
 
 * ~~Ships~~
 
 * ~~Ship Spawning~~
 
-* Ship-Rock Collisions
-
-* Explosions
+* ~~Ship-Rock Collisions~~
 
 * Rock Loot
 
@@ -99,10 +95,26 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Player-Loot Collisions
 
+* Cargo Delivery
+
+* Explosions
+
+* Player-Rock Collisions
+
 * FTL Flashes
 
-* Cargo Delivery
+* Preload Mode
+
+* Splash Mode
+
+* Game Over and Restart
 
 * Score
 
 * High Score
+
+* Make it less ugly
+
+* Make it look okay
+
+* Make it pretty

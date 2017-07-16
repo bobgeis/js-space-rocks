@@ -1,7 +1,7 @@
 
 import { Map } from 'immutable';
 
-import { updateAngle, updatePos, wrap } from './physics';
+import { wrap } from './physics';
 import * as mode from '../mode-types';
 import { CANVAS, ROCK_SIZE_TO_RADIUS } from '../constants';
 
