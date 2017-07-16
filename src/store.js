@@ -27,7 +27,8 @@ export const initialBaseGuild = Map({
   a: 2,
   va: -0.008,
   r: 35,
-  img: 'baseGuild'
+  img: 'baseGuild',
+  type: 'guild'
 });
 
 export const initialBaseMed = Map({
@@ -36,7 +37,8 @@ export const initialBaseMed = Map({
   a: 5,
   va: 0.002,
   r: 40,
-  img: 'baseMed'
+  img: 'baseMed',
+  type: 'med'
 });
 
 export const initialStore = Map({

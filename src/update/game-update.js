@@ -12,6 +12,7 @@ import * as loot from './loot-update';
 import { collideRocksBullets } from './rocks-bullets';
 import { collideShipsRocks } from './ships-rocks';
 import { collideLootPlayer } from './loot-player';
+import { collidePlayerBases } from './player-bases';
 import timerSpawn from './timer-spawn';
 
 const modesForTick = [
@@ -52,6 +53,7 @@ const updateFunctionsList = [
   collideRocksBullets,
   collideShipsRocks,
   collideLootPlayer,
+  collidePlayerBases,
   timerSpawn
 ];
 
