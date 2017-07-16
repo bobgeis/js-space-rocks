@@ -1,7 +1,8 @@
 node_modules/*
 coverage/*
 dist/*
+secret/*
 .DS_Store
 yarn.lock
 .yarnclean
-.vscode
+.vscode/*

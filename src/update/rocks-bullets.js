@@ -2,8 +2,6 @@
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
 import {
-  CANVAS,
-  ROCK_SIZES,
   ROCK_SIZE_STEP,
   ROCK_CALF_SPEED,
   LOOT_TYPE_CRYSTAL,
@@ -75,13 +73,12 @@ const pushCalves = (calves, rock) => {
 };
 
 const pushLoot = (loot, rock) => {
-  // TODO
   if (Math.random() > CRYSTAL_CHANCE) {
     return;
   }
   const a = Math.random() * Math.PI * 2;
   const va = (Math.random() * 2 - 1) * CRYSTAL_SPIN;
-  const dv = Math.random() * ROCK_CALF_SPEED;
+  const dv = Math.random() * CRYSTAL_SPEED;
   const dvx = dv * Math.cos(a);
   const dvy = dv * Math.sin(a);
   const x = rock.get('x');

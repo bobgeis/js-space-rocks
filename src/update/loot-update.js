@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 
 import { wrap } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS, LOOT_TYPES_TO_LIFETIMES } from '../constants';
+import { CANVAS, LOOT_TYPES_TO_LIFETIMES, LOOT_RADIUS } from '../constants';
 
 const modeList = [
   mode.PLAY,
@@ -38,6 +38,7 @@ export const newLoot = (x, y, vx, vy, va, type) => {
     vy,
     va,
     type,
+    r: LOOT_RADIUS,
     life: LOOT_TYPES_TO_LIFETIMES[type]
   });
 };

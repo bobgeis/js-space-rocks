@@ -11,6 +11,7 @@ import * as ship from './ship-update';
 import * as loot from './loot-update';
 import { collideRocksBullets } from './rocks-bullets';
 import { collideShipsRocks } from './ships-rocks';
+import { collideLootPlayer } from './loot-player';
 import timerSpawn from './timer-spawn';
 
 const modesForTick = [
@@ -50,6 +51,7 @@ const updateFunctionsList = [
   loot.update,
   collideRocksBullets,
   collideShipsRocks,
+  collideLootPlayer,
   timerSpawn
 ];
 

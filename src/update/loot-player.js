@@ -8,7 +8,7 @@ const modeList = [
   mode.GAMEOVER
 ];
 
-export const collideShipsRocks = (state, keys) => {
+export const collideLootPlayer = (state, keys) => {
   if (!modeList.includes(state.get('mode'))) {
     return state;
   }
@@ -19,11 +19,12 @@ export const collideShipsRocks = (state, keys) => {
   const player = newState.get('player');
 
   lootList = lootList.filter((loot) => {
-    const alive = areColliding(loot, player);
-    if (!alive) {
+    const pickup = areColliding(loot, player);
+
+    if (pickup) {
       loot.get('type') === LOOT_TYPE_CRYSTAL ? newCrystals++ : newLifepods++;
     }
-    return alive;
+    return !pickup;
   });
   if (newLifepods > 0 || newCrystals > 0) {
     newState = newState.update('cargo', (cargo) =>
