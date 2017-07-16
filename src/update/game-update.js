@@ -8,6 +8,7 @@ import * as base from './base-update';
 import * as rock from './rock-update';
 import * as bullet from './bullet-update';
 import * as ship from './ship-update';
+import * as loot from './loot-update';
 import { collideRocksBullets } from './rocks-bullets';
 import { collideShipsRocks } from './ships-rocks';
 import timerSpawn from './timer-spawn';
@@ -46,6 +47,7 @@ const updateFunctionsList = [
   rock.update,
   bullet.update,
   ship.update,
+  loot.update,
   collideRocksBullets,
   collideShipsRocks,
   timerSpawn

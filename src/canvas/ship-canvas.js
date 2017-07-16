@@ -2,7 +2,7 @@
 import { img, draw, loadImageFile } from './images';
 import { CANVAS } from '../constants';
 
-// prepare player image
+// prepare ship images
 export const loadImages = () => {
   return [
     loadImageFile('./res/img/shipCiv.png'),

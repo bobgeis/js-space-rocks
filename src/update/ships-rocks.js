@@ -1,7 +1,14 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS, ROCK_SIZES, ROCK_SIZE_STEP, ROCK_CALF_SPEED } from '../constants';
+import {
+  CANVAS,
+  ROCK_SIZES,
+  ROCK_SIZE_STEP,
+  ROCK_CALF_SPEED,
+  LOOT_TYPE_LIFEPOD,
+  LIFEPOD_SPEED
+} from '../constants';
 
 const modeList = [
   mode.PLAY,

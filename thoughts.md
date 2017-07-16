@@ -51,6 +51,8 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * In asteroids you have to write code that collides bullets with asteroids and remove items from both lists if they collide.  Using mutable data structures, you probably have objects representing both items, and you can just set a kill flag and cull them later.  Using immutable objects you need to be more clever.  In Elm, which enforced purity to a high degree, we wrote a function that would return a list of all colliding pairs.  In this case, I was able to write a pair of nested filter loops that would call side effects if needed.  This isn't ideal: we're filter looping over the second list many times.  Consider better approaches in the future.
 
+* By default, canvas will draw over all other elements.  You can fix this with z-index ('zIndex' in react) style attributes, with higher z's drawn above others, but every such element must have it's position attribute defined!
+
 
 ## TODO
 

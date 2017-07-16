@@ -3,6 +3,7 @@
 import * as player from './player-canvas';
 import * as base from './base-canvas';
 import * as ship from './ship-canvas';
+import * as loot from './loot-canvas';
 
 export const img = {};
 
@@ -18,7 +19,8 @@ export const loadAllImages = () => {
   img.player = player.loadImage();
   img.baseGuild = base.loadImageGuild();
   img.baseMed = base.loadImageMed();
-  img.ships = ship.loadImages()
+  img.ships = ship.loadImages();
+  img.loot = loot.loadImages();
 };
 
 export const loadImageFile = (source, rotation=Math.PI/2, width, height) => {
