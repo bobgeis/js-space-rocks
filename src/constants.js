@@ -83,20 +83,21 @@ export const SHIP = {
 export const SHIP_RADIUS = 7; // radius of transport ship (px)
 export const SHIP_SPEED = 50 / 60; // speed of transport ship (px/tick)
 export const SHIP_SPAWN_CHANCE = 0.4; // chance of a ship spawning (probability)
-// export const SHIP_SPAWN_DELAY = 152; // time between spawn chances (ticks)
-export const SHIP_SPAWN_DELAY = 5;
-export const SHIP_NUM_TYPES = 4 // number of different ship types
+export const SHIP_SPAWN_DELAY = 152; // time between spawn chances (ticks)
+// export const SHIP_SPAWN_DELAY = 5;
+// export const SHIP_NUM_TYPES = 4; // number of different ship types
+export const SHIP_NUM_TYPES = 3; // number of different ship types
 
 export const LOOT_TYPE_LIFEPOD = 'lifepod';
-export const LIFEPOD_CHANCE = [0.9, 0.7, 0.3, 0.1]; // chance to spawn lifepods
+export const LIFEPOD_CHANCE = [0.5, 0.3, 0.2, 0.1]; // chance to spawn lifepods
 // export const LIFEPOD_CHANCE = []; // chance to spawn lifepods
-export const LIFEPOD_LIFETIME = 300; // lifetime of lifepods (ticks)
+export const LIFEPOD_LIFETIME = 1200; // lifetime of lifepods (ticks)
 export const LIFEPOD_SPEED = 50 / 60; // lifepod launch speed (px/tick)
 export const LIFEPOD_SPIN = 0.1; // lifepod spin speed (rad/tick)
 
 export const LOOT_TYPE_CRYSTAL = 'crystal';
 export const CRYSTAL_CHANCE = 0.6; // chance booming rock leaves crystal
-export const CRYSTAL_LIFETIME = 300; // lifetime of crystals (ticks)
+export const CRYSTAL_LIFETIME = 1200; // lifetime of crystals (ticks)
 export const CRYSTAL_SPEED = 50 / 60; // crystal launch speed (px/tick)
 export const CRYSTAL_SPIN = 0.2; // crystal spin speed (rad/tick)
 
@@ -116,7 +117,7 @@ export const ROCK_SIZES = [
   'large',
   'huge'
 ];
-export const ROCK_SIZE_STEP = {
+export const ROCK_SIZE_STEP = { // what is the next size down?
   small: false,
   medium: 'small',
   large: 'medium',
@@ -128,3 +129,27 @@ export const ROCK_SIZE_TO_RADIUS = { // radii (px)
   large: 25,
   huge: 35
 };
+
+// explosions and flash stuff
+export const BOOM_TYPE_ROCK_EX = "ROCKBOOM";
+export const BOOM_TYPE_ROCK_IN = "ROCKFLASH";
+export const BOOM_TYPE_SHIP_EX = "SHIPBOOM";
+export const BOOM_TYPE_SHIP_IN = "SHIPFLASH";
+
+export const BOOM_LIFETIMES = {};   // duration (ticks)
+BOOM_LIFETIMES[BOOM_TYPE_ROCK_EX] = 13;
+BOOM_LIFETIMES[BOOM_TYPE_ROCK_IN] = 10;
+BOOM_LIFETIMES[BOOM_TYPE_SHIP_EX] = 13;
+BOOM_LIFETIMES[BOOM_TYPE_SHIP_IN] = 10;
+
+export const BOOM_INIT_RADII = {};  // initial size (px)
+BOOM_INIT_RADII[BOOM_TYPE_ROCK_EX] = 22;
+BOOM_INIT_RADII[BOOM_TYPE_ROCK_IN] = 40;
+BOOM_INIT_RADII[BOOM_TYPE_SHIP_EX] = 22;
+BOOM_INIT_RADII[BOOM_TYPE_SHIP_IN] = 30;
+
+export const BOOM_END_RADII= {};   // end size (px)
+BOOM_END_RADII[BOOM_TYPE_ROCK_EX] = 60;
+BOOM_END_RADII[BOOM_TYPE_ROCK_IN] = 7;
+BOOM_END_RADII[BOOM_TYPE_SHIP_EX] = 40;
+BOOM_END_RADII[BOOM_TYPE_SHIP_IN] = 5;

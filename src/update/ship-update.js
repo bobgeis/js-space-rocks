@@ -5,9 +5,11 @@ import {
   getVecX,
   getVecY
 } from './physics';
+import { newBoom } from './boom-update';
 import {
   SHIP_RADIUS,
   SHIP_SPEED,
+  BOOM_TYPE_SHIP_IN,
   CANVAS
 } from '../constants';
 import * as mode from '../mode-types';
@@ -44,7 +46,12 @@ const modeList = [
 ];
 
 const pushFlash = (newFlashes, ship) => {
-  // TODO
+  newFlashes.push(newBoom(
+    ship.get('x'),
+    ship.get('y'),
+    0,
+    0,
+    BOOM_TYPE_SHIP_IN));
   return;
 };
 

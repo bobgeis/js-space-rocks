@@ -6,9 +6,11 @@ import {
   LOOT_TYPE_LIFEPOD,
   LIFEPOD_SPEED,
   LIFEPOD_SPIN,
-  LIFEPOD_CHANCE
+  LIFEPOD_CHANCE,
+  BOOM_TYPE_SHIP_EX
 } from '../constants';
 import { newLoot } from './loot-update';
+import { newBoom } from './boom-update';
 
 const modeList = [
   mode.PLAY,
@@ -26,7 +28,7 @@ export const collideShipsRocks = (state, keys) => {
   const newBooms = []
 
   ships = ships.filter((ship) => {
-    let alive = true
+    let alive = true;
     rocks.forEach((rock) => {
       if (areColliding(ship, rock)){
         alive = false;
@@ -49,7 +51,7 @@ export const collideShipsRocks = (state, keys) => {
 
 
 const pushLoot = (loot, ship) => {
-  for (const chance in LIFEPOD_CHANCE) {
+  for (const chance of LIFEPOD_CHANCE) {
     if (Math.random() < chance) {
       const a = Math.random() * Math.PI * 2;
       const va = (Math.random() * 2 - 1) * LIFEPOD_SPIN;
@@ -66,6 +68,11 @@ const pushLoot = (loot, ship) => {
 };
 
 const pushBooms = (booms, ship) => {
-  // TODO
-  return;
+  booms.push(newBoom(
+    ship.get('x'),
+    ship.get('y'),
+    ship.get('vx'),
+    ship.get('vy'),
+    BOOM_TYPE_SHIP_EX));
 };
+

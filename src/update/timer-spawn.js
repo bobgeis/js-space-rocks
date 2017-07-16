@@ -11,11 +11,14 @@ import {
   ROCK_SPAWN_CHANCE,
   ROCK_SPAWN_DELAY,
   ROCK_SIZES,
-  ROCK_SPEED
+  ROCK_SPEED,
+  BOOM_TYPE_ROCK_IN,
+  BOOM_TYPE_SHIP_IN
 } from '../constants';
 import * as mode from '../mode-types';
 import { newShip } from './ship-update';
 import { newRock } from './rock-update';
+import { newBoom } from './boom-update';
 
 const modeList = [
   mode.PLAY,
@@ -28,10 +31,14 @@ export default (state, keys) => {
   }
   let newState = state;
   if (state.get('ticks') % SHIP_SPAWN_DELAY === 0 && Math.random() < SHIP_SPAWN_CHANCE) {
-    newState = newState.update('ships', (ships) => ships.push(spawnRandomShip()));
+    const newShip = spawnRandomShip();
+    newState = newState.update('ships', (ships) => ships.push(newShip))
+      .update('booms', (booms) => booms.push(newFlashFromObject(newShip,false)));
   }
   if (state.get('ticks') % ROCK_SPAWN_DELAY === 0 && Math.random() < ROCK_SPAWN_CHANCE) {
-    newState = newState.update('rocks', (rocks) => rocks.push(spawnRandomRock()));
+    const newRock = spawnRandomRock();
+    newState = newState.update('rocks', (rocks) => rocks.push(newRock))
+      .update('booms', (booms) => booms.push(newFlashFromObject(newRock,true)));
   }
   return newState;
 };
@@ -85,4 +92,12 @@ const spawnRandomRock = () => {
   const vx = v * getVecX(a);
   const vy = v * getVecY(a);
   return newRock(x, y, vx, vy, size);
+};
+
+const newFlashFromObject = (obj, rock) => {
+  if (rock) {
+    return newBoom(obj.get('x'), obj.get('y'), 0, 0, BOOM_TYPE_ROCK_IN);
+  } else {
+    return newBoom(obj.get('x'), obj.get('y'), 0, 0, BOOM_TYPE_SHIP_IN);
+  }
 };

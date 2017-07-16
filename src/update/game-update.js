@@ -10,6 +10,7 @@ import * as rock from './rock-update';
 import * as bullet from './bullet-update';
 import * as ship from './ship-update';
 import * as loot from './loot-update';
+import * as boom from './boom-update';
 import { collideRocksBullets } from './rocks-bullets';
 import { collideShipsRocks } from './ships-rocks';
 import { collideLootPlayer } from './loot-player';
@@ -59,6 +60,7 @@ const updateFunctionsList = [
   bullet.update,
   ship.update,
   loot.update,
+  boom.update,
   collideRocksBullets,
   collideShipsRocks,
   collideLootPlayer,

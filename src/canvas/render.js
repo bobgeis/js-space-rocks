@@ -8,6 +8,7 @@ import { drawRocks } from './rock-canvas';
 import { drawBullets } from './bullet-canvas';
 import { drawShips } from './ship-canvas';
 import { drawLoot } from './loot-canvas';
+import { drawBooms } from './boom-canvas';
 
 // given a game state and a canvas context, draw onto the canvas everthing that belongs there
 export const renderCanvas = (ctx, state) => {
@@ -23,7 +24,7 @@ export const renderCanvas = (ctx, state) => {
   drawRocks(ctx, state);
   drawShips(ctx, state);
   drawPlayer(ctx, state);
-  // drawBooms(ctx, state);
+  drawBooms(ctx, state);
 };
 
 const drawBg = (ctx) => {

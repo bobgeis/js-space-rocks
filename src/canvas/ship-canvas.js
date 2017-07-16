@@ -7,7 +7,7 @@ export const loadImages = () => {
   return [
     loadImageFile('./res/img/shipCiv.png'),
     loadImageFile('./res/img/shipGuild.png'),
-    loadImageFile('./res/img/shipMed.png'),
+    // loadImageFile('./res/img/shipMed.png'),  // look too much like the player
     loadImageFile('./res/img/shipSci.png')
   ];
 };

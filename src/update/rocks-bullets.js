@@ -7,10 +7,12 @@ import {
   LOOT_TYPE_CRYSTAL,
   CRYSTAL_SPEED,
   CRYSTAL_CHANCE,
-  CRYSTAL_SPIN
+  CRYSTAL_SPIN,
+  BOOM_TYPE_ROCK_EX
 } from '../constants';
 import { newRock } from './rock-update';
 import { newLoot } from './loot-update';
+import { newBoom } from './boom-update';
 
 const modeList = [
   mode.PLAY,
@@ -90,6 +92,10 @@ const pushLoot = (loot, rock) => {
 };
 
 const pushBooms = (booms, rock) => {
-  // TODO
-  return;
+  booms.push(newBoom(
+    rock.get('x'),
+    rock.get('y'),
+    rock.get('vx'),
+    rock.get('vy'),
+    BOOM_TYPE_ROCK_EX));
 };
