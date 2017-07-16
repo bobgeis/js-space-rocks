@@ -82,14 +82,14 @@ export const SHIP = {
 
 export const SHIP_RADIUS = 7; // radius of transport ship (px)
 export const SHIP_SPEED = 50 / 60; // speed of transport ship (px/tick)
-export const SHIP_SPAWN_CHANCE = 0.4; // chance of a ship spawning (probability)
+export const SHIP_SPAWN_CHANCE = 0.45; // chance of a ship spawning (probability)
 export const SHIP_SPAWN_DELAY = 152; // time between spawn chances (ticks)
 // export const SHIP_SPAWN_DELAY = 5;
 // export const SHIP_NUM_TYPES = 4; // number of different ship types
 export const SHIP_NUM_TYPES = 3; // number of different ship types
 
 export const LOOT_TYPE_LIFEPOD = 'lifepod';
-export const LIFEPOD_CHANCE = [0.5, 0.3, 0.2, 0.1]; // chance to spawn lifepods
+export const LIFEPOD_CHANCE = [0.9, 0.7, 0.3, 0.1]; // chance to spawn lifepods
 // export const LIFEPOD_CHANCE = []; // chance to spawn lifepods
 export const LIFEPOD_LIFETIME = 1200; // lifetime of lifepods (ticks)
 export const LIFEPOD_SPEED = 50 / 60; // lifepod launch speed (px/tick)
@@ -108,9 +108,9 @@ LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_CRYSTAL] = CRYSTAL_LIFETIME;
 
 export const ROCK_SPEED = 50 / 60; // max speed of spawned rocks (px/tick)
 export const ROCK_CALF_SPEED = 2; // max speed gain of calved rocks (px/tick)
-export const ROCK_SPAWN_CHANCE = 0.5; // chance of a ship spawning (probability)
-// export const ROCK_SPAWN_DELAY = 171; // time between spawn chances (ticks)
-export const ROCK_SPAWN_DELAY = 7;
+export const ROCK_SPAWN_CHANCE = 0.55; // chance of a ship spawning (probability)
+export const ROCK_SPAWN_DELAY = 171; // time between spawn chances (ticks)
+// export const ROCK_SPAWN_DELAY = 7;
 export const ROCK_SIZES = [
   'small',
   'medium',

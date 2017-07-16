@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+import { CANVAS } from '../constants';
 
 export default class Omega extends React.PureComponent {
 
@@ -10,10 +11,15 @@ export default class Omega extends React.PureComponent {
       <span style={{
         "color": this.props.omegaReady ? "#00FF00" : "#FF0000",
         "zIndex": 2,
-        "position": "relative"
+        "position": "absolute",
+        "top": CANVAS.HEIGHT - 30,
+        "left": CANVAS.WIDTH/2,
+        "transform": "translate(-50%, 0)",
+        "fontSize": "large"
       }}>
         {omegaString}
       </span>
     );
   }
 }
+

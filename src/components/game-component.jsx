@@ -7,6 +7,7 @@ import * as modes from '../mode-types';
 
 import Description from './description-component';
 import Omega from './omega-component';
+import Score from './score-component';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -59,6 +60,9 @@ export default class Game extends React.Component {
         <Omega
           omegaCount={this.props.omegaCount}
           omegaReady={this.props.omegaReady}
+        />
+        <Score
+          score={this.props.data.get('score')}
         />
         <canvas ref="canvas"
           width={CANVAS.WIDTH}
