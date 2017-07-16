@@ -9,7 +9,8 @@ export const loadImage = () => {
 };
 
 const modeList = [
-  mode.PLAY
+  mode.PLAY,
+  mode.PAUSE
 ];
 
 // draw player image to ctx from map

@@ -2,6 +2,7 @@
 import _ from 'lodash';
 
 import * as modes from '../mode-types';
+import { initialStore } from '../store';
 
 import * as player from './player-update';
 import * as base from './base-update';
@@ -37,8 +38,14 @@ const updateMode = (state, keys) => {
   if (keys.get('pause') && currMode === modes.PLAY) {
     return state.set('mode', modes.PAUSE);
   }
-  if (keys.get('unpause') && currMode === modes.PAUSE) {
-    return state.set('mode', modes.PLAY);
+  if (keys.get('enter')) {
+    if (currMode === modes.PAUSE) {
+      return state.set('mode', modes.PLAY);
+    } else if (currMode === modes.SPLASH) {
+      return initialStore;
+    } else if (currMode === modes.GAMEOVER) {
+      return initialStore;
+    }
   }
   return state;
 };

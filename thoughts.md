@@ -91,17 +91,17 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Ship-Rock Collisions~~
 
-* Rock Loot
+* ~~Rock Loot~~
 
-* Ship Loot
+* ~~Ship Loot~~
 
-* Player-Loot Collisions
+* ~~Player-Loot Collisions~~
 
-* Cargo Delivery
+* ~~Cargo Delivery~~
 
 * Explosions
 
-* Player-Rock Collisions
+* ~~Player-Rock Collisions~~
 
 * FTL Flashes
 

@@ -8,11 +8,12 @@ This is a learning project made while learning javascript.  It's an asteroids cl
 ## Controls
 
 Intended Keys:
-* Left (or A) and Right (or D) rotate the player ship
-* Up (or W) accelerates the player ship
-* Space fires bullets
-* P pauses and U unpauses
-* Z activates the Omega 13: "Enough time to undo a single mistake"
+* LEFT (or A) and RIGHT (or D) rotate the player ship
+* UP (or W) accelerates the player ship
+* SPACE fires bullets
+* P pauses, ENTER unpauses
+* Z activates the Omega 13: "Enough time to undo a single mistake" Note that if charged, you can use this after your ship is destroyed.
+* ENTER starts the game, restarts on destruction (remember to try Z if you can)
 <!-- * R resets the high score to all zeros -->
 
 
@@ -22,7 +23,10 @@ Oh No! Some hooligans are dumping space rocks in to Subspace Locus 1457 again!
 
 Luckily, a dedicated rescue and rock-buster ship is already prepped and on-site.  That's you!
 
-Try to keep the toroidal Subspace Locus 1457 safe for travelers.  If any ships get hit by rocks, pick up the lifepods and deliver them to the medbay in the North East quadrant for treatment.  If you pick up any crystallized minerals from busted rocks, deliver those to the prospector base in the South West quadrant for analysis.  If you get into a jam, hopefully you have enough charge on your Omega-13 to try again.  Good luck!
+* Try to keep Subspace Locus 1457 safe for travelers.
+* If any ships get hit by rocks, pick up their lifepods and deliver them to the medbay in the North East quadrant for treatment.
+* If you pick up any crystalline minerals from busting rocks, deliver those to the prospector base in the South West quadrant for analysis.
+* If you get into a jam, hopefully you have enough charge on your Omega-13 to try again.  Good luck!
 
 
 ## Attributions
