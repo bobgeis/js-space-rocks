@@ -1,7 +1,9 @@
 
+import { Map } from 'immutable';
+
 import { updateAngle, updatePos, wrap } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS } from '../constants';
+import { CANVAS, ROCK_SIZE_TO_RADIUS } from '../constants';
 
 const modeList = [
   mode.PLAY,
@@ -21,4 +23,15 @@ const updateRock = (rock) => {
     .update('x', (x) => wrap(x + rock.get('vx'), CANVAS.WIDTH))
     .update('y', (y) => wrap(y + rock.get('vy'), CANVAS.HEIGHT))
     .asImmutable();
+};
+
+export const newRock = (x, y, vx, vy, size) => {
+  return Map({
+    x,
+    y,
+    size,
+    r: ROCK_SIZE_TO_RADIUS[size],
+    vx,
+    vy
+  });
 };

@@ -15,8 +15,7 @@ export const renderCanvas = (ctx, state) => {
     return state;
   }
   // things drawn onto a canvas will cover anything already drawn
-  clearCanvas(ctx);
-  // drawBg(ctx);
+  drawBg(ctx, state);
   drawBases(ctx, state);
   // drawLoot(ctx, state);
   drawBullets(ctx, state);
@@ -26,11 +25,8 @@ export const renderCanvas = (ctx, state) => {
   // drawBooms(ctx, state);
 };
 
-const clearCanvas = (ctx) => {
-  ctx.clearRect(0, 0, CANVAS.WIDTH, CANVAS.HEIGHT);
-};
-
 const drawBg = (ctx) => {
+  ctx.clearRect(0, 0, CANVAS.WIDTH, CANVAS.HEIGHT);
   // ctx.fillStyle = "#000000";
   // ctx.fillStyle = "rgba(0,0,0,0)";
   // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -38,7 +34,6 @@ const drawBg = (ctx) => {
   // ctx.drawImage(img.bg, 0, 0);
   return;
 };
-
 
 const modeList = [
   mode.PLAY,

@@ -9,6 +9,7 @@ import * as rock from './rock-update';
 import * as bullet from './bullet-update';
 import * as ship from './ship-update';
 import { collideRocksBullets } from './rocks-bullets';
+import timerSpawn from './timer-spawn';
 
 const modesForTick = [
   modes.PLAY
@@ -44,7 +45,8 @@ const updateFunctionsList = [
   rock.update,
   bullet.update,
   ship.update,
-  collideRocksBullets
+  collideRocksBullets,
+  timerSpawn
 ];
 
 export const updateGame = (state, keys) => {

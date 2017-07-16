@@ -1,4 +1,6 @@
 
+import { Map } from 'immutable';
+
 import {
   getVecX,
   getVecY
@@ -28,7 +30,12 @@ export const update = (state) => {
       }
     }))
     .update('ships', (ships) => ships.map(updateShip));
-  return newState;
+  if (newFlashes.length > 0) {
+    newState = newState.update('booms', (booms) => booms.concat(newFlashes));
+  }
+  return newState.update('score', (score) => score.update(
+    'ship', (ship) => ship + newScore
+  ));
 };
 
 const modeList = [
@@ -63,17 +70,13 @@ const onScreen = (ship) => {
 };
 
 export const newShip = (x, y, a, imgKey) => {
-  Map({
+  return Map({
     vx: SHIP_SPEED * getVecX(a),
-    vy: SHIP_SPEED * getVecY(a),
+    vy: -SHIP_SPEED * getVecY(a),
     r: SHIP_RADIUS,
     x,
     y,
     a,
     imgKey
   });
-};
-
-export const newRandomShip = () => {
-  // return newShip(x, y, a, imgKey);
 };
