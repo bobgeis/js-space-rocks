@@ -574,13 +574,13 @@ var PLAYER = exports.PLAYER = {
 };
 
 var TURN = exports.TURN = 0.1; // turn rate in (rad/tick)
-var THRUST = exports.THRUST = 0.02; // acceleration (px/tick/tick)
-var RETRO = exports.RETRO = 0.004; // acceleration while reversing (px/tick/tick)
+var THRUST = exports.THRUST = 0.045; // acceleration (px/tick/tick)
+var RETRO = exports.RETRO = THRUST / 4; // acceleration while reversing (px/tick/tick)
 var DAMP = exports.DAMP = 1 - 0.0004; // drag (fraction/tick)
 var WPN_COOLDOWN = exports.WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
 
-var BULLET_LIFETIME = exports.BULLET_LIFETIME = 70; // lifetime of a bullet (ticks)
-var BULLET_SPEED = exports.BULLET_SPEED = 6; // muzzle velocity of a bullet (px/tick)
+var BULLET_LIFETIME = exports.BULLET_LIFETIME = 65; // lifetime of a bullet (ticks)
+var BULLET_SPEED = exports.BULLET_SPEED = 8; // muzzle velocity of a bullet (px/tick)
 var BULLET_RADIUS = exports.BULLET_RADIUS = 1; // radius (px)
 
 // ship initial state
@@ -597,9 +597,8 @@ var SHIP = exports.SHIP = {
 var SHIP_RADIUS = exports.SHIP_RADIUS = 7; // radius of transport ship (px)
 var SHIP_SPEED = exports.SHIP_SPEED = 50 / 60; // speed of transport ship (px/tick)
 var SHIP_SPAWN_CHANCE = exports.SHIP_SPAWN_CHANCE = 0.45; // chance of a ship spawning (probability)
-var SHIP_SPAWN_DELAY = exports.SHIP_SPAWN_DELAY = 152; // time between spawn chances (ticks)
-// export const SHIP_SPAWN_DELAY = 5;
-// export const SHIP_NUM_TYPES = 4; // number of different ship types
+var SHIP_SPAWN_DELAY = exports.SHIP_SPAWN_DELAY = 172; // time between spawn chances (ticks)
+// export const SHIP_NUM_TYPES = 4; // number of different ship types // one removed for being too similar to player ship
 var SHIP_NUM_TYPES = exports.SHIP_NUM_TYPES = 3; // number of different ship types
 
 var LOOT_TYPE_LIFEPOD = exports.LOOT_TYPE_LIFEPOD = 'lifepod';
@@ -621,9 +620,9 @@ LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_LIFEPOD] = LIFEPOD_LIFETIME;
 LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_CRYSTAL] = CRYSTAL_LIFETIME;
 
 var ROCK_SPEED = exports.ROCK_SPEED = 50 / 60; // max speed of spawned rocks (px/tick)
-var ROCK_CALF_SPEED = exports.ROCK_CALF_SPEED = 2; // max speed gain of calved rocks (px/tick)
-var ROCK_SPAWN_CHANCE = exports.ROCK_SPAWN_CHANCE = 0.55; // chance of a ship spawning (probability)
-var ROCK_SPAWN_DELAY = exports.ROCK_SPAWN_DELAY = 171; // time between spawn chances (ticks)
+var ROCK_CALF_SPEED = exports.ROCK_CALF_SPEED = 1; // max speed gain of calved rocks (px/tick)
+var ROCK_SPAWN_CHANCE = exports.ROCK_SPAWN_CHANCE = 0.45; // chance of a rock spawning (probability)
+var ROCK_SPAWN_DELAY = exports.ROCK_SPAWN_DELAY = 191; // time between spawn chances (ticks)
 // export const ROCK_SPAWN_DELAY = 7;
 var ROCK_SIZES = exports.ROCK_SIZES = ['small', 'medium', 'large', 'huge'];
 var ROCK_SIZE_STEP = exports.ROCK_SIZE_STEP = { // what is the next size down?
@@ -20400,8 +20399,8 @@ var initialRocks = (0, _immutable.List)([(0, _immutable.Map)({
 
 // base initial state
 var initialBaseGuild = exports.initialBaseGuild = (0, _immutable.Map)({
-  x: 200,
-  y: _constants.CANVAS.HEIGHT - 200,
+  x: 150,
+  y: _constants.CANVAS.HEIGHT - 150,
   a: 2,
   va: -0.008,
   r: 35,
@@ -20410,8 +20409,8 @@ var initialBaseGuild = exports.initialBaseGuild = (0, _immutable.Map)({
 });
 
 var initialBaseMed = exports.initialBaseMed = (0, _immutable.Map)({
-  x: _constants.CANVAS.WIDTH - 200,
-  y: 200,
+  x: _constants.CANVAS.WIDTH - 150,
+  y: 150,
   a: 5,
   va: 0.002,
   r: 40,
@@ -50438,13 +50437,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Game = function (_React$Component) {
   _inherits(Game, _React$Component);
 
-  function Game(props) {
+  function Game() {
     _classCallCheck(this, Game);
 
-    var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, props));
-
-    console.log(_this.props);
-    return _this;
+    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).apply(this, arguments));
   }
 
   _createClass(Game, [{
@@ -50493,8 +50489,10 @@ var Game = function (_React$Component) {
     value: function updateGame() {
       var _this3 = this;
 
-      this.props.tick(this.props.keys);
-      (0, _render.renderCanvas)(this.state.context, this.props.data);
+      if (this.props.loadingFinished()) {
+        this.props.tick(this.props.keys);
+        (0, _render.renderCanvas)(this.state.context, this.props.data);
+      }
       requestAnimationFrame(function () {
         return _this3.updateGame();
       });
@@ -50822,7 +50820,30 @@ var Description = function (_React$PureComponent) {
         null,
         _react2.default.createElement(
           'p',
-          { style: styleShow },
+          { style: styleObjectives },
+          _react2.default.createElement(
+            'strong',
+            null,
+            'Lookout! Space rocks!'
+          ),
+          ' ',
+          _react2.default.createElement('br', null),
+          'Some hooligans are dumping space rocks.',
+          _react2.default.createElement('br', null),
+          'Luckily, you\'re here.',
+          _react2.default.createElement('br', null),
+          'Bust the rocks so ships can travel safely.',
+          _react2.default.createElement('br', null),
+          'Bring lifepods to the base in the upper right.',
+          _react2.default.createElement('br', null),
+          'Bring crystals to the base in the lower left.',
+          _react2.default.createElement('br', null),
+          'Good luck!',
+          _react2.default.createElement('br', null)
+        ),
+        _react2.default.createElement(
+          'p',
+          { style: styleControls },
           _react2.default.createElement(
             'strong',
             null,
@@ -50830,7 +50851,7 @@ var Description = function (_React$PureComponent) {
           ),
           ' ',
           _react2.default.createElement('br', null),
-          'Arrow keys to move ',
+          'Arrows to move ',
           _react2.default.createElement('br', null),
           'Space to fire ',
           _react2.default.createElement('br', null),
@@ -50853,16 +50874,30 @@ exports.default = Description;
 
 var modeList = [mode.SPLASH, mode.GAMEOVER, mode.PAUSE];
 
-var styleShow = {
+var styleControls = {
   "zIndex": 2,
   "position": "absolute",
   "padding": 5,
-  "top": 40,
-  "left": _constants.CANVAS.WIDTH / 2 - 100,
+  "top": 350,
+  "left": _constants.CANVAS.WIDTH / 2,
   "transform": "translate(-50%, 0)",
   "textAlign": "center",
-  "fontSize": "x-small",
-  "backgroundColor": "rgba(0,0,50,0.7)"
+  "fontSize": "small",
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
+};
+
+var styleObjectives = {
+  "zIndex": 2,
+  "position": "absolute",
+  "padding": 5,
+  "top": 150,
+  "left": _constants.CANVAS.WIDTH / 2,
+  "transform": "translate(-50%, 0)",
+  "textAlign": "center",
+  "fontSize": "small",
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
 };
 
 var styleHide = {
@@ -50973,11 +51008,36 @@ var Score = function (_React$PureComponent) {
       var lifepod = this.props.score.get('lifepod');
       var crystal = this.props.score.get('crystal');
       var ship = this.props.score.get('ship');
-      var scoreString = 'Ships protected: ' + ship + ' Survivors rescued: ' + lifepod + ' Crystals delivered: ' + crystal;
+      var scoreString = 'Ships protected: ' + ship + '    Lifepods rescued: ' + lifepod + '    Crystals delivered: ' + crystal;
+      var shipString = 'Ships protected: ' + ship;
+      var lifepodString = 'Lifepods rescued: ' + lifepod;
+      var crystalString = 'Crystals delivered: ' + crystal;
+      var spacerString = '            ';
+      // return (
+      //   <span style={style}>
+      //     {scoreString}
+      //   </span>
+      // );
       return _react2.default.createElement(
         'span',
-        { style: style },
-        scoreString
+        { style: mainStyle },
+        _react2.default.createElement(
+          'span',
+          { style: innerStyle },
+          shipString
+        ),
+        spacerString,
+        _react2.default.createElement(
+          'span',
+          { style: innerStyle },
+          lifepodString
+        ),
+        spacerString,
+        _react2.default.createElement(
+          'span',
+          { style: innerStyle },
+          crystalString
+        )
       );
     }
   }]);
@@ -50988,7 +51048,7 @@ var Score = function (_React$PureComponent) {
 exports.default = Score;
 
 
-var style = {
+var mainStyle = {
   "zIndex": 2,
   "position": "absolute",
   "top": 10,
@@ -50996,8 +51056,13 @@ var style = {
   "transform": "translate(-50%, 0)",
   "textAlign": "center",
   "fontSize": "small",
-  "backgroundColor": "rgba(0,0,50,0.7)",
-  "padding": 5
+  "whiteSpace": "pre"
+};
+
+var innerStyle = {
+  "padding": 5,
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
 };
 
 /***/ })
