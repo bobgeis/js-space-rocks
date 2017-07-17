@@ -110,10 +110,12 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Make it less ugly -> Make it look okay -> Make it pretty
 
-* Proper production build
+* Proper production build with uglify or closure
+
+* Better File Names/Structure?
+
+* Code doc! And cleanup...
 
 * Hot module reloading
-
-* Better File Names
 
 * Experiment with canvas paths, SVGs, and/or img elements
