@@ -22,8 +22,8 @@ const initialRocks = List([
 
 // base initial state
 export const initialBaseGuild = Map({
-  x: 200,
-  y: CANVAS.HEIGHT - 200,
+  x: 150,
+  y: CANVAS.HEIGHT - 150,
   a: 2,
   va: -0.008,
   r: 35,
@@ -32,8 +32,8 @@ export const initialBaseGuild = Map({
 });
 
 export const initialBaseMed = Map({
-  x: CANVAS.WIDTH - 200,
-  y: 200,
+  x: CANVAS.WIDTH - 150,
+  y: 150,
   a: 5,
   va: 0.002,
   r: 40,

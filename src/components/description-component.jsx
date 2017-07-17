@@ -15,9 +15,18 @@ export default class Description extends React.PureComponent {
 
     return (
       <div>
-        <p style={styleShow}>
+        <p style={styleObjectives}>
+          <strong>Lookout! Space rocks!</strong> <br />
+          Some hooligans are dumping space rocks.<br />
+          Luckily, you're here.<br />
+          Bust the rocks so ships can travel safely.<br />
+          Bring lifepods to the base in the upper right.<br />
+          Bring crystals to the base in the lower left.<br />
+          Good luck!<br />
+        </p>
+        <p style={styleControls}>
           <strong>Controls:</strong> <br />
-          Arrow keys to move <br />
+          Arrows to move <br />
           Space to fire <br />
           Z to use the Omega-13 <br />
           P to pause <br />
@@ -34,16 +43,30 @@ const modeList = [
   mode.PAUSE
 ];
 
-const styleShow = {
+const styleControls = {
   "zIndex": 2,
   "position": "absolute",
   "padding": 5,
-  "top": 40,
-  "left": CANVAS.WIDTH/2 - 100,
+  "top": 350,
+  "left": CANVAS.WIDTH/2,
   "transform": "translate(-50%, 0)",
   "textAlign": "center",
-  "fontSize": "x-small",
-  "backgroundColor": "rgba(0,0,50,0.7)"
+  "fontSize": "small",
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
+};
+
+const styleObjectives = {
+  "zIndex": 2,
+  "position": "absolute",
+  "padding": 5,
+  "top": 150,
+  "left": CANVAS.WIDTH/2,
+  "transform": "translate(-50%, 0)",
+  "textAlign": "center",
+  "fontSize": "small",
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
 };
 
 const styleHide = {
