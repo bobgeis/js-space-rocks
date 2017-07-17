@@ -22,7 +22,7 @@ This is a learning project, so not everything may be best practice, or the best 
 * game-component.jsx contains the canvas and other UI elements.  It also calls the canvas render functions and dispatches key actions.  This component does a lot!
 * canvas/render.js has the primary functions for drawing things to the canvas.  canvas/images.js has some utilities and preloading stuff.
 * reduers/reducer.js has the main reducer which combines reducers from key-reducer.js and game-reducer.js
-* update/game-update.js is called by the tick action on the game-reducer.  It does all the time-step updates of the game model which is a large portion of the code.
+* update/game-update.js is called by the tick action on the game-reducer.  It does all the time-step updates of the game model which is a large portion of the code.  The basic/self update logic are in the *-update.js files, while the pairwise interactings are in the files named after pairs eg: rocks-bullets.js.
 
 
 ## Things Learned
@@ -52,13 +52,6 @@ This is a learning project, so not everything may be best practice, or the best 
 * In asteroids you have to write code that collides bullets with asteroids and remove items from both lists if they collide.  Using mutable data structures, you probably have objects representing both items, and you can just set a kill flag and cull them later.  Using immutable objects you need to be more clever.  In Elm, which enforced purity to a high degree, we wrote a function that would return a list of all colliding pairs.  In this case, I was able to write a pair of nested filter loops that would call side effects if needed.  This isn't ideal: we're filter looping over the second list many times.  Consider better approaches in the future.
 
 * By default, canvas will draw over all other elements.  You can fix this with z-index ('zIndex' in react) style attributes, with higher z's drawn above others, but every such element must have it's position attribute defined!
-
-
-## TODO
-
-* Previously I used a graphics library (Elm) or drawing sprites onto the canvas (CoffeeScript).  The plan for this is to go the sprites on canvas route first, but then perhaps change them to using the canvas' path methods.  SVGs in react are another option to consider.
-
-* An asteroids game doesn't really benefit much from being written in react/redux using immutable data structures (even if the undo/time travel is kind of neat).  If another game is to be done with those libraries, consider something more turn and/or text based.
 
 
 ### Feature Checklist
@@ -99,24 +92,28 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Cargo Delivery~~
 
-* Explosions
+* ~~Explosions~~
 
 * ~~Player-Rock Collisions~~
 
-* FTL Flashes
+* ~~FTL Flashes~~
 
-* Preload Mode
+* ~~Game Over and Restart~~
 
-* Splash Mode
+* ~~Score~~
 
-* Game Over and Restart
+* ~~Preload~~
 
-* Score
+* ~~Splash Mode~~
 
-* High Score
+* High Score + local storage
 
-* Make it less ugly
+* Make it less ugly -> Make it look okay -> Make it pretty
 
-* Make it look okay
+* Proper production build
 
-* Make it pretty
+* Hot module reloading
+
+* Better File Names
+
+* Experiment with canvas paths, SVGs, and/or img elements

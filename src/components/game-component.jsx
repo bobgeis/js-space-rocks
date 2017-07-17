@@ -10,10 +10,6 @@ import Omega from './omega-component';
 import Score from './score-component';
 
 export default class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-  }
 
   componentDidMount() {
     // if we don't bind 'this' then we won't have access to props in the handler
@@ -49,8 +45,10 @@ export default class Game extends React.Component {
   }
 
   updateGame() {
-    this.props.tick(this.props.keys);
-    renderCanvas(this.state.context, this.props.data);
+    if (this.props.loadingFinished()){
+      this.props.tick(this.props.keys);
+      renderCanvas(this.state.context, this.props.data);
+    }
     requestAnimationFrame(() => this.updateGame());
   }
 

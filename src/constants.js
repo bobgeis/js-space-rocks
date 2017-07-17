@@ -59,13 +59,13 @@ export const PLAYER = {
 };
 
 export const TURN = 0.1; // turn rate in (rad/tick)
-export const THRUST = 0.02; // acceleration (px/tick/tick)
-export const RETRO = 0.004; // acceleration while reversing (px/tick/tick)
+export const THRUST = 0.045; // acceleration (px/tick/tick)
+export const RETRO = THRUST/4; // acceleration while reversing (px/tick/tick)
 export const DAMP = 1 - 0.0004; // drag (fraction/tick)
 export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
 
-export const BULLET_LIFETIME = 70; // lifetime of a bullet (ticks)
-export const BULLET_SPEED = 6; // muzzle velocity of a bullet (px/tick)
+export const BULLET_LIFETIME = 65; // lifetime of a bullet (ticks)
+export const BULLET_SPEED = 8; // muzzle velocity of a bullet (px/tick)
 export const BULLET_RADIUS = 1; // radius (px)
 
 // ship initial state
@@ -82,9 +82,8 @@ export const SHIP = {
 export const SHIP_RADIUS = 7; // radius of transport ship (px)
 export const SHIP_SPEED = 50 / 60; // speed of transport ship (px/tick)
 export const SHIP_SPAWN_CHANCE = 0.45; // chance of a ship spawning (probability)
-export const SHIP_SPAWN_DELAY = 152; // time between spawn chances (ticks)
-// export const SHIP_SPAWN_DELAY = 5;
-// export const SHIP_NUM_TYPES = 4; // number of different ship types
+export const SHIP_SPAWN_DELAY = 172; // time between spawn chances (ticks)
+// export const SHIP_NUM_TYPES = 4; // number of different ship types // one removed for being too similar to player ship
 export const SHIP_NUM_TYPES = 3; // number of different ship types
 
 export const LOOT_TYPE_LIFEPOD = 'lifepod';
@@ -106,9 +105,9 @@ LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_LIFEPOD] = LIFEPOD_LIFETIME;
 LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_CRYSTAL] = CRYSTAL_LIFETIME;
 
 export const ROCK_SPEED = 50 / 60; // max speed of spawned rocks (px/tick)
-export const ROCK_CALF_SPEED = 2; // max speed gain of calved rocks (px/tick)
-export const ROCK_SPAWN_CHANCE = 0.55; // chance of a ship spawning (probability)
-export const ROCK_SPAWN_DELAY = 171; // time between spawn chances (ticks)
+export const ROCK_CALF_SPEED = 1; // max speed gain of calved rocks (px/tick)
+export const ROCK_SPAWN_CHANCE = 0.45; // chance of a rock spawning (probability)
+export const ROCK_SPAWN_DELAY = 191; // time between spawn chances (ticks)
 // export const ROCK_SPAWN_DELAY = 7;
 export const ROCK_SIZES = [
   'small',
