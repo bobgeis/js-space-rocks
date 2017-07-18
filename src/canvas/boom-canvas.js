@@ -55,13 +55,13 @@ const getColor = (ratio, flash) => {
     const blue = Math.floor(130 + ratio * 125);
     const green = Math.floor(ratio * 255);
     const red = Math.floor(Math.max(ratio * ratio * 245));
-    return `rgba(${red}, ${green}, ${blue}, ${ratio})`;
+    return `rgba(${red}, ${green}, ${blue}, ${ratio/2 + 0.5})`;
   } else {
     // get colors for red explosion
     const red = Math.floor(130 + ratio * 125);
     const green = Math.floor(ratio * 255);
     const blue = Math.floor(Math.max(ratio * ratio * 245));
-    return `rgba(${red}, ${green}, ${blue}, ${ratio})`;
+    return `rgba(${red}, ${green}, ${blue}, ${ratio/2 + 0.5})`;
   }
 };
 

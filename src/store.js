@@ -3,12 +3,24 @@ import { List, Map } from 'immutable';
 
 import * as mode from './mode-types';
 import {
-  PLAYER,
   CANVAS,
+  PLAYER_RADIUS,
   ROCK_SIZES,
   ROCK_SIZE_TO_RADIUS
 } from './constants';
 import { getHiScore } from './update/local-store';
+
+
+// player initial state
+const intialPlayer = Map({
+  x: CANVAS.WIDTH/2,  // starting x position (px)
+  y: CANVAS.HEIGHT/2, // starting y position (px)
+  vx: 0,  // starting x velocity (px/tick)
+  vy: 0,  // starting y velocity (px/tick)
+  a: Math.PI/2, // starting angle (rad) facing North
+  r: PLAYER_RADIUS,  // radius (px)
+  cd: 0  // remaining weapon cooldown (ticks)
+});
 
 const initialRocks = List([
   Map({
@@ -52,7 +64,7 @@ export const initialStore = Map({
     initialBaseGuild,
     initialBaseMed
   ]),
-  player: Map(PLAYER),
+  player: intialPlayer,
   ticks: 0,
   cargo: Map({lifepod: 0, crystal: 0}),
   score: Map({lifepod: 0, crystal: 0, ship: 0}),

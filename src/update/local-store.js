@@ -1,6 +1,7 @@
 
 import { Map } from 'immutable';
 
+const hiScoreName = 'js-space-rocksHiScore';
 
 const zeroHiScore = {
   lifepod: 0,
@@ -9,7 +10,7 @@ const zeroHiScore = {
 };
 
 export const getHiScore = () => {
-  return JSON.parse(localStorage.getItem('HiScore')) || zeroHiScore;
+  return JSON.parse(localStorage.getItem(hiScoreName)) || zeroHiScore;
 };
 
 export const setHiScore = (state) => {
@@ -19,10 +20,10 @@ export const setHiScore = (state) => {
   for (const key in currScore) {
     newHiScore[key] = Math.max(currScore[key], oldHiScore[key]);
   }
-  localStorage.setItem('HiScore', JSON.stringify(newHiScore));
+  localStorage.setItem(hiScoreName, JSON.stringify(newHiScore));
   return Map(newHiScore);
 };
 
 export const clearHiScore = () => {
-  localStorage.removeItem('HiScore');
+  localStorage.removeItem(hiScoreName);
 };

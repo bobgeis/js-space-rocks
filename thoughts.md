@@ -53,6 +53,8 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * By default, canvas will draw over all other elements.  You can fix this with z-index ('zIndex' in react) style attributes, with higher z's drawn above others, but every such element must have it's position attribute defined!
 
+* Something I hadn't appreciated: local storage is shared across the domain.  This means that the 'HiScore' object stored for [js-space-rocks](https://bobgeis.github.io/js-space-rocks/) is the *same* object as the one stored for [coffeeAsteroids(https://bobgeis.github.io/coffeeAsteroids/)]!  Need to rename it to make them unique!  (It was a funny moment when I went into the game on gh-pages and saw that I already had a high score!)
+
 
 ### Feature Checklist
 
@@ -124,6 +126,8 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Graphical indicator of loot age.
 
-* Testing and bug fixes.  Eg: ship double flash bug.
+* Testing and bug fixes.  Eg: ship double flash bug, 4-rock omission.
 
 * Script/automated pushing to gh-pages?
+
+* Hooligan ships?

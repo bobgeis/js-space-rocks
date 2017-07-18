@@ -1,15 +1,19 @@
 
 import { img, draw, loadImageFile } from './images';
-import { CANVAS } from '../constants';
+
+
+const shipImageFilePaths = [
+  './res/img/shipCiv.png',
+  './res/img/shipGuild.png',
+  './res/img/shipMed.png',
+  './res/img/shipSci.png'
+];
+
+export const SHIP_NUM_TYPES = shipImageFilePaths.length;
 
 // prepare ship images
 export const loadImages = () => {
-  return [
-    loadImageFile('./res/img/shipCiv.png'),
-    loadImageFile('./res/img/shipGuild.png'),
-    // loadImageFile('./res/img/shipMed.png'),  // look too much like the player
-    loadImageFile('./res/img/shipSci.png')
-  ];
+  return shipImageFilePaths.map((file) => loadImageFile(file));
 };
 
 // draw ship images to ctx from state

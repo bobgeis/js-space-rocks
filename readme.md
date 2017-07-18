@@ -19,7 +19,7 @@ Intended Keys:
 * U resets the high score to all zeros
 
 
-## "Story" & Objectives
+## Objectives
 
 Oh No! Some hooligans are dumping space rocks in to Subspace Locus 1457 again!
 
