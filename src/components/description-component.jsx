@@ -12,7 +12,7 @@ export default class Description extends React.PureComponent {
         <div style={styleHide} />
       );
     }
-
+    const spacerString = '  ';
     return (
       <div>
         <p style={styleObjectives}>
@@ -32,6 +32,22 @@ export default class Description extends React.PureComponent {
           P to pause <br />
           Enter to play! <br />
         </p>
+        <p style={mainHiScoreStyle}>
+          <strong style={innerHiScoreStyle}>
+            High Scores
+          </strong> <br /> <br />
+          <span style={innerHiScoreStyle}>
+            Most Ships protected: {this.props.hiScore.get('ship')}
+          </span>
+          {spacerString}
+          <span style={innerHiScoreStyle}>
+            Most Lifepods rescued: {this.props.hiScore.get('lifepod')}
+          </span>
+          {spacerString}
+          <span style={innerHiScoreStyle}>
+            Most Crystals delivered: {this.props.hiScore.get('crystal')}
+          </span>
+        </p>
       </div>
     );
   }
@@ -43,17 +59,9 @@ const modeList = [
   mode.PAUSE
 ];
 
-const styleControls = {
-  "zIndex": 2,
+const styleHide = {
   "position": "absolute",
-  "padding": 5,
-  "top": 350,
-  "left": CANVAS.WIDTH/2,
-  "transform": "translate(-50%, 0)",
-  "textAlign": "center",
-  "fontSize": "small",
-  "backgroundColor": "rgba(0,0,50,0.5)",
-  "borderRadius": "10px"
+  "visibility": "hidden"
 };
 
 const styleObjectives = {
@@ -69,7 +77,33 @@ const styleObjectives = {
   "borderRadius": "10px"
 };
 
-const styleHide = {
+const styleControls = {
+  "zIndex": 2,
   "position": "absolute",
-  "visibility": "hidden"
+  "padding": 5,
+  "top": 350,
+  "left": CANVAS.WIDTH/2,
+  "transform": "translate(-50%, 0)",
+  "textAlign": "center",
+  "fontSize": "small",
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
+};
+
+const mainHiScoreStyle = {
+  "zIndex": 2,
+  "position": "absolute",
+  "top": 520,
+  "left": CANVAS.WIDTH/2,
+  "transform": "translate(-50%, 0)",
+  "textAlign": "center",
+  "fontSize": "small",
+  "whiteSpace": "pre"
+};
+
+const innerHiScoreStyle = {
+  "padding": 5,
+  "position": "relative",
+  "backgroundColor": "rgba(0,0,50,0.5)",
+  "borderRadius": "10px"
 };

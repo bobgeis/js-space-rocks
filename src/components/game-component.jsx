@@ -64,6 +64,7 @@ export default class Game extends React.Component {
         />
         <Description
           gameMode={this.props.data.get('mode')}
+          hiScore={this.props.data.get('hiscore')}
         />
         <canvas ref="canvas"
           width={CANVAS.WIDTH}

@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import * as modes from '../mode-types';
 import { initialStore } from '../store';
+import { clearHiScore } from './local-store';
 
 import * as player from './player-update';
 import * as base from './base-update';
@@ -38,6 +39,9 @@ const updateMode = (state, keys) => {
   const currMode = state.get('mode');
   if (keys.get('pause') && currMode === modes.PLAY) {
     return state.set('mode', modes.PAUSE);
+  }
+  if (keys.get('clearhiscore')){
+    clearHiScore();
   }
   if (keys.get('enter')) {
     if (currMode === modes.PAUSE) {

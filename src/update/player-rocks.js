@@ -9,6 +9,7 @@ import {
 } from '../constants';
 import { newBoom } from './boom-update';
 import { newLoot } from './loot-update';
+import { setHiScore } from './local-store';
 
 const modeList = [
   mode.PLAY
@@ -32,7 +33,8 @@ export const collidePlayerRocks = (state, keys) => {
   if (!alive) {
     return state.set('mode', mode.GAMEOVER)
       .update('booms', (booms) => pushBooms(booms, player))
-      .update('loot', (loot) => pushLoot(loot, player));
+      .update('loot', (loot) => pushLoot(loot, player))
+      .set('hiscore', setHiScore(state));
   }
 
   return state;
