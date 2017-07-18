@@ -47,6 +47,8 @@ export const KEYS_TO_COMMANDS = {
   'Space': 'fire'
 };
 
+// note that "ticks" are 1/60 of a second (unless we start missing frames :( )
+
 // player initial state
 export const PLAYER = {
   x: CANVAS.WIDTH/2,  // starting x position (px)
@@ -58,56 +60,43 @@ export const PLAYER = {
   cd: 0  // remaining weapon cooldown (ticks)
 };
 
-export const TURN = 0.1; // turn rate in (rad/tick)
-export const THRUST = 0.045; // acceleration (px/tick/tick)
-export const RETRO = THRUST/4; // acceleration while reversing (px/tick/tick)
-export const DAMP = 1 - 0.0004; // drag (fraction/tick)
-export const WPN_COOLDOWN = 10; // delay between firing weapon (ticks)
+export const PLAYER_RADIUS = 10; // player radius (px)
+export const TURN = 0.08; // turn rate in (rad/tick)
+export const THRUST = 0.055; // acceleration (px/tick/tick)
+export const RETRO = THRUST/3; // acceleration while reversing (px/tick/tick)
+export const DAMP = 1 - 0.005; // drag (fraction/tick)
+export const WPN_COOLDOWN = 6; // delay between firing weapon (ticks)
 
-export const BULLET_LIFETIME = 65; // lifetime of a bullet (ticks)
-export const BULLET_SPEED = 8; // muzzle velocity of a bullet (px/tick)
+export const BULLET_LIFETIME = 54; // lifetime of a bullet (ticks)
+export const BULLET_SPEED = 8.3; // muzzle velocity of a bullet (px/tick)
 export const BULLET_RADIUS = 1; // radius (px)
-
-// ship initial state
-export const SHIP = {
-  x: 0,
-  y: 0,
-  a: 0,
-  vx: 0,
-  vy: 0,
-  speed: 10,
-  r: 7
-};
 
 export const SHIP_RADIUS = 7; // radius of transport ship (px)
 export const SHIP_SPEED = 50 / 60; // speed of transport ship (px/tick)
 export const SHIP_SPAWN_CHANCE = 0.45; // chance of a ship spawning (probability)
-export const SHIP_SPAWN_DELAY = 172; // time between spawn chances (ticks)
-// export const SHIP_NUM_TYPES = 4; // number of different ship types // one removed for being too similar to player ship
-export const SHIP_NUM_TYPES = 3; // number of different ship types
+export const SHIP_SPAWN_DELAY = 160; // time between spawn chances (ticks)
 
 export const LOOT_TYPE_LIFEPOD = 'lifepod';
-export const LIFEPOD_CHANCE = [0.9, 0.7, 0.3, 0.1]; // chance to spawn lifepods
-// export const LIFEPOD_CHANCE = []; // chance to spawn lifepods
+export const LIFEPOD_CHANCE = [1, 0.5, 0.3, 0.1]; // chance to spawn lifepods
 export const LIFEPOD_LIFETIME = 1200; // lifetime of lifepods (ticks)
 export const LIFEPOD_SPEED = 50 / 60; // lifepod launch speed (px/tick)
 export const LIFEPOD_SPIN = 0.1; // lifepod spin speed (rad/tick)
 
 export const LOOT_TYPE_CRYSTAL = 'crystal';
-export const CRYSTAL_CHANCE = 0.6; // chance booming rock leaves crystal
+export const CRYSTAL_CHANCE = 0.4; // chance booming rock leaves crystal
 export const CRYSTAL_LIFETIME = 1200; // lifetime of crystals (ticks)
 export const CRYSTAL_SPEED = 50 / 60; // crystal launch speed (px/tick)
 export const CRYSTAL_SPIN = 0.2; // crystal spin speed (rad/tick)
 
-export const LOOT_RADIUS = 2; // radius of loot items (px)
+export const LOOT_RADIUS = 3; // radius of loot items (px)
 export const LOOT_TYPES_TO_LIFETIMES = {};
 LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_LIFEPOD] = LIFEPOD_LIFETIME;
 LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_CRYSTAL] = CRYSTAL_LIFETIME;
 
 export const ROCK_SPEED = 50 / 60; // max speed of spawned rocks (px/tick)
-export const ROCK_CALF_SPEED = 1; // max speed gain of calved rocks (px/tick)
-export const ROCK_SPAWN_CHANCE = 0.45; // chance of a rock spawning (probability)
-export const ROCK_SPAWN_DELAY = 191; // time between spawn chances (ticks)
+export const ROCK_CALF_SPEED = 55 / 60; // max speed gain of calved rocks (px/tick)
+export const ROCK_SPAWN_CHANCE = 0.5; // chance of a rock spawning (probability)
+export const ROCK_SPAWN_DELAY = 190; // time between spawn chances (ticks)
 // export const ROCK_SPAWN_DELAY = 7;
 export const ROCK_SIZES = [
   'small',

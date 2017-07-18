@@ -7,7 +7,6 @@ import {
   CANVAS,
   SHIP_SPAWN_CHANCE,
   SHIP_SPAWN_DELAY,
-  SHIP_NUM_TYPES,
   ROCK_SPAWN_CHANCE,
   ROCK_SPAWN_DELAY,
   ROCK_SIZES,
@@ -15,6 +14,7 @@ import {
   BOOM_TYPE_ROCK_IN,
   BOOM_TYPE_SHIP_IN
 } from '../constants';
+import { SHIP_NUM_TYPES } from '../canvas/ship-canvas';
 import * as mode from '../mode-types';
 import { newShip } from './ship-update';
 import { newRock } from './rock-update';
