@@ -106,14 +106,24 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Splash Mode~~
 
-* High Score + local storage
+* ~~High Score + local storage~~
 
 * Make it less ugly -> Make it look okay -> Make it pretty
 
-* Proper production build
+* Proper production build with uglify or closure
 
-* Hot module reloading
+* Better File Names/Structure?  eg: Is physics.js necessary?  Why is loot-update.js exporting more than just update?
 
-* Better File Names
+* Code doc! And cleanup... (somewhat related to file structure)
+
+* Hot module reloading.  It seemed unnecessary at first, but it is a common tool, so it would be good to get used to.
 
 * Experiment with canvas paths, SVGs, and/or img elements
+
+* Deterministic RNG?  This would mean that the omeag-13 would give you knowledge of the future, rather than just a another chance.
+
+* Graphical indicator of loot age.
+
+* Testing and bug fixes.  Eg: ship double flash bug.
+
+* Script/automated pushing to gh-pages?

@@ -4,6 +4,8 @@
 
 This is a learning project made while learning javascript.  It's an asteroids clone, because whenever one learns a new language, it's fun to make a game in it, and I happen to like asteroids.
 
+[__Play it here.__](http://bobgeis.github.io/js-space-rocks/)
+
 
 ## Controls
 
@@ -12,9 +14,9 @@ Intended Keys:
 * UP (or W) accelerates the player ship
 * SPACE fires bullets
 * P pauses, ENTER unpauses
-* Z activates the Omega 13: "Enough time to undo a single mistake" Note that if charged, you can use this after your ship is destroyed.
+* Z activates the Omega 13: "Enough time to undo a single mistake" Note that if charged, you can use this even if your ship is destroyed.
 * ENTER starts the game, restarts on destruction (remember to try Z if you can)
-<!-- * R resets the high score to all zeros -->
+* U resets the high score to all zeros
 
 
 ## "Story" & Objectives
