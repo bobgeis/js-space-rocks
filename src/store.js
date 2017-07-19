@@ -8,7 +8,6 @@ import {
   ROCK_SIZES,
   ROCK_SIZE_TO_RADIUS
 } from './constants';
-import { getHiScore } from './update/local-store';
 
 
 // player initial state
@@ -68,6 +67,5 @@ export const initialStore = Map({
   ticks: 0,
   cargo: Map({lifepod: 0, crystal: 0}),
   score: Map({lifepod: 0, crystal: 0, ship: 0}),
-  hiscore: Map(getHiScore()),
   mode: mode.SPLASH
 });
