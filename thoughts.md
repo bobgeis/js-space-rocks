@@ -7,20 +7,20 @@ This is a learning project, so not everything may be best practice, or the best 
 
 ## Some Anticipated Questions
 
-* *What is this?*  This is basically a re-make of an earlier learning project I wrote in Elm [(link)](https://github.com/bobgeis/LookOutSpaceRocks), but in javascript using js libraries instead.
+* _What is this?_  This is basically a re-make of an earlier learning project I wrote in Elm [(link)](https://github.com/bobgeis/LookOutSpaceRocks), but in javascript using js libraries instead.
 
-* *Why are you making a game like asteroids using immutable data structures?* I wanted practice programming in javascript, but also using react, redux, and immutable data structures.  I'd like to use redux-undo in a game mechanic as well (time travel!).
+* _Why are you making a game like asteroids using immutable data structures?_  I wanted practice programming in javascript, but also using react, redux, and immutable data structures.  I'd like to use redux-undo in a game mechanic as well (time travel!).
 
-* *Isn't that really inefficient?* Yes probably, lots of garbage will be generated every frame, but if the browser has fast enough garbage collection (eg Chrome) then it should run reasonably and be playable.
+* _Isn't that really inefficient?_  Yes probably.  Lots of garbage will be generated every frame, but if the browser has fast enough garbage collection (eg Chrome) then it should run reasonably and be playable.
 
 
 ## Architecture
 
-* index.html loads the bundle produced by webpack
-* res/* has non js files, like images and css.
+* index.html loads the dist/bundle.js produced by webpack
+* res/* has non-js resource files, like images and css.
 * index.jsx is the entry point for webpack so everything must start there.  It creates the redux store, and renders the app using the react-redux Provider and game-container.js.
 * game-container.js contains game-component.jsx and passes it props and actions.
-* game-component.jsx contains the canvas and other UI elements.  It also calls the canvas render functions and dispatches key actions.  This component does a lot!
+* game-component.jsx contains the canvas and other UI elements.  It also calls the canvas render functions and dispatches actions.  This component does a lot!
 * canvas/render.js has the primary functions for drawing things to the canvas.  canvas/images.js has some utilities and preloading stuff.  The other files are specific to types of game entities.
 * reducers/reducer.js has the main reducer which combines reducers from key-reducer.js and game-reducer.js
 * update/game-update.js is called by the tick action on the game-reducer.  It does all the time-step updates of the game model which is a large portion of the code.  The basic/self update logic are in the *-update.js files, while the pairwise interactions are in the files named after pairs eg: rocks-bullets.js.

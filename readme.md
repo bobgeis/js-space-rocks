@@ -12,7 +12,8 @@ This is a learning project made while learning javascript.  It's an asteroids cl
 Keyboard:
 * LEFT (or A) and RIGHT (or D) rotate the player ship
 * UP (or W) accelerates the player ship
-* SPACE fires bullets
+* DOWN (or S) reverses
+* SPACE fires the disintegrator
 * P pauses, ENTER unpauses
 * Z activates the Omega 13: "Enough time to undo a single mistake" Note that if charged, you can use this even if your ship is destroyed.
 * ENTER starts the game, restarts on destruction (remember to try Z if you can)
