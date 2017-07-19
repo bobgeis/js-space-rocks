@@ -7,11 +7,11 @@ const hiScore = {
   ship: 0
 };
 
-// should be called once on entry
+// should be called once on entry, or after clearing
 export const initHiScore = () => {
   const oldHiScore = JSON.parse(localStorage.getItem(hiScoreName)) || hiScore;
   for (const key in hiScore) {
-    hiScore[key] = oldHiScore[key] || hiScore[key];
+    hiScore[key] = oldHiScore[key] || 0;
   }
   return hiScore;
 };
@@ -28,4 +28,10 @@ export const setHiScore = (scoreMap) => {
     hiScore[key] = Math.max(score[key], hiScore[key]);
   }
   localStorage.setItem(hiScoreName, JSON.stringify(hiScore));
+};
+
+// to clear the hi score object
+export const clearHiScore = () => {
+  localStorage.removeItem(hiScoreName);
+  initHiScore();
 };

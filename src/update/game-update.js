@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import * as modes from '../mode-types';
 import { initialStore } from '../store';
-import { clearHiScore } from './local-store';
+import { clearHiScore } from '../local-storage';
 
 import * as player from './player-update';
 import * as base from './base-update';
