@@ -37,15 +37,15 @@ export default class Description extends React.PureComponent {
             High Scores
           </strong> <br /> <br />
           <span style={innerHiScoreStyle}>
-            Most Ships protected: {this.props.hiScore.get('ship')}
+            Most Ships protected: {this.props.hiScore.ship}
           </span>
           {spacerString}
           <span style={innerHiScoreStyle}>
-            Most Lifepods rescued: {this.props.hiScore.get('lifepod')}
+            Most Lifepods rescued: {this.props.hiScore.lifepod}
           </span>
           {spacerString}
           <span style={innerHiScoreStyle}>
-            Most Crystals delivered: {this.props.hiScore.get('crystal')}
+            Most Crystals delivered: {this.props.hiScore.crystal}
           </span>
         </p>
       </div>

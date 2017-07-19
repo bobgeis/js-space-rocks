@@ -9,10 +9,11 @@ This is a learning project made while learning javascript.  It's an asteroids cl
 
 ## Controls
 
-Intended Keys:
+Keyboard:
 * LEFT (or A) and RIGHT (or D) rotate the player ship
 * UP (or W) accelerates the player ship
-* SPACE fires bullets
+* DOWN (or S) reverses
+* SPACE fires the disintegrator
 * P pauses, ENTER unpauses
 * Z activates the Omega 13: "Enough time to undo a single mistake" Note that if charged, you can use this even if your ship is destroyed.
 * ENTER starts the game, restarts on destruction (remember to try Z if you can)
@@ -43,12 +44,12 @@ Asteroids and similar games (eg: Escape Velocity, Endless Sky, etc).
 
 Previous practice projects in other languages (eg [Elm](https://github.com/bobgeis/LookOutSpaceRocks), [CoffeeScript](https://github.com/bobgeis/coffeeAsteroids)).
 
-Another implementation of asteroids in React [link](https://github.com/chriz001/Reacteroids)
+Another implementation of asteroids in React. [link](https://github.com/chriz001/Reacteroids)
 
-Various Redux examples [link](https://github.com/reactjs/redux/tree/master/examples)
+Various Redux examples. [link](https://github.com/reactjs/redux/tree/master/examples)
 
-A Redux Immuble TodoMVC example [link](https://github.com/phacks/redux-todomvc)
+A Redux Immuble TodoMVC example. [link](https://github.com/phacks/redux-todomvc)
 
-A Redux Undo TodoMVC example [link](https://github.com/omnidan/redux-undo/tree/master/examples/todos-with-undo)
+A Redux Undo TodoMVC example. [link](https://github.com/omnidan/redux-undo/tree/master/examples/todos-with-undo)
 
-The Elm Graphics.Collage library [link](https://github.com/evancz/elm-graphics)
+The Elm Graphics.Collage library. [link](https://github.com/evancz/elm-graphics)

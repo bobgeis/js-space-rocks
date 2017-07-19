@@ -12,11 +12,13 @@ import reducers from './reducers/reducer';
 import Game from './containers/game-container';
 import * as actions from './actions';
 import { loadAllImages, loadingFinished } from './canvas/images';
+import { initHiScore } from './local-storage';
 
 // load the game sprites
 loadAllImages();
 
-// const gameElement = document.getElementById('game');
+// init the high score from local storage
+initHiScore();
 
 // create the store
 const createStoreDev = compose(

@@ -3,6 +3,7 @@ import React from 'react';
 
 import { CANVAS, KEYS, KEYS_TO_COMMANDS } from '../constants';
 import { renderCanvas } from '../canvas/render';
+import { getHiScore } from '../local-storage';
 import * as modes from '../mode-types';
 
 import Description from './description-component';
@@ -64,7 +65,7 @@ export default class Game extends React.Component {
         />
         <Description
           gameMode={this.props.data.get('mode')}
-          hiScore={this.props.data.get('hiscore')}
+          hiScore={getHiScore()}
         />
         <canvas ref="canvas"
           width={CANVAS.WIDTH}
