@@ -1,5 +1,5 @@
 
-import { CANVAS } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import * as mode from '../mode-types';
 import { img, draw } from './images';
 import { drawPlayer } from './player-canvas';

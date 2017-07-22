@@ -10,9 +10,9 @@ import * as mode from '../mode-types';
 import {
   BULLET_LIFETIME,
   BULLET_SPEED,
-  BULLET_RADIUS,
-  CANVAS
+  BULLET_RADIUS
 } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 
 export const update = (state) => {
   if (!modeList.includes(state.get('mode'))) {

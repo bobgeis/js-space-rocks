@@ -3,9 +3,9 @@ import { Map } from 'immutable';
 
 import { wrap } from './physics';
 import {
-  CANVAS,
   BOOM_LIFETIMES
 } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import * as mode from '../mode-types';
 
 const modeList = [

@@ -1,7 +1,8 @@
 
 import React from 'react';
 
-import { CANVAS, KEYS, KEYS_TO_COMMANDS } from '../constants';
+import { KEYS, KEYS_TO_COMMANDS } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import { renderCanvas } from '../canvas/render';
 import { getHiScore } from '../local-storage';
 import * as modes from '../mode-types';

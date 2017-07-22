@@ -1,13 +1,5 @@
 
-export const CANVAS = {
-  HEIGHT: 650,
-  WIDTH: 800
-};
-
-export const CENTER = {
-  CX: Math.floor(CANVAS.WIDTH),
-  CY: Math.floor(CANVAS.HEIGHT)
-};
+import * as CANVAS from './constants/canvas-constants';
 
 export const KEYS = [
   'KeyW',
@@ -88,7 +80,7 @@ export const CRYSTAL_LIFETIME = 1200; // lifetime of crystals (ticks)
 export const CRYSTAL_SPEED = 50 / 60; // crystal launch speed (px/tick)
 export const CRYSTAL_SPIN = 0.2; // crystal spin speed (rad/tick)
 
-export const LOOT_RADIUS = 3; // radius of loot items (px)
+export const LOOT_RADIUS = 4; // radius of loot items (px)
 export const LOOT_TYPES_TO_LIFETIMES = {};
 LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_LIFEPOD] = LIFEPOD_LIFETIME;
 LOOT_TYPES_TO_LIFETIMES[LOOT_TYPE_CRYSTAL] = CRYSTAL_LIFETIME;

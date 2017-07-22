@@ -1,6 +1,5 @@
 
 import {
-  CANVAS,
   BOOM_LIFETIMES,
   BOOM_INIT_RADII,
   BOOM_END_RADII,
@@ -9,6 +8,7 @@ import {
   BOOM_TYPE_SHIP_EX,
   BOOM_TYPE_SHIP_IN
 } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 
 export const drawBooms = (ctx, state) => {
   const booms = state.get('booms');

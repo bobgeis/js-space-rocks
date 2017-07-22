@@ -1,6 +1,6 @@
 
 import { img, draw, loadImageFile } from './images';
-import { CANVAS } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import * as mode from '../mode-types';
 
 // prepare player image

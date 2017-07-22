@@ -1,24 +1,18 @@
 
 import {
-  getVecX,
-  getVecY
-} from './physics';
-import {
-  CANVAS,
   SHIP_SPAWN_CHANCE,
   SHIP_SPAWN_DELAY,
-  ROCK_SPAWN_CHANCE,
-  ROCK_SPAWN_DELAY,
-  ROCK_SIZES,
-  ROCK_SPEED,
   BOOM_TYPE_ROCK_IN,
   BOOM_TYPE_SHIP_IN
 } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import { SHIP_NUM_TYPES } from '../canvas/ship-canvas';
 import * as mode from '../mode-types';
 import { newShip } from './ship-update';
-import { newRock } from './rock-update';
+import { newRock, getPoints } from './rock-update';
 import { newBoom } from './boom-update';
+import * as ROCK from '../constants/rock-constants';
+import * as util from '../util';
 
 const modeList = [
   mode.PLAY,
@@ -35,7 +29,7 @@ export default (state, keys) => {
     newState = newState.update('ships', (ships) => ships.push(newShip))
       .update('booms', (booms) => booms.push(newFlashFromObject(newShip,false)));
   }
-  if (state.get('ticks') % ROCK_SPAWN_DELAY === 0 && Math.random() < ROCK_SPAWN_CHANCE) {
+  if (state.get('ticks') % ROCK.SPAWN_DELAY === 0 && Math.random() < ROCK.SPAWN_CHANCE) {
     const newRock = spawnRandomRock();
     newState = newState.update('rocks', (rocks) => rocks.push(newRock))
       .update('booms', (booms) => booms.push(newFlashFromObject(newRock,true)));
@@ -68,8 +62,9 @@ const spawnRandomShip = () => {
 };
 
 const spawnRandomRock = () => {
-  const size = ROCK_SIZES[ROCK_SIZES.length - 1];
+  const size = ROCK.SIZES[ROCK.SIZES.length - 1];
   const side = Math.floor(Math.random() * 4);
+  const va = util.randCtrRange(ROCK.VA);
   let x, y, a;
   if (side === 0) {
     x = 0;
@@ -88,10 +83,10 @@ const spawnRandomRock = () => {
     y = CANVAS.HEIGHT;
     a = (Math.random() * Math.PI/2) + Math.PI/4;
   }
-  const v = Math.random() * ROCK_SPEED;
-  const vx = v * getVecX(a);
-  const vy = v * getVecY(a);
-  return newRock(x, y, vx, vy, size);
+  const v = Math.random() * ROCK.SPEED;
+  const vx = v * Math.cos(a);
+  const vy = v * Math.sin(a);
+  return newRock(x, y, vx, vy, a, va, size, getPoints());
 };
 
 const newFlashFromObject = (obj, rock) => {

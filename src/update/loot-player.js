@@ -1,7 +1,7 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS, LOOT_TYPE_CRYSTAL, LOOT_TYPE_LIFEPOD } from '../constants';
+import { LOOT_TYPE_CRYSTAL, LOOT_TYPE_LIFEPOD } from '../constants';
 
 const modeList = [
   mode.PLAY

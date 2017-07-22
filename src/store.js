@@ -3,12 +3,13 @@ import { List, Map } from 'immutable';
 
 import * as mode from './mode-types';
 import {
-  CANVAS,
   PLAYER_RADIUS,
   ROCK_SIZES,
   ROCK_SIZE_TO_RADIUS
 } from './constants';
+import * as CANVAS from './constants/canvas-constants';
 
+import { getPoints } from './update/rock-update';
 
 // player initial state
 const intialPlayer = Map({
@@ -28,7 +29,10 @@ const initialRocks = List([
     vx: 0.6,
     vy: -0.6,
     r: ROCK_SIZE_TO_RADIUS[ROCK_SIZES[ROCK_SIZES.length - 1]],
-    size: ROCK_SIZES[ROCK_SIZES.length - 1]
+    a: 0,
+    va: 0.02,
+    size: ROCK_SIZES[ROCK_SIZES.length - 1],
+    pts: getPoints()
   })
 ]);
 

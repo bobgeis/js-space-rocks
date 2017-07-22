@@ -9,9 +9,9 @@ import { newBoom } from './boom-update';
 import {
   SHIP_RADIUS,
   SHIP_SPEED,
-  BOOM_TYPE_SHIP_IN,
-  CANVAS
+  BOOM_TYPE_SHIP_IN
 } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import * as mode from '../mode-types';
 
 

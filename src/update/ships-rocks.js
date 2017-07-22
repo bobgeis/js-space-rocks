@@ -2,13 +2,13 @@
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
 import {
-  CANVAS,
   LOOT_TYPE_LIFEPOD,
   LIFEPOD_SPEED,
   LIFEPOD_SPIN,
   LIFEPOD_CHANCE,
   BOOM_TYPE_SHIP_EX
 } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import { newLoot } from './loot-update';
 import { newBoom } from './boom-update';
 

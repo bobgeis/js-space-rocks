@@ -3,7 +3,8 @@ import { Map } from 'immutable';
 
 import { wrap } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS, LOOT_TYPES_TO_LIFETIMES, LOOT_RADIUS } from '../constants';
+import { LOOT_TYPES_TO_LIFETIMES, LOOT_RADIUS } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 
 const modeList = [
   mode.PLAY,
