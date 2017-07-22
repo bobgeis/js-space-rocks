@@ -1,16 +1,10 @@
 
-import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import {
-  CANVAS,
-  LOOT_TYPE_LIFEPOD,
-  LIFEPOD_SPEED,
-  LIFEPOD_SPIN,
-  LIFEPOD_CHANCE,
-  BOOM_TYPE_SHIP_EX
-} from '../constants';
+import * as LOOT from '../constants/loot-constants';
+import * as BOOM from '../constants/boom-constants';
 import { newLoot } from './loot-update';
 import { newBoom } from './boom-update';
+import { areColliding } from './physics';
 
 const modeList = [
   mode.PLAY,
@@ -51,18 +45,18 @@ export const collideShipsRocks = (state, keys) => {
 
 
 const pushLoot = (loot, ship) => {
-  for (const chance of LIFEPOD_CHANCE) {
+  for (const chance of LOOT.LIFEPOD_CHANCE) {
     if (Math.random() < chance) {
       const a = Math.random() * Math.PI * 2;
-      const va = (Math.random() * 2 - 1) * LIFEPOD_SPIN;
-      const dv = Math.random() * LIFEPOD_SPEED;
+      const va = (Math.random() * 2 - 1) * LOOT.LIFEPOD_SPIN;
+      const dv = Math.random() * LOOT.LIFEPOD_SPEED;
       const dvx = dv * Math.cos(a);
       const dvy = dv * Math.sin(a);
       const x = ship.get('x');
       const y = ship.get('y');
       const vx = ship.get('vx');
       const vy = ship.get('vy');
-      loot.push(newLoot(x, y, vx + dvx, vy + dvy, va, LOOT_TYPE_LIFEPOD));
+      loot.push(newLoot(x, y, vx + dvx, vy + dvy, va, LOOT.TYPE_LIFEPOD));
     }
   }
 };
@@ -73,6 +67,6 @@ const pushBooms = (booms, ship) => {
     ship.get('y'),
     ship.get('vx'),
     ship.get('vy'),
-    BOOM_TYPE_SHIP_EX));
+    BOOM.TYPE_SHIP_EX));
 };
 

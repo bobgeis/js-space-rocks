@@ -2,37 +2,25 @@
 import { List, Map } from 'immutable';
 
 import * as mode from './mode-types';
-import {
-  CANVAS,
-  PLAYER_RADIUS,
-  ROCK_SIZES,
-  ROCK_SIZE_TO_RADIUS
-} from './constants';
+import * as CANVAS from './constants/canvas-constants';
+import * as ROCK from './constants/rock-constants';
+import * as PLAYER from './constants/player-constants';
 
+import { getPoints } from './update/rock-update';
+import { spawnRandomRock } from './update/timer-spawn';
 
 // player initial state
 const intialPlayer = Map({
-  x: CANVAS.WIDTH/2,  // starting x position (px)
-  y: CANVAS.HEIGHT/2, // starting y position (px)
+  x: CANVAS.CTR_X,  // starting x position (px)
+  y: CANVAS.CTR_Y, // starting y position (px)
   vx: 0,  // starting x velocity (px/tick)
   vy: 0,  // starting y velocity (px/tick)
   a: Math.PI/2, // starting angle (rad) facing North
-  r: PLAYER_RADIUS,  // radius (px)
+  r: PLAYER.RADIUS,  // radius (px)
   cd: 0  // remaining weapon cooldown (ticks)
 });
 
-const initialRocks = List([
-  Map({
-    x: CANVAS.WIDTH - 200,
-    y: CANVAS.HEIGHT - 200,
-    vx: 0.6,
-    vy: -0.6,
-    r: ROCK_SIZE_TO_RADIUS[ROCK_SIZES[ROCK_SIZES.length - 1]],
-    size: ROCK_SIZES[ROCK_SIZES.length - 1]
-  })
-]);
-
-// base initial state
+// prospector base initial state
 export const initialBaseGuild = Map({
   x: 150,
   y: CANVAS.HEIGHT - 150,
@@ -43,6 +31,7 @@ export const initialBaseGuild = Map({
   type: 'guild'
 });
 
+// medical base initial state
 export const initialBaseMed = Map({
   x: CANVAS.WIDTH - 150,
   y: 150,
@@ -53,8 +42,12 @@ export const initialBaseMed = Map({
   type: 'med'
 });
 
+// game initial state
 export const initialStore = Map({
-  rocks: initialRocks,
+  rocks: List([
+    spawnRandomRock(),
+    spawnRandomRock()
+  ]),
   bullets: List(),
   booms: List(),
   loot: List(),

@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import { CANVAS } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 import * as mode from '../mode-types';
 
 export default class Description extends React.PureComponent {

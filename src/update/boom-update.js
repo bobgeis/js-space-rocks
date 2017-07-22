@@ -2,10 +2,8 @@
 import { Map } from 'immutable';
 
 import { wrap } from './physics';
-import {
-  CANVAS,
-  BOOM_LIFETIMES
-} from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
+import * as BOOM from '../constants/boom-constants';
 import * as mode from '../mode-types';
 
 const modeList = [
@@ -40,6 +38,6 @@ export const newBoom = (x, y, vx, vy, type) => {
     vx,
     vy,
     type,
-    life: BOOM_LIFETIMES[type]
+    life: BOOM.LIFETIMES[type]
   });
 };

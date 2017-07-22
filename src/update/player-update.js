@@ -1,15 +1,15 @@
 
 import {
-  CANVAS,
   THRUST,
   RETRO,
   TURN,
   WPN_COOLDOWN,
   DAMP
-} from '../constants';
+} from '../constants/player-constants';
 import * as mode from '../mode-types';
 import { getVecX, getVecY, wrap } from './physics';
 import { newBullet } from './bullet-update';
+import * as CANVAS from '../constants/canvas-constants';
 
 const modeList = [
   mode.PLAY
@@ -25,7 +25,7 @@ export const update = (state, keys) => {
 
   const acc = keys.get('up') ? THRUST : keys.get('down') ? -RETRO : 0;
   const turn = keys.get('left') ? TURN : keys.get('right') ? -TURN : 0;
-  const bang = keys.get('fire') && player.get('cd') === 0
+  const bang = keys.get('fire') && player.get('cd') === 0;
 
   player = player
     .update('vx', (vx) => vx + acc * getVecX(player.get('a')))
@@ -36,7 +36,7 @@ export const update = (state, keys) => {
     .update('vx', (vx) => vx * DAMP)
     .update('vy', (vy) => vy * DAMP)
     .update('cd', (cd) => {
-      return bang ? WPN_COOLDOWN : Math.max(cd - 1, 0)
+      return bang ? WPN_COOLDOWN : Math.max(cd - 1, 0);
     });
   newState = newState.set('player', player.asImmutable());
 

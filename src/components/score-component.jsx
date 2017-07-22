@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import { CANVAS } from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
 
 export default class Score extends React.PureComponent {
 

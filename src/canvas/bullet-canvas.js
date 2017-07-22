@@ -1,5 +1,5 @@
 
-import { CANVAS, BULLET_LIFETIME } from '../constants';
+import { BULLET_LIFETIME } from '../constants';
 
 export const drawBullets = (ctx, state) => {
   const bullets = state.get('bullets');

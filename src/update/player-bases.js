@@ -1,7 +1,6 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import { CANVAS } from '../constants';
 
 const modeList = [
   mode.PLAY

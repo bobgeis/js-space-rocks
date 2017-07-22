@@ -56,6 +56,10 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Something I hadn't fully appreciated: local storage is shared across the domain.  This means that the 'HiScore' object stored for [js-space-rocks](https://bobgeis.github.io/js-space-rocks/) is the *same* object as the one stored for [coffeeAsteroids](https://bobgeis.github.io/coffeeAsteroids/)]!  Need to rename it to make them unique!  (It was a funny moment when I went into the game on gh-pages and saw that I already had a high score!)
 
+* In my haste to get the game to a playable state, I did some things in an impure way.  Two obvious ones: random number generation with ```Math.random()```, and the setting and getting of local-storage.  Using math.random() is understandable in an asteroids game, but if it was deterministic (at least for a subset of rng uses) then using the omega-13 would actually help the player prepare better.  Accessing local storage in an impure manner actually resulted in some subtle bugs about when the hi-score gets updated.  It might be worth going back and doing those again.
+
+* Many of the examples i've seen declare javascript functions with ```function functionName(args) {...}``` whereas I've been using ```const functionName = (args) => {...}``` which I suspect is not idiomatic.  I'm surprised my eslint didn't complain by default!  It's unclear whether going back to convert top level function definitions to ```function functionName(args) {...}``` is an improvement, or just copying older js examples that weren't [fully] es6.
+
 
 ### Feature Checklist
 
@@ -111,13 +115,31 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~High Score + local storage~~
 
-* Make it less ugly -> Make it look okay -> Make it pretty
+* ~~Rock polygons~~
+
+* Player cargo counts
+
+* Break up huge constants.js
+
+* Rock color variants
+
+* Make it less ugly
+
+* Rock behaviors
+
+* Make it look okay -> Make it pretty
+
+* Deterministic RNG
+
+* Use redux-thunk or redux-loop for side effects (eg local storage)
 
 * Proper production build with uglify or closure
 
-* Better File Names/Structure?  eg: Is physics.js necessary?  Why is loot-update.js exporting more than just update?
+* Better File Names/Structure?  eg: Is physics.js necessary?  Why is loot-update.js exporting more than just update?  Should constants.js be broken up?
 
-* Code doc! And cleanup... (somewhat related to file structure)
+* Code doc! And cleanup...
+
+* Player death releases some/all undelivered cargo
 
 * Hot module reloading.  It seemed unnecessary at first, but it is a common tool, so it would be good to get used to.
 

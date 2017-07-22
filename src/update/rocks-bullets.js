@@ -1,18 +1,14 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import {
-  ROCK_SIZE_STEP,
-  ROCK_CALF_SPEED,
-  LOOT_TYPE_CRYSTAL,
-  CRYSTAL_SPEED,
-  CRYSTAL_CHANCE,
-  CRYSTAL_SPIN,
-  BOOM_TYPE_ROCK_EX
-} from '../constants';
-import { newRock } from './rock-update';
+import { newRock, getPoints } from './rock-update';
 import { newLoot } from './loot-update';
 import { newBoom } from './boom-update';
+
+import * as util from '../util';
+import * as ROCK from '../constants/rock-constants';
+import * as LOOT from '../constants/loot-constants';
+import * as BOOM from '../constants/boom-constants';
 
 const modeList = [
   mode.PLAY,
@@ -58,36 +54,37 @@ export const collideRocksBullets = (state, keys) => {
 };
 
 const pushCalves = (calves, rock) => {
-  const newSize = ROCK_SIZE_STEP[rock.get('size')];
+  const newSize = ROCK.SIZE_STEP[rock.get('size')];
   if (!newSize) {
     return;
   }
+  const va = util.randCtrRange(ROCK.VA);
   const a = Math.random() * Math.PI * 2;
-  const dv = Math.random() * ROCK_CALF_SPEED;
+  const dv = Math.random() * ROCK.CALF_SPEED;
   const dvx = dv * Math.cos(a);
   const dvy = dv * Math.sin(a);
   const x = rock.get('x');
   const y = rock.get('y');
   const vx = rock.get('vx');
   const vy = rock.get('vy');
-  calves.push(newRock(x, y, vx + dvx, vy + dvy, newSize));
-  calves.push(newRock(x, y, vx - dvx, vy - dvy, newSize));
+  calves.push(newRock(x, y, vx + dvx, vy + dvy, a, va, newSize, getPoints()));
+  calves.push(newRock(x, y, vx - dvx, vy - dvy, a, -va, newSize, getPoints()));
 };
 
 const pushLoot = (loot, rock) => {
-  if (Math.random() > CRYSTAL_CHANCE) {
+  if (Math.random() > LOOT.CRYSTAL_CHANCE) {
     return;
   }
   const a = Math.random() * Math.PI * 2;
-  const va = (Math.random() * 2 - 1) * CRYSTAL_SPIN;
-  const dv = Math.random() * CRYSTAL_SPEED;
+  const va = (Math.random() * 2 - 1) * LOOT.CRYSTAL_SPIN;
+  const dv = Math.random() * LOOT.CRYSTAL_SPEED;
   const dvx = dv * Math.cos(a);
   const dvy = dv * Math.sin(a);
   const x = rock.get('x');
   const y = rock.get('y');
   const vx = rock.get('vx');
   const vy = rock.get('vy');
-  loot.push(newLoot(x, y, vx + dvx, vy + dvy, va, LOOT_TYPE_CRYSTAL));
+  loot.push(newLoot(x, y, vx + dvx, vy + dvy, va, LOOT.TYPE_CRYSTAL));
   return;
 };
 
@@ -97,5 +94,5 @@ const pushBooms = (booms, rock) => {
     rock.get('y'),
     rock.get('vx'),
     rock.get('vy'),
-    BOOM_TYPE_ROCK_EX));
+    BOOM.TYPE_ROCK_EX));
 };

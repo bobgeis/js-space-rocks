@@ -1,14 +1,6 @@
 
-import {
-  CANVAS,
-  BOOM_LIFETIMES,
-  BOOM_INIT_RADII,
-  BOOM_END_RADII,
-  BOOM_TYPE_ROCK_EX,
-  BOOM_TYPE_ROCK_IN,
-  BOOM_TYPE_SHIP_EX,
-  BOOM_TYPE_SHIP_IN
-} from '../constants';
+import * as CANVAS from '../constants/canvas-constants';
+import * as BOOM from '../constants/boom-constants';
 
 export const drawBooms = (ctx, state) => {
   const booms = state.get('booms');
@@ -16,10 +8,10 @@ export const drawBooms = (ctx, state) => {
     const x = boom.get('x');
     const y = boom.get('y');
     const type = boom.get('type');
-    const flash = type === BOOM_TYPE_ROCK_IN || type === BOOM_TYPE_SHIP_IN;
-    const wrap = type === BOOM_TYPE_ROCK_EX || type === BOOM_TYPE_ROCK_IN;
-    const ratio = boom.get('life') / BOOM_LIFETIMES[type];
-    const r = BOOM_END_RADII[type] - ratio * (BOOM_END_RADII[type] - BOOM_INIT_RADII[type]);
+    const flash = type === BOOM.TYPE_ROCK_IN || type === BOOM.TYPE_SHIP_IN;
+    const wrap = type === BOOM.TYPE_ROCK_EX || type === BOOM.TYPE_ROCK_IN;
+    const ratio = boom.get('life') / BOOM.LIFETIMES[type];
+    const r = BOOM.END_RADII[type] - ratio * (BOOM.END_RADII[type] - BOOM.INIT_RADII[type]);
     const color = getColor(ratio, flash);
     drawBoom(ctx, x, y, r, color);
     if (wrap) {
