@@ -1,7 +1,7 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import { LOOT_TYPE_CRYSTAL, LOOT_TYPE_LIFEPOD } from '../constants';
+import * as LOOT from '../constants/loot-constants';
 
 const modeList = [
   mode.PLAY
@@ -21,7 +21,7 @@ export const collideLootPlayer = (state, keys) => {
     const pickup = areColliding(loot, player);
 
     if (pickup) {
-      loot.get('type') === LOOT_TYPE_CRYSTAL ? newCrystals++ : newLifepods++;
+      loot.get('type') === LOOT.TYPE_CRYSTAL ? newCrystals++ : newLifepods++;
     }
     return !pickup;
   });

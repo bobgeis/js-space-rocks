@@ -1,9 +1,7 @@
 
 import {
   SHIP_SPAWN_CHANCE,
-  SHIP_SPAWN_DELAY,
-  BOOM_TYPE_ROCK_IN,
-  BOOM_TYPE_SHIP_IN
+  SHIP_SPAWN_DELAY
 } from '../constants';
 import * as CANVAS from '../constants/canvas-constants';
 import { SHIP_NUM_TYPES } from '../canvas/ship-canvas';
@@ -12,6 +10,7 @@ import { newShip } from './ship-update';
 import { newRock, getPoints } from './rock-update';
 import { newBoom } from './boom-update';
 import * as ROCK from '../constants/rock-constants';
+import * as BOOM from '../constants/boom-constants';
 import * as util from '../util';
 
 const modeList = [
@@ -61,7 +60,7 @@ const spawnRandomShip = () => {
   return newShip(x, y, a, imgKey);
 };
 
-const spawnRandomRock = () => {
+export const spawnRandomRock = () => {
   const size = ROCK.SIZES[ROCK.SIZES.length - 1];
   const side = Math.floor(Math.random() * 4);
   const va = util.randCtrRange(ROCK.VA);
@@ -91,8 +90,8 @@ const spawnRandomRock = () => {
 
 const newFlashFromObject = (obj, rock) => {
   if (rock) {
-    return newBoom(obj.get('x'), obj.get('y'), 0, 0, BOOM_TYPE_ROCK_IN);
+    return newBoom(obj.get('x'), obj.get('y'), 0, 0, BOOM.TYPE_ROCK_IN);
   } else {
-    return newBoom(obj.get('x'), obj.get('y'), 0, 0, BOOM_TYPE_SHIP_IN);
+    return newBoom(obj.get('x'), obj.get('y'), 0, 0, BOOM.TYPE_SHIP_IN);
   }
 };

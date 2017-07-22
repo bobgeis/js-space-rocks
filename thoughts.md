@@ -115,11 +115,15 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~High Score + local storage~~
 
-* Make it less ugly
+* ~~Rock polygons~~
 
-* Rock polygons
+* Player cargo counts
+
+* Break up huge constants.js
 
 * Rock color variants
+
+* Make it less ugly
 
 * Rock behaviors
 

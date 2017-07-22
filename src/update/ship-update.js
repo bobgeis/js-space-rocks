@@ -1,17 +1,13 @@
 
 import { Map } from 'immutable';
 
-import {
-  getVecX,
-  getVecY
-} from './physics';
 import { newBoom } from './boom-update';
 import {
   SHIP_RADIUS,
-  SHIP_SPEED,
-  BOOM_TYPE_SHIP_IN
+  SHIP_SPEED
 } from '../constants';
 import * as CANVAS from '../constants/canvas-constants';
+import * as BOOM from '../constants/boom-constants';
 import * as mode from '../mode-types';
 
 
@@ -54,7 +50,7 @@ const pushFlash = (newFlashes, ship) => {
     ship.get('y'),
     0,
     0,
-    BOOM_TYPE_SHIP_IN));
+    BOOM.TYPE_SHIP_IN));
   return;
 };
 
@@ -81,8 +77,8 @@ const onScreen = (ship) => {
 
 export const newShip = (x, y, a, imgKey) => {
   return Map({
-    vx: SHIP_SPEED * getVecX(a),
-    vy: -SHIP_SPEED * getVecY(a),
+    vx: SHIP_SPEED * Math.cos(a),
+    vy: -SHIP_SPEED * Math.sin(a),
     r: SHIP_RADIUS,
     x,
     y,
