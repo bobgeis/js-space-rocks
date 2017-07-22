@@ -1,13 +1,13 @@
 
-import { SHIP_SPAWN_CHANCE, SHIP_SPAWN_DELAY} from '../constants/ship-constants';
 import * as CANVAS from '../constants/canvas-constants';
 import { SHIP_NUM_TYPES } from '../canvas/ship-canvas';
 import * as mode from '../mode-types';
-import { newShip } from './ship-update';
-import { newRock, getPoints } from './rock-update';
-import { newBoom } from './boom-update';
-import * as ROCK from '../constants/rock-constants';
+import { newShip } from './ship-logic';
+import { newRock, getPoints } from './rock-logic';
+import { newBoom } from './boom-logic';
 import * as BOOM from '../constants/boom-constants';
+import * as ROCK from '../constants/rock-constants';
+import * as SHIP from '../constants/ship-constants';
 import * as util from '../util';
 
 const modeList = [
@@ -20,7 +20,7 @@ export default (state, keys) => {
     return state;
   }
   let newState = state;
-  if (state.get('ticks') % SHIP_SPAWN_DELAY === 0 && Math.random() < SHIP_SPAWN_CHANCE) {
+  if (state.get('ticks') % SHIP.SPAWN_DELAY === 0 && Math.random() < SHIP.SPAWN_CHANCE) {
     const newShip = spawnRandomShip();
     newState = newState.update('ships', (ships) => ships.push(newShip))
       .update('booms', (booms) => booms.push(newFlashFromObject(newShip,false)));

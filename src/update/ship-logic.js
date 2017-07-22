@@ -1,13 +1,10 @@
 
 import { Map } from 'immutable';
 
-import { newBoom } from './boom-update';
-import {
-  SHIP_RADIUS,
-  SHIP_SPEED
-} from '../constants/ship-constants';
-import * as CANVAS from '../constants/canvas-constants';
+import { newBoom } from './boom-logic';
 import * as BOOM from '../constants/boom-constants';
+import * as CANVAS from '../constants/canvas-constants';
+import * as SHIP from '../constants/ship-constants';
 import * as mode from '../mode-types';
 
 
@@ -77,9 +74,9 @@ const onScreen = (ship) => {
 
 export const newShip = (x, y, a, imgKey) => {
   return Map({
-    vx: SHIP_SPEED * Math.cos(a),
-    vy: -SHIP_SPEED * Math.sin(a),
-    r: SHIP_RADIUS,
+    vx: SHIP.SPEED * Math.cos(a),
+    vy: -SHIP.SPEED * Math.sin(a),
+    r: SHIP.RADIUS,
     x,
     y,
     a,

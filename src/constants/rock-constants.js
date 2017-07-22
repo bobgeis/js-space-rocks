@@ -47,6 +47,7 @@ export const TYPES = [
 ];
 
 // colors: irl, most asteroids are some shade of gray
+// but dark grays especially have a hard time standing out
 export const COLORS = {};
 COLORS[TYPE_S] = [
   'burlywood',
@@ -55,11 +56,10 @@ COLORS[TYPE_S] = [
   'tan'
 ];
 COLORS[TYPE_C] = [
-  'slategray',
+  'whitesmoke',
+  'gainsboro',
   'lightgray',
-  'silver',
-  'gray'
+  'silver'
 ];
 // COLORS[TYPE_M] = [
-//   'silver'
 // ];

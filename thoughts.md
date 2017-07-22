@@ -117,11 +117,11 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Rock polygons~~
 
+* ~~Rock color variants~~
+
 * Player cargo counts
 
 * Break up huge constants.js
-
-* Rock color variants
 
 * Make it less ugly
 

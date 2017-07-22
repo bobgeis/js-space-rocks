@@ -3,8 +3,8 @@ import * as LOOT from '../constants/loot-constants';
 import * as BOOM from '../constants/boom-constants';
 import * as mode from '../mode-types';
 import { areColliding } from './physics';
-import { newBoom } from './boom-update';
-import { newLoot } from './loot-update';
+import { newBoom } from './boom-logic';
+import { newLoot } from './loot-logic';
 import { setHiScore } from '../local-storage';
 
 const modeList = [

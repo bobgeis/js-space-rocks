@@ -1,5 +1,5 @@
 
-import { DAMP } from '../constants';
+import { DAMP } from '../constants/player-constants';
 
 /**
 * Get the x projection of unit vector with angle a

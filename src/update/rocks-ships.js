@@ -2,8 +2,8 @@
 import * as mode from '../mode-types';
 import * as LOOT from '../constants/loot-constants';
 import * as BOOM from '../constants/boom-constants';
-import { newLoot } from './loot-update';
-import { newBoom } from './boom-update';
+import { newLoot } from './loot-logic';
+import { newBoom } from './boom-logic';
 import { areColliding } from './physics';
 
 const modeList = [

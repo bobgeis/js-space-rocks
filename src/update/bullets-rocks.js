@@ -1,9 +1,9 @@
 
 import { areColliding } from './physics';
 import * as mode from '../mode-types';
-import { newRock, getPoints } from './rock-update';
-import { newLoot } from './loot-update';
-import { newBoom } from './boom-update';
+import { newRock, getPoints } from './rock-logic';
+import { newLoot } from './loot-logic';
+import { newBoom } from './boom-logic';
 
 import * as util from '../util';
 import * as ROCK from '../constants/rock-constants';

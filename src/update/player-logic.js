@@ -8,7 +8,7 @@ import {
 } from '../constants/player-constants';
 import * as mode from '../mode-types';
 import { getVecX, getVecY, wrap } from './physics';
-import { newBullet } from './bullet-update';
+import { newBullet } from './bullet-logic';
 import * as CANVAS from '../constants/canvas-constants';
 
 const modeList = [
