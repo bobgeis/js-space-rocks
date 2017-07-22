@@ -39,9 +39,27 @@ export const SIZE_TO_RADIUS = { // radii (px)
 // types
 export const TYPE_S = 'S';
 export const TYPE_C = 'C';
-export const TYPE_M = 'M';
+// export const TYPE_M = 'M';
 export const TYPES = [
   TYPE_S,
-  TYPE_C,
-  TYPE_M
+  TYPE_C
+  // TYPE_M
 ];
+
+// colors: irl, most asteroids are some shade of gray
+export const COLORS = {};
+COLORS[TYPE_S] = [
+  'burlywood',
+  'sandybrown',
+  'wheat',
+  'tan'
+];
+COLORS[TYPE_C] = [
+  'slategray',
+  'lightgray',
+  'silver',
+  'gray'
+];
+// COLORS[TYPE_M] = [
+//   'silver'
+// ];

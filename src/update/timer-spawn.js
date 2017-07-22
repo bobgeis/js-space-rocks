@@ -1,8 +1,5 @@
 
-import {
-  SHIP_SPAWN_CHANCE,
-  SHIP_SPAWN_DELAY
-} from '../constants';
+import { SHIP_SPAWN_CHANCE, SHIP_SPAWN_DELAY} from '../constants/ship-constants';
 import * as CANVAS from '../constants/canvas-constants';
 import { SHIP_NUM_TYPES } from '../canvas/ship-canvas';
 import * as mode from '../mode-types';
@@ -64,6 +61,8 @@ export const spawnRandomRock = () => {
   const size = ROCK.SIZES[ROCK.SIZES.length - 1];
   const side = Math.floor(Math.random() * 4);
   const va = util.randCtrRange(ROCK.VA);
+  const type = util.randChoice(ROCK.TYPES);
+  const color = util.randChoice(ROCK.COLORS[type]);
   let x, y, a;
   if (side === 0) {
     x = 0;
@@ -85,7 +84,7 @@ export const spawnRandomRock = () => {
   const v = Math.random() * ROCK.SPEED;
   const vx = v * Math.cos(a);
   const vy = v * Math.sin(a);
-  return newRock(x, y, vx, vy, a, va, size, getPoints());
+  return newRock(x, y, vx, vy, a, va, size, getPoints(), type, color);
 };
 
 const newFlashFromObject = (obj, rock) => {

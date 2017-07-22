@@ -1,5 +1,5 @@
 
-import { BULLET_LIFETIME } from '../constants';
+import { BULLET_LIFETIME } from '../constants/bullet-constants';
 
 export const drawBullets = (ctx, state) => {
   const bullets = state.get('bullets');
@@ -24,6 +24,5 @@ const drawBullet = (ctx, x, y, color) => {
 
 const getColor = (life) => {
   const dec = Math.floor(100 + 150 * life / BULLET_LIFETIME);
-  // return `rgba(0, ${255 * ratio}, ${255 * ratio}, 1)`;
-  return `#55${dec.toString(16)}FF`
-}
+  return `#55${dec.toString(16)}FF`;
+};

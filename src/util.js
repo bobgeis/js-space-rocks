@@ -24,3 +24,8 @@ export const wrapA = (a) => wrap(a, TAU);
 export const wrapX = (x) => wrap(x, CANVAS.WIDTH);
 
 export const wrapY = (y) => wrap(y, CANVAS.HEIGHT);
+
+export const log = (arg) => {
+  console.log(arg);
+  return arg;
+}

@@ -67,8 +67,10 @@ const pushCalves = (calves, rock) => {
   const y = rock.get('y');
   const vx = rock.get('vx');
   const vy = rock.get('vy');
-  calves.push(newRock(x, y, vx + dvx, vy + dvy, a, va, newSize, getPoints()));
-  calves.push(newRock(x, y, vx - dvx, vy - dvy, a, -va, newSize, getPoints()));
+  const type = rock.get('type');
+  const color = rock.get('color');
+  calves.push(newRock(x, y, vx + dvx, vy + dvy, a, va, newSize, getPoints(), type, color));
+  calves.push(newRock(x, y, vx - dvx, vy - dvy, a, -va, newSize, getPoints(), type, color));
 };
 
 const pushLoot = (loot, rock) => {
