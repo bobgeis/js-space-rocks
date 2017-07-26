@@ -6,6 +6,7 @@ import * as BOOM from '../constants/boom-constants';
 import * as CANVAS from '../constants/canvas-constants';
 import * as SHIP from '../constants/ship-constants';
 import * as mode from '../mode-types';
+import { clampX, clampY } from '../util';
 
 
 export const update = (state) => {
@@ -43,8 +44,8 @@ const modeList = [
 
 const pushFlash = (newFlashes, ship) => {
   newFlashes.push(newBoom(
-    ship.get('x'),
-    ship.get('y'),
+    clampX(ship.get('x')),
+    clampY(ship.get('y')),
     0,
     0,
     BOOM.TYPE_SHIP_IN));

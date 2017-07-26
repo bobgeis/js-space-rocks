@@ -4,5 +4,5 @@ dist/*
 secret/*
 .DS_Store
 yarn.lock
-.yarnclean
 .vscode/*
+script.sh

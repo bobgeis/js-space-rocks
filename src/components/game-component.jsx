@@ -31,6 +31,11 @@ export default class Game extends React.Component {
   }
 
   handleKeys(e) {
+    if (!e) {
+      // IE is weird, this might fix it.
+      this.handleKeys(window.event());
+      return;
+    }
     // i don't like that we're handling this here,
     // but i wasn't sure of a better way to do this.
     if (this.omegaCheck(e)) {
