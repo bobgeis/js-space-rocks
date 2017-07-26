@@ -39,6 +39,8 @@ export const drawRocks = (ctx, state) => {
 const drawRock = (ctx, x, y, r, a, color, pts) => {
   ctx.save();
   ctx.fillStyle = color;
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = 0.5;
   ctx.beginPath();
   ctx.translate(x, y);
   ctx.rotate(a);
@@ -50,6 +52,7 @@ const drawRock = (ctx, x, y, r, a, color, pts) => {
   }
   // fill the shape
   ctx.fill();
+  ctx.stroke();
   ctx.closePath();
   ctx.restore();
 };

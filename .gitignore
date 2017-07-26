@@ -5,4 +5,3 @@ secret/*
 .DS_Store
 yarn.lock
 .vscode/*
-script.sh
