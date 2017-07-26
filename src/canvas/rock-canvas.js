@@ -19,7 +19,7 @@ export const drawRocks = (ctx, state) => {
     const y = rock.get('y');
     const a = rock.get('a');
     const pts = rock.get('pts');
-    const color = 'tan';
+    const color = rock.get('color');
     drawRock(ctx, x, y, r, a, color, pts);
     // handle drawing near the edges
     if (x + r > CANVAS.WIDTH) {

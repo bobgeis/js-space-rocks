@@ -5,17 +5,17 @@ import * as modes from '../mode-types';
 import { initialStore } from '../store';
 import { clearHiScore } from '../local-storage';
 
-import * as player from './player-update';
-import * as base from './base-update';
-import * as rock from './rock-update';
-import * as bullet from './bullet-update';
-import * as ship from './ship-update';
-import * as loot from './loot-update';
-import * as boom from './boom-update';
-import { collideRocksBullets } from './rocks-bullets';
-import { collideShipsRocks } from './ships-rocks';
+import * as player from './player-logic';
+import * as base from './base-logic';
+import * as rock from './rock-logic';
+import * as bullet from './bullet-logic';
+import * as ship from './ship-logic';
+import * as loot from './loot-logic';
+import * as boom from './boom-logic';
+import { collidePlayerBases } from './bases-player';
+import { collideRocksBullets } from './bullets-rocks';
+import { collideShipsRocks } from './rocks-ships';
 import { collideLootPlayer } from './loot-player';
-import { collidePlayerBases } from './player-bases';
 import { collidePlayerRocks } from './player-rocks';
 import timerSpawn from './timer-spawn';
 

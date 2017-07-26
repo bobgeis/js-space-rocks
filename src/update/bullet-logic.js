@@ -11,7 +11,7 @@ import {
   BULLET_LIFETIME,
   BULLET_SPEED,
   BULLET_RADIUS
-} from '../constants';
+} from '../constants/bullet-constants';
 import * as CANVAS from '../constants/canvas-constants';
 
 export const update = (state) => {

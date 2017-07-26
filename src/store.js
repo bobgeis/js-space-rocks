@@ -5,8 +5,8 @@ import * as mode from './mode-types';
 import * as CANVAS from './constants/canvas-constants';
 import * as ROCK from './constants/rock-constants';
 import * as PLAYER from './constants/player-constants';
+import * as MISC from './constants/misc-constants';
 
-import { getPoints } from './update/rock-update';
 import { spawnRandomRock } from './update/timer-spawn';
 
 // player initial state
@@ -15,7 +15,7 @@ const intialPlayer = Map({
   y: CANVAS.CTR_Y, // starting y position (px)
   vx: 0,  // starting x velocity (px/tick)
   vy: 0,  // starting y velocity (px/tick)
-  a: Math.PI/2, // starting angle (rad) facing North
+  a: MISC.NORTH, // starting angle (rad) facing North
   r: PLAYER.RADIUS,  // radius (px)
   cd: 0  // remaining weapon cooldown (ticks)
 });

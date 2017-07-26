@@ -50,7 +50,7 @@ export const getPoints = () => {
 };
 
 
-export const newRock = (x, y, vx, vy, a, va, size, pts) => {
+export const newRock = (x, y, vx, vy, a, va, size, pts, type, color) => {
   return Map({
     x,
     y,
@@ -60,6 +60,8 @@ export const newRock = (x, y, vx, vy, a, va, size, pts) => {
     vy,
     a,
     va,
-    pts
+    pts,
+    type,
+    color
   });
 };

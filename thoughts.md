@@ -58,7 +58,11 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * In my haste to get the game to a playable state, I did some things in an impure way.  Two obvious ones: random number generation with ```Math.random()```, and the setting and getting of local-storage.  Using math.random() is understandable in an asteroids game, but if it was deterministic (at least for a subset of rng uses) then using the omega-13 would actually help the player prepare better.  Accessing local storage in an impure manner actually resulted in some subtle bugs about when the hi-score gets updated.  It might be worth going back and doing those again.
 
-* Many of the examples i've seen declare javascript functions with ```function functionName(args) {...}``` whereas I've been using ```const functionName = (args) => {...}``` which I suspect is not idiomatic.  I'm surprised my eslint didn't complain by default!  It's unclear whether going back to convert top level function definitions to ```function functionName(args) {...}``` is an improvement, or just copying older js examples that weren't [fully] es6.
+* Many of the examples i've seen declare javascript functions with ```function functionName(args) {...}``` whereas I've been using ```const functionName = (args) => {...}``` which I suspect is not idiomatic.  I'm surprised my eslint didn't complain by default!  It's unclear whether going back to convert top level function definitions to ```function functionName(args) {...}``` is an improvement, or just a different choice of style.
+
+* I do most development in Chrome, and it runs smoothly there (on my machine at least).  I expected it to stutter on Firefox, but it ran pretty smoothly there too!  In IE it didn't work at all, but I believe I made some mistakes in the way the eventhandlers were set up (key handlers specifically) that IE doesn't like.  Investigate!  Also test in Safari at some point...  Was smooth in Safari :)
+
+* The dev dist bundle is 1.6 MB.  That's not super huge, but maybe it could be smaller.  After using uglify with webpack, it's 443 KB.  But it mangled the Omega symbol...  Aha! Setting output.ascii_only = true in the config fixed it.  Many options are defined [here](https://github.com/mishoo/UglifyJS2/tree/harmony#parse-options) but not all of them work in the webpack plugin (eg the compress.inline option is not recognized and will throw an error).
 
 
 ### Feature Checklist
@@ -117,11 +121,13 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Rock polygons~~
 
+* ~~Rock color variants~~
+
+* ~~Break up huge constants.js~~
+
+* ~~Squish bundle with uglify~~
+
 * Player cargo counts
-
-* Break up huge constants.js
-
-* Rock color variants
 
 * Make it less ugly
 
@@ -131,17 +137,13 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Deterministic RNG
 
-* Use redux-thunk or redux-loop for side effects (eg local storage)
-
-* Proper production build with uglify or closure
-
 * Better File Names/Structure?  eg: Is physics.js necessary?  Why is loot-update.js exporting more than just update?  Should constants.js be broken up?
 
 * Code doc! And cleanup...
 
 * Player death releases some/all undelivered cargo
 
-* Hot module reloading.  It seemed unnecessary at first, but it is a common tool, so it would be good to get used to.
+* Use redux-thunk or redux-loop for side effects (eg local storage)
 
 * Experiment with canvas paths, SVGs, and/or img elements
 
@@ -151,6 +153,12 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Testing and bug fixes.  Eg: ship double flash bug, 4-rock omission.
 
+* Compare bundle squishing with Google Closure Compiler / Prepack and with/without gzip.
+
+* Hot module reloading.  It seemed unnecessary at first, but it is a common tool, so it would be good to get used to.
+
 * Script/automated pushing to gh-pages?
+
+* Sound / Music?
 
 * Hooligan ships?
