@@ -3,10 +3,10 @@ import { img, draw, loadImageFile } from './images';
 
 
 const shipImageFilePaths = [
-  './res/img/shipCiv.png',
-  './res/img/shipGuild.png',
-  './res/img/shipMed.png',
-  './res/img/shipSci.png'
+  'shipCiv.png',
+  'shipGuild.png',
+  'shipMed.png',
+  'shipSci.png'
 ];
 
 export const SHIP_NUM_TYPES = shipImageFilePaths.length;

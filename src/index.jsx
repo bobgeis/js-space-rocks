@@ -1,6 +1,9 @@
 
 import 'babel-polyfill';
 
+// load the webpacked css
+import './res/css/style.css';
+
 import _ from 'lodash';
 import $ from 'jquery';
 import React from 'react';
@@ -24,8 +27,18 @@ initHiScore();
 const createStoreDev = compose(
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 )(createStore);
+
 const store = createStoreDev(reducers);
 store.dispatch(actions.initStore());
+if (module.hot) {
+  // changes in the reducer will require reducer to be replaced in the store
+  module.hot.accept(() => {
+    // re-require them
+    const nextReducers = require('./reducers/reducer').default;
+    // replace
+    store.replaceReducer(nextReducers);
+  });
+}
 
 // render
 render(
@@ -34,4 +47,3 @@ render(
   </Provider>,
   document.getElementById('game')
 );
-

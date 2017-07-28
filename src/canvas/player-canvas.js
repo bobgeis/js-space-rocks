@@ -5,7 +5,7 @@ import * as mode from '../mode-types';
 
 // prepare player image
 export const loadImage = () => {
-  return loadImageFile('./res/img/player.png');
+  return loadImageFile('player.png');
 };
 
 const modeList = [

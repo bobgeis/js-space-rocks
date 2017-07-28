@@ -4,8 +4,8 @@ import { img, draw, loadImageFile } from './images';
 // prepare images
 export const loadImages = () => {
   return {
-    crystal: loadImageFile('./res/img/crystal.png'),
-    lifepod: loadImageFile('./res/img/lifepod.png')
+    crystal: loadImageFile('crystal.png'),
+    lifepod: loadImageFile('lifepod.png')
   };
 };
 
