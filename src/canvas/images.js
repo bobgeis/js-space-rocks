@@ -5,6 +5,8 @@ import * as base from './base-canvas';
 import * as ship from './ship-canvas';
 import * as loot from './loot-canvas';
 
+import stars from '../res/img/stars.jpg';
+
 export const img = {};
 
 let thingsToLoad = 0;
@@ -15,7 +17,6 @@ export const loadingFinished = () => {
 };
 
 export const loadAllImages = () => {
-  img.bg = loadImageFile('./res/img/starsSmall.jpg', 0);  // is this necessary?
   img.player = player.loadImage();
   img.baseGuild = base.loadImageGuild();
   img.baseMed = base.loadImageMed();
@@ -26,7 +27,6 @@ export const loadAllImages = () => {
 export const loadImageFile = (source, rotation=Math.PI/2, width, height) => {
   thingsToLoad++;
   const img = new Image();
-  img.src = source;
   const ctx = document.createElement("canvas").getContext('2d');
   img.onload = () => {
     ctx.canvas.width = width ? width : img.width;
@@ -42,6 +42,7 @@ export const loadImageFile = (source, rotation=Math.PI/2, width, height) => {
     ctx.restore();
     thingsLoaded++;
   };
+  img.src = require(`../res/img/${source}`);
   return ctx;
 };
 

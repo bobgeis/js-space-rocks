@@ -11,6 +11,8 @@ import Description from './description-component';
 import Omega from './omega-component';
 import Score from './score-component';
 
+import stars from '../res/img/stars.jpg';
+
 export default class Game extends React.Component {
 
   componentDidMount() {
@@ -32,7 +34,7 @@ export default class Game extends React.Component {
 
   handleKeys(e) {
     if (!e) {
-      // IE is weird, this might fix it.
+      // IE is weird, this might fix it.  Nope!
       this.handleKeys(window.event());
       return;
     }
@@ -83,7 +85,7 @@ export default class Game extends React.Component {
 }
 
 const styleBg = {
-  "background": "url(./res/img/stars.jpg) no-repeat center",
+  "background": `url(${stars}) no-repeat center`,
   "backgroundSize": "cover",
   "width": `${CANVAS.WIDTH}px`,
   "height": `${CANVAS.HEIGHT}px`
