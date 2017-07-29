@@ -1,6 +1,8 @@
 
 import { List, Map } from 'immutable';
 
+import { getSeed } from './detrand';
+
 import * as mode from './mode-types';
 import * as CANVAS from './constants/canvas-constants';
 import * as ROCK from './constants/rock-constants';
@@ -60,5 +62,6 @@ export const initialStore = Map({
   ticks: 0,
   cargo: Map({lifepod: 0, crystal: 0}),
   score: Map({lifepod: 0, crystal: 0, ship: 0}),
-  mode: mode.SPLASH
+  mode: mode.SPLASH,
+  seed: getSeed()
 });

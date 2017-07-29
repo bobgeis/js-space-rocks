@@ -4,8 +4,6 @@ import 'babel-polyfill';
 // load the webpacked css
 import './res/css/style.css';
 
-import _ from 'lodash';
-import $ from 'jquery';
 import React from 'react';
 import { createStore, compose } from 'redux';
 import { render } from 'react-dom';

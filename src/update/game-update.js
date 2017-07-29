@@ -18,6 +18,7 @@ import { collideShipsRocks } from './rocks-ships';
 import { collideLootPlayer } from './loot-player';
 import { collidePlayerRocks } from './player-rocks';
 import timerSpawn from './timer-spawn';
+import { setSeed, getSeed } from '../detrand';
 
 const modesForTick = [
   modes.PLAY,
@@ -32,6 +33,7 @@ const tick = (state, keys) => {
   if (!modesForTick.includes(state.get('mode'))) {
     return state;
   }
+  setSeed(state.get('seed'));
   return state.update('ticks', (x) => x + 1 );
 };
 
@@ -56,6 +58,10 @@ const updateMode = (state, keys) => {
   return state;
 };
 
+const cleanup = (state, keys) => {
+  return state.set('seed', getSeed());
+};
+
 const updateFunctionsList = [
   tick,
   updateMode,
@@ -71,7 +77,8 @@ const updateFunctionsList = [
   collideLootPlayer,
   collidePlayerBases,
   collidePlayerRocks,
-  timerSpawn
+  timerSpawn,
+  cleanup
 ];
 
 export const updateGame = (state, keys) => {

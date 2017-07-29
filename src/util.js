@@ -32,8 +32,8 @@ export const clampY = (y) => clamp(y, CANVAS.HEIGHT);
 
 
 
-// debug helpers
+// debug helper
 export const log = (arg) => {
   console.log(arg);
   return arg;
-}
+};
