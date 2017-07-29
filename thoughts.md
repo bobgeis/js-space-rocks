@@ -17,13 +17,107 @@ This is a learning project, so not everything may be best practice, or the best 
 ## Architecture
 
 * index.html loads the dist/bundle.js produced by webpack
-* res/* has non-js resource files, like images and css.
+
 * index.jsx is the entry point for webpack so everything must start there.  It creates the redux store, and renders the app using the react-redux Provider and game-container.js.
+
 * game-container.js contains game-component.jsx and passes it props and actions.
+
 * game-component.jsx contains the canvas and other UI elements.  It also calls the canvas render functions and dispatches actions.  This component does a lot!
-* canvas/render.js has the primary functions for drawing things to the canvas.  canvas/images.js has some utilities and preloading stuff.  The other files are specific to types of game entities.
-* reducers/reducer.js has the main reducer which combines reducers from key-reducer.js and game-reducer.js
-* update/game-update.js is called by the tick action on the game-reducer.  It does all the time-step updates of the game model which is a large portion of the code.  The basic/self update logic are in the *-logic.js files, while the pairwise interactions/collisions are in the files named after pairs eg: bullets-rocks.js.  Right now collisions are circle collisions, which is plenty fast with this small number of game entities.  If we wanted to do some with better big O behavior (like a quad tree), then we could put the insertion logic in the self update code, which is called first.
+
+* src/canvas/render.js has the primary functions for drawing things to the canvas.  canvas/images.js has some utilities and preloading stuff.  The other files are specific to types of game entities.
+
+* src/reducers/reducer.js has the main reducer which combines reducers from key-reducer.js and game-reducer.js
+
+* src/update/game-update.js is called by the tick action on the game-reducer.  It does all the time-step updates of the game model which is a large portion of the code.  The basic/self update logic are in the *-logic.js files, while the pairwise interactions/collisions are in the files named after pairs eg: bullets-rocks.js.  Right now collisions are circle collisions, which is plenty fast with this small number of game entities.  If we wanted to do some with better big O behavior (like a quad tree), then we could put the insertion logic in the self update code, which is called first.
+
+* src/constants has files of game constants, eg: what is turning rate of the player ship in radians per tick?  This is game is tick based on rAF calls, not dt (delta-time) based.  This means that it slows down as the FPS slow down, and stops if you go to a different tab.
+
+* src/res/* has non-js resource files, like images, and css.
+
+* Config stuff: webpack.config has the configuration for the webpack compiler.  hmrServer has an express.js server that does hot module reloading when called with node.  eslintrc and babelrc have config for eslint and babel respectively.  gitignore is for things that shouldn't get committed, yarnlock has data for yarn about how deps were added, and package.json has project info, lists of dependencies, and scripts that can be run with yarn or npm.
+
+
+## Dependencies Discussion
+
+Lots of dependencies!  What do they all do?
+
+#### dependencies:
+
+* babel-polyfill: for backfilling for old browsers.
+
+* immutable: immutable data structures used for game state
+
+* jquery: a useful DOM library for smoothing browser quirks.
+
+* lodash: a useful FP-oriented library.
+
+* react: a front end library with vdom
+
+* react-dom: for actually using react with the DOM.
+
+* react-redux: for using redux with react.
+
+* redux: state management library
+
+* redux-actions
+
+* redux-immutablejs
+
+* redux-thunk: an approach to handle side effects in redux.
+
+* redux-undo: lib to make a reducer undoable.
+
+
+#### Devdeps:
+
+* babel-cli: used for node-babel in the hmr script.  This lets us write webpack config in babelese.
+
+* babel-core: we want this to translate es6+ into stuff that will run on less furistic browsers.
+
+* babel-eslint: so eslint will recognize babelese.
+
+* babel-loader: so webpack can handle babelese.
+
+* babel-*: presets and settings for babel.
+
+* css-loader: lets webpack load css files into the bundle.  Use them with a call like ```import './res/css/style.css';``` in the js code.
+
+* eslint: lints our es :)
+
+* eslint-loader: so we can lint modules as webpack loads them, and try to autofix them too. needed?
+
+* eslint-plugin-react: so eslint knows about jsx/react stuff.
+
+* express: this is our hmr dev server
+
+* file-loader: peer dependency of url-loader below
+
+* jest: for testing (need to write tests for it!)
+
+* rimraf: for clearing /dist/ between builds
+
+* style-loader: for loading css & stylesheets (use it with css-loader)
+
+* url-loader: for loading images into the webpack bundle
+
+* webpack: for compiling js (and other) files into a single bundle file
+
+* webpack-dev-middleware: for using dev middleware
+
+* webpack-hot-middleware: for using hot module replacement in dev
+
+
+#### Things not being used.
+
+* [eslint-loader](https://github.com/MoOx/eslint-loader): for linting while you webpack.
+
+* [jquery](https://github.com/jquery/jquery): a very powerful and well loved browser library, that I ended up not needing.
+
+* [lodash]()https://github.com/lodash/lodash: a functional programming oriented utility library.
+
+* [redux-immutablejs](https://github.com/gajus/redux-immutable): a library to solve the state as immutable collection issue mentioned in Things Learned.
+
+* [redux-actions](https://github.com/acdlite/redux-actions): a library for doing common things with redux actions.
 
 
 ## Things Learned
@@ -58,7 +152,7 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * In my haste to get the game to a playable state, I did some things in an impure way.  Two obvious ones: random number generation with ```Math.random()```, and the setting and getting of local-storage.  Using math.random() is understandable in an asteroids game, but if it was deterministic (at least for a subset of rng uses) then using the omega-13 would actually help the player prepare better.  Accessing local storage in an impure manner actually resulted in some subtle bugs about when the hi-score gets updated.  It might be worth going back and doing those again.
 
-* Many of the examples i've seen declare javascript functions with ```function functionName(args) {...}``` whereas I've been using ```const functionName = (args) => {...}``` which I suspect is not idiomatic.  I'm surprised my eslint didn't complain by default!  It's unclear whether going back to convert top level function definitions to ```function functionName(args) {...}``` is an improvement, or just a different choice of style. For now I'll leave it as almost all/almost all arrow functions.
+* Many of the examples I've seen declare javascript functions with ```function functionName(args) {...}``` whereas I've been using ```const functionName = (args) => {...}``` which I suspect is not idiomatic.  I'm surprised my eslint didn't complain by default!  It's unclear whether going back to convert top level function definitions to ```function functionName(args) {...}``` is an improvement, or just a different choice of style. For now I'll leave it as almost all/almost all arrow functions.
 
 * I do most development in Chrome, and it runs smoothly there (on my machine at least).  I expected it to stutter on Firefox, but it ran pretty smoothly there too!  In IE it didn't work at all, but I believe I made some mistakes in the way the eventhandlers were set up (key handlers specifically) that IE doesn't like.  Investigate!  Also test in Safari at some point...  Was smooth in Safari :)
 
@@ -78,9 +172,9 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Redux 2.0's problem with HMR, and it's solution, is outlined [here](https://github.com/reactjs/react-redux/releases/tag/v2.0.0).  It looks like a small code change needs to be made to the place where the store is created.  In my case that is in src/index.jsx.  Apparently there's a react-hot-loader package.  I'll look into that if I find I need it.
 
-* Getting css in required css-loader and style-loader, and after using file-loader and image-webpack-loader I found only url-loader was actually necessary for imagees.  And I needed to move the res folder into the src folder (might want to think about that), but then HMR worked!  Adding the loaders to the prod and dev config appeared to make those work as well.
+* Getting css in required css-loader and style-loader, and after using file-loader and image-webpack-loader I found only url-loader was actually necessary for imagees.  And I needed to move the res folder into the src folder (might want to think about that), but then HMR worked!  Adding the loaders to the prod and dev config appeared to make those work as well.  Getting all the resources packed into the bundle increased its size:  dev (not ugly) is 2 MB (up from 1.6 MB) and prod (uglified!) is 863 KB (up from 443 KB).
 
-
+* I also discovered that webpack doesn't like dynamic require()s much.  This mattered for requiring images.  If I passed the image path in as a variable: ```require(imgString)```, then webpack wouldn't find it and would complain, even if hardcoding the same string worked fine: ```require('./res/img/something.jpg')```.  If I made it a template string with only part of it as a variable, then it worked! ```require(`./res/img/${sourceFile}`)```  The documentation [here](https://webpack.github.io/docs/context.html) explains this some, even though it's out of date.  I didn't find comparable doc for the current webpack.
 
 ### Feature Checklist
 
@@ -148,6 +242,8 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * ~~Hot Module Replacement~~
 
+* ~~Deterministic RNG (for timer spawns)~~
+
 * Player cargo counts
 
 * Make it less ugly
@@ -157,8 +253,6 @@ This is a learning project, so not everything may be best practice, or the best 
 * Rock appearance needs to not be confusing: 1) don't blend in with bg, 2) more distinct from friendly ships.  This is a problem for gray rocks.
 
 * Make it look okay -> Make it pretty
-
-* Deterministic RNG
 
 * Code doc! And cleanup...
 
@@ -170,13 +264,11 @@ This is a learning project, so not everything may be best practice, or the best 
 
 * Experiment with canvas paths, SVGs, and/or img elements
 
-* Deterministic RNG?  This would mean that the omeag-13 would give you knowledge of the future, rather than just a another chance.
-
 * Graphical indicator of loot age.
 
 * Testing and bug fixes.  Eg: ship double flash bug, 4-rock omission.
 
-* Compare bundle squishing with Google Closure Compiler / Prepack and with/without gzip.
+* Compare bundle squishing with Uglify vs Google Closure Compiler vs Prepack.
 
 * Script/automated pushing to gh-pages?
 

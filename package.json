@@ -1,10 +1,11 @@
 {
-  "name": "jsSpaceRocks",
+  "name": "js-space-rocks",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Bob Geis <bobgeis@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
+    "start": "yarn hmr",
     "dev": "rimraf dist && NODE_ENV=dev webpack --watch",
     "prod": "rimraf dist && NODE_ENV=production webpack",
     "hmr": "babel-node hmrServer.js",
@@ -22,10 +23,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.4",
-    "eslint": "^4.0.0",
-    "eslint-loader": "^1.8.0",
+    "eslint": "^4.3.0",
     "eslint-plugin-react": "^7.1.0",
     "express": "^4.15.3",
+    "file-loader": "^0.11.2",
     "jest": "^20.0.4",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
@@ -37,14 +38,10 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "immutable": "^3.8.1",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",
-    "redux-actions": "^2.0.3",
-    "redux-immutablejs": "^0.0.8",
     "redux-thunk": "^2.2.0",
     "redux-undo": "^0.6.1"
   }

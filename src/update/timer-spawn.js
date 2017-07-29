@@ -8,7 +8,8 @@ import { newBoom } from './boom-logic';
 import * as BOOM from '../constants/boom-constants';
 import * as ROCK from '../constants/rock-constants';
 import * as SHIP from '../constants/ship-constants';
-import * as util from '../util';
+import { TAU, HALFPI } from '../constants/misc-constants';
+import * as dr from '../detrand';
 
 const modeList = [
   mode.PLAY,
@@ -20,12 +21,12 @@ export default (state, keys) => {
     return state;
   }
   let newState = state;
-  if (state.get('ticks') % SHIP.SPAWN_DELAY === 0 && Math.random() < SHIP.SPAWN_CHANCE) {
+  if (state.get('ticks') % SHIP.SPAWN_DELAY === 0 && dr.random() < SHIP.SPAWN_CHANCE) {
     const newShip = spawnRandomShip();
     newState = newState.update('ships', (ships) => ships.push(newShip))
       .update('booms', (booms) => booms.push(newFlashFromObject(newShip,false)));
   }
-  if (state.get('ticks') % ROCK.SPAWN_DELAY === 0 && Math.random() < ROCK.SPAWN_CHANCE) {
+  if (state.get('ticks') % ROCK.SPAWN_DELAY === 0 && dr.random() < ROCK.SPAWN_CHANCE) {
     const newRock = spawnRandomRock();
     newState = newState.update('rocks', (rocks) => rocks.push(newRock))
       .update('booms', (booms) => booms.push(newFlashFromObject(newRock,true)));
@@ -34,54 +35,54 @@ export default (state, keys) => {
 };
 
 const spawnRandomShip = () => {
-  const imgKey = Math.floor(Math.random() * SHIP_NUM_TYPES);
-  const side = Math.floor(Math.random() * 4);
+  const imgKey = dr.randInt(SHIP_NUM_TYPES);
+  const side = dr.randInt(4);
   let x, y, a;
   if (side === 0) {
     x = 0;
-    y = Math.random() * CANVAS.HEIGHT;
-    a = (Math.random() * Math.PI/2) - Math.PI/4;
+    y = dr.randRange(CANVAS.HEIGHT);
+    a = dr.randRange(HALFPI) - Math.PI/4;
   } else if (side === 1) {
     x = CANVAS.WIDTH;
-    y = Math.random() * CANVAS.HEIGHT;
-    a = (Math.random() * Math.PI/2) + Math.PI * 3/4;
+    y = dr.randRange(CANVAS.HEIGHT);
+    a = dr.randRange(HALFPI) + Math.PI * 3/4;
   } else if (side === 2) {
-    x = Math.random() * CANVAS.WIDTH;
+    x = dr.randRange(CANVAS.WIDTH);
     y = 0;
-    a = (Math.random() * Math.PI/2) - Math.PI * 3/4;
+    a = dr.randRange(HALFPI) - Math.PI * 3/4;
   } else {
-    x = Math.random() * CANVAS.WIDTH;
+    x = dr.randRange(CANVAS.WIDTH);
     y = CANVAS.HEIGHT;
-    a = (Math.random() * Math.PI/2) + Math.PI/4;
+    a = dr.randRange(HALFPI) + Math.PI/4;
   }
   return newShip(x, y, a, imgKey);
 };
 
 export const spawnRandomRock = () => {
   const size = ROCK.SIZES[ROCK.SIZES.length - 1];
-  const side = Math.floor(Math.random() * 4);
-  const va = util.randCtrRange(ROCK.VA);
-  const type = util.randChoice(ROCK.TYPES);
-  const color = util.randChoice(ROCK.COLORS[type]);
+  const side = dr.randInt(4);
+  const va = dr.randCtrRange(ROCK.VA);
+  const type = dr.randChoice(ROCK.TYPES);
+  const color = dr.randChoice(ROCK.COLORS[type]);
   let x, y, a;
   if (side === 0) {
     x = 0;
-    y = Math.random() * CANVAS.HEIGHT;
-    a = (Math.random() * Math.PI/2) - Math.PI/4;
+    y = dr.randRange(CANVAS.HEIGHT);
+    a = dr.randRange(HALFPI) - Math.PI/4;
   } else if (side === 1) {
     x = CANVAS.WIDTH;
-    y = Math.random() * CANVAS.HEIGHT;
-    a = (Math.random() * Math.PI/2) + Math.PI * 3/4;
+    y = dr.randRange(CANVAS.HEIGHT);
+    a = dr.randRange(HALFPI) + Math.PI * 3/4;
   } else if (side === 2) {
-    x = Math.random() * CANVAS.WIDTH;
+    x = dr.random() * CANVAS.WIDTH;
     y = 0;
-    a = (Math.random() * Math.PI/2) - Math.PI * 3/4;
+    a = dr.randRange(HALFPI) + Math.PI * 3/4;
   } else {
-    x = Math.random() * CANVAS.WIDTH;
+    x = dr.random() * CANVAS.WIDTH;
     y = CANVAS.HEIGHT;
-    a = (Math.random() * Math.PI/2) + Math.PI/4;
+    a = dr.randRange(HALFPI) + Math.PI * 3/4;
   }
-  const v = Math.random() * ROCK.SPEED;
+  const v = dr.randRange(ROCK.SPEED);
   const vx = v * Math.cos(a);
   const vy = v * Math.sin(a);
   return newRock(x, y, vx, vy, a, va, size, getPoints(), type, color);

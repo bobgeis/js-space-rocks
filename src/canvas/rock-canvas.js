@@ -1,5 +1,4 @@
 
-import { img, draw, loadImageFile } from './images';
 import * as CANVAS from '../constants/canvas-constants';
 import * as ROCK from '../constants/rock-constants';
 import * as util from '../util';
@@ -77,5 +76,3 @@ export const getPoints = () => {
   }
   return pts;
 };
-
-const ptsConst = getPoints();

@@ -1,6 +1,6 @@
 
 
-# jsSpaceRocks
+# js-space-rocks
 
 This is a learning project made while learning javascript.  It's an asteroids clone, because whenever one learns a new language, it's fun to make a game in it, and I happen to like asteroids.
 
@@ -34,9 +34,18 @@ Luckily, a dedicated rescue and rock-buster ship is already prepped and on-site.
 
 ## Attributions
 
-Background image of Carina Nebula is available [here](https://commons.wikimedia.org/w/index.php?search=carina+nebula&title=Special:Search&go=Go&uselang=en&searchToken=79al97qlirmupg5bpga22jvj2#/media/File:Carina_Nebula.jpg) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Background image of Carina Nebula is available [here](https://commons.wikimedia.org/w/index.php?search=carina+nebula&title=Special:Search&go=Go&uselang=en&searchToken=79al97qlirmupg5bpga22jvj2#/media/File:Carina_Nebula.jpg).  Credit to [ESO/T. Preibisch](http://www.eso.org/public/images/eso1208a/) used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 All other sprites were made by the programmer.
+
+
+## Developers
+
+Download or clone this repo onto your local drive, then cd into the folder containing package.json.
+
+* For a hot reloading dev server: ```yarn start``` or ```npm start``` and go to http://localhost:3000 in your browser.
+* For the minified bundle: ```yarn prod``` or ```npm run prod``` and then open index.html in your browser.
+
 
 ## Influences
 

@@ -31,7 +31,6 @@ export const collidePlayerRocks = (state, keys) => {
     return state.set('mode', mode.GAMEOVER)
       .update('booms', (booms) => pushBooms(booms, player))
       .update('loot', (loot) => pushLoot(loot, player));
-      // .set('hiscore', setHiScore(state));
   }
 
   return state;

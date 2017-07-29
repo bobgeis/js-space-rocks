@@ -38,7 +38,7 @@
     "no-duplicate-imports":"error",
     "no-fallthrough":"warn",
     "no-floating-decimal":"error",
-    "no-magic-numbers":["warn", {"enforceConst":true, "ignore": [0,1,2,10,100], "ignoreArrayIndexes": true}],
+    "no-magic-numbers":["warn", {"enforceConst":true, "ignore": [ 0, 0.5, 1, 2, 10, 100 ], "ignoreArrayIndexes": true}],
     "no-mixed-spaces-and-tabs":"warn",
     "no-nested-ternary":"warn",
     "no-new-object":"error",
