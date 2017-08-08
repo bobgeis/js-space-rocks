@@ -6,3 +6,4 @@ export const THRUST = 0.055; // acceleration (px/tick/tick)
 export const RETRO = THRUST/3; // acceleration while reversing (px/tick/tick)
 export const DAMP = 1 - 0.005; // drag (fraction/tick)
 export const WPN_COOLDOWN = 6; // delay between firing weapon (ticks)
+export const GLOW_MAX = 30; // number of ticks to go from brightest to dimmest

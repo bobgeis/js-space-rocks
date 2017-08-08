@@ -4,7 +4,8 @@ import {
   RETRO,
   TURN,
   WPN_COOLDOWN,
-  DAMP
+  DAMP,
+  GLOW_MAX
 } from '../constants/player-constants';
 import * as mode from '../mode-types';
 import { getVecX, getVecY, wrap } from './physics';
@@ -35,6 +36,15 @@ export const update = (state, keys) => {
     .update('y', (y) => wrap(y + player.get('vy'), CANVAS.HEIGHT))
     .update('vx', (vx) => vx * DAMP)
     .update('vy', (vy) => vy * DAMP)
+    .update('glow', (glow) => {
+      if (bang) {
+        return GLOW_MAX;
+      } else if (acc !== 0) {
+        return Math.max(glow, GLOW_MAX /2);
+      } else {
+        return Math.max(glow - 1, 0);
+      }
+    })
     .update('cd', (cd) => {
       return bang ? WPN_COOLDOWN : Math.max(cd - 1, 0);
     });

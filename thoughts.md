@@ -41,38 +41,33 @@ This is a learning project, so not everything may be best practice, or the best 
 
 Lots of dependencies!  What do they all do?
 
-#### dependencies:
+
+#### Dependencies:
 
 * babel-polyfill: for backfilling for old browsers.
 
 * immutable: immutable data structures used for game state
 
-* jquery: a useful DOM library for smoothing browser quirks.
+* react: a front end library
 
-* lodash: a useful FP-oriented library.
-
-* react: a front end library with vdom
-
-* react-dom: for actually using react with the DOM.
+* react-dom: for using react with the DOM.
 
 * react-redux: for using redux with react.
 
 * redux: state management library
 
-* redux-actions
+* redux-loop: an approach to handle side effects in redux. (change in the reducer return)
 
-* redux-immutablejs
+* redux-thunk: an approach to handle side effects in redux. (change in the actions)
 
-* redux-thunk: an approach to handle side effects in redux.
-
-* redux-undo: lib to make a reducer undoable.
+* redux-undo: lib to make a reducer undoable, enabling the omega-13 feature.
 
 
-#### Devdeps:
+#### Dev Dependencies:
 
-* babel-cli: used for node-babel in the hmr script.  This lets us write webpack config in babelese.
+* babel-cli: used for node-babel in the hmr script.  This is one way to allow us to write webpack config in babelese.
 
-* babel-core: we want this to translate es6+ into stuff that will run on less furistic browsers.
+* babel-core: we want this to translate es6+ into stuff that will run on less futuristic browsers.
 
 * babel-eslint: so eslint will recognize babelese.
 
@@ -83,8 +78,6 @@ Lots of dependencies!  What do they all do?
 * css-loader: lets webpack load css files into the bundle.  Use them with a call like ```import './res/css/style.css';``` in the js code.
 
 * eslint: lints our es :)
-
-* eslint-loader: so we can lint modules as webpack loads them, and try to autofix them too. needed?
 
 * eslint-plugin-react: so eslint knows about jsx/react stuff.
 
@@ -107,13 +100,13 @@ Lots of dependencies!  What do they all do?
 * webpack-hot-middleware: for using hot module replacement in dev
 
 
-#### Things not being used.
+#### Things unused.
 
 * [eslint-loader](https://github.com/MoOx/eslint-loader): for linting while you webpack.
 
 * [jquery](https://github.com/jquery/jquery): a very powerful and well loved browser library, that I ended up not needing.
 
-* [lodash]()https://github.com/lodash/lodash: a functional programming oriented utility library.
+* [lodash]()https://github.com/lodash/lodash: a functional programming oriented utility library.  A lot of the most important parts of this have been folded into es6 or are included as methods on immutable.js objects/collections.
 
 * [redux-immutablejs](https://github.com/gajus/redux-immutable): a library to solve the state as immutable collection issue mentioned in Things Learned.
 
@@ -175,6 +168,7 @@ Lots of dependencies!  What do they all do?
 * Getting css in required css-loader and style-loader, and after using file-loader and image-webpack-loader I found only url-loader was actually necessary for imagees.  And I needed to move the res folder into the src folder (might want to think about that), but then HMR worked!  Adding the loaders to the prod and dev config appeared to make those work as well.  Getting all the resources packed into the bundle increased its size:  dev (not ugly) is 2 MB (up from 1.6 MB) and prod (uglified!) is 863 KB (up from 443 KB).
 
 * I also discovered that webpack doesn't like dynamic require()s much.  This mattered for requiring images.  If I passed the image path in as a variable: ```require(imgString)```, then webpack wouldn't find it and would complain, even if hardcoding the same string worked fine: ```require('./res/img/something.jpg')```.  If I made it a template string with only part of it as a variable, then it worked! ```require(`./res/img/${sourceFile}`)```  The documentation [here](https://webpack.github.io/docs/context.html) explains this some, even though it's out of date.  I didn't find comparable doc for the current webpack.
+
 
 ### Feature Checklist
 
@@ -244,34 +238,42 @@ Lots of dependencies!  What do they all do?
 
 * ~~Deterministic RNG (for timer spawns)~~
 
-* Player cargo counts
+* ~~Favicon~~
 
-* Make it less ugly
+* ~~gh-pages script~~
+
+* Experiment with canvas paths
+
+* Player cargo counts
 
 * Rock behaviors
 
 * Rock appearance needs to not be confusing: 1) don't blend in with bg, 2) more distinct from friendly ships.  This is a problem for gray rocks.
 
-* Make it look okay -> Make it pretty
-
-* Code doc! And cleanup...
-
 * Player death releases some/all undelivered cargo
 
 * Use redux-thunk or redux-loop for side effects (eg local storage)
 
-* Using omega-13 creates flash or indicator where player ship is (the human player won't usually remember where they were 13 seconds ago and this can cause issues).
-
-* Experiment with canvas paths, SVGs, and/or img elements
-
 * Graphical indicator of loot age.
 
-* Testing and bug fixes.  Eg: ship double flash bug, 4-rock omission.
+* Graphical indicator of player position post Omega-13.
+
+* Graphical indicator of player docking with bases.
+
+* Code doc!
+
+* Code cleanup!
+
+* Tests!
+
+* Bug fixes.  Eg: ship double flash bug, 4-rock omission.
+
+* Experiment with SVGs, and/or img elements
 
 * Compare bundle squishing with Uglify vs Google Closure Compiler vs Prepack.
 
-* Script/automated pushing to gh-pages?
+* Automated testing?
 
 * Sound / Music?
 
-* Hooligan ships?
+* Hooligan ships? (Or other big game feature...)
