@@ -5,6 +5,7 @@ import { newBoom } from './boom-logic';
 import * as BOOM from '../constants/boom-constants';
 import * as CANVAS from '../constants/canvas-constants';
 import * as SHIP from '../constants/ship-constants';
+import * as ROCK from '../constants/rock-constants';
 import * as mode from '../mode-types';
 import { clampX, clampY } from '../util';
 
@@ -30,9 +31,11 @@ export const update = (state) => {
     newState = newState.update('booms', (booms) => booms.concat(newFlashes));
   }
   if (newScore > 0 && state.get('mode') === mode.PLAY) {
-    newState = newState.update('score', (score) => score.update(
-      'ship', (ship) => ship + newScore
-    ));
+    newState = newState
+      .update('score', (score) => score.update(
+        'ship', (ship) => ship + newScore
+      ))
+      .update('rockTimer', (timer) => Math.max(ROCK.MIN_SPAWN_DELAY,Math.floor(timer - newScore * ROCK.SPAWN_SPEEDUP)));
   }
   return newState;
 };

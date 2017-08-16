@@ -89,8 +89,6 @@ const drawPlayerShape = (ctx, x, y, a, g) => {
 };
 
 const gToColor = (g) => {
-  const red = Math.min(Math.floor(130 * g + 25),255);
-  const green = Math.min(Math.floor(130 * g + 125),255);
-  const blue =Math.min(Math.floor(80 * g + 175),255);
-  return `rgb(${red}, ${green}, ${blue})`;
+  const dec = Math.floor(100 + 150 * g);
+  return `#55${dec.toString(16)}FF`;
 };

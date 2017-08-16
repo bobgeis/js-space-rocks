@@ -21,12 +21,12 @@ export default (state, keys) => {
     return state;
   }
   let newState = state;
-  if (state.get('ticks') % SHIP.SPAWN_DELAY === 0 && dr.random() < SHIP.SPAWN_CHANCE) {
+  if (state.get('ticks') % state.get('shipTimer') === 0 && dr.random() < SHIP.SPAWN_CHANCE) {
     const newShip = spawnRandomShip();
     newState = newState.update('ships', (ships) => ships.push(newShip))
       .update('booms', (booms) => booms.push(newFlashFromObject(newShip,false)));
   }
-  if (state.get('ticks') % ROCK.SPAWN_DELAY === 0 && dr.random() < ROCK.SPAWN_CHANCE) {
+  if (state.get('ticks') % state.get('rockTimer') === 0 && dr.random() < ROCK.SPAWN_CHANCE) {
     const newRock = spawnRandomRock();
     newState = newState.update('rocks', (rocks) => rocks.push(newRock))
       .update('booms', (booms) => booms.push(newFlashFromObject(newRock,true)));

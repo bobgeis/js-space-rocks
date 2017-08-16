@@ -13,8 +13,6 @@ import Score from './score-component';
 
 import stars from '../res/img/stars.jpg';
 
-let rafId = 0; // used in unmount to keep hmr from speeding up the game
-
 export default class Game extends React.Component {
 
   componentDidMount() {
@@ -25,8 +23,7 @@ export default class Game extends React.Component {
     // we need to do this, otherwise it gets lost when the state changes!
     this.setState({ context: this.refs.canvas.getContext('2d') });
     // call rAF
-    requestAnimationFrame(() => this.updateGame());
-
+    this.rafId = requestAnimationFrame(() => this.updateGame());
   }
 
   componentWillUnmount() {
@@ -34,7 +31,7 @@ export default class Game extends React.Component {
     window.removeEventListener('keyup', this.handleKeys);
     window.removeEventListener('keydown', this.handleKeys);
     // cancel rAF
-    cancelAnimationFrame(rafId);
+    cancelAnimationFrame(this.rafId);
   }
 
   handleKeys(e) {
@@ -59,7 +56,7 @@ export default class Game extends React.Component {
       renderCanvas(this.state.context, this.props.data);
     }
     // rafId is used in unmount to keep hmr from speeding the game up
-    rafId = requestAnimationFrame(() => this.updateGame());
+    this.rafId = requestAnimationFrame(() => this.updateGame());
   }
 
   render() {

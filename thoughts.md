@@ -244,9 +244,13 @@ Lots of dependencies!  What do they all do?
 
 * ~~Canvas path for player~~
 
+* ~~Accelerate spawning as player progresses~~
+
 * Canvas path for ships
 
 * Canvas path for loot
+
+* Canvas path for bases
 
 * Player cargo counts
 
