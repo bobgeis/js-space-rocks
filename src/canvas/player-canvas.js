@@ -60,7 +60,7 @@ const drawPlayerShape = (ctx, x, y, a, g) => {
   ctx.translate(x, y);
   ctx.rotate(-a);
   ctx.moveTo(0, r);
-  ctx.bezierCurveTo(r*1.25, r, r*1.25, -r, 0, -r);
+  ctx.bezierCurveTo(r*1.35, r, r*1.35, -r, 0, -r);
   ctx.quadraticCurveTo(r/2, -r/4, -r, 0);
   ctx.quadraticCurveTo(r/2, r/4, 0, r);
   ctx.fill();
@@ -78,18 +78,19 @@ const drawPlayerShape = (ctx, x, y, a, g) => {
   ctx.fillStyle = gToColor(g);
   ctx.lineWidth = 0;
   ctx.beginPath();
-  ctx.ellipse(r/8, -r/2, r/3, r/8, 0, 0, Math.PI * 2);
+  ctx.ellipse(r/12, -r/2, r/3, r/8, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.closePath();
   ctx.beginPath();
-  ctx.ellipse(r/8, r/2, r/3, r/8, 0, 0, Math.PI * 2);
+  ctx.ellipse(r/12, r/2, r/3, r/8, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.closePath();
   ctx.restore();
 };
 
 const gToColor = (g) => {
-  const red = Math.floor(100 * g);
-  const blue = Math.floor(130 * g + 125);
-  return `rgb(${red}, ${blue}, ${blue})`;
+  const red = Math.min(Math.floor(130 * g + 25),255);
+  const green = Math.min(Math.floor(130 * g + 125),255);
+  const blue =Math.min(Math.floor(80 * g + 175),255);
+  return `rgb(${red}, ${green}, ${blue})`;
 };

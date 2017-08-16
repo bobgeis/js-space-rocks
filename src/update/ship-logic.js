@@ -56,6 +56,9 @@ const updateShip = (ship) => {
   return ship.asMutable()
     .update('x', (x) => x + ship.get('vx'))
     .update('y', (y) => y + ship.get('vy'))
+    .update('glow', (glow) => {
+      return glow === 0 ? SHIP.GLOW_MAX : glow - 1;
+    })
     .asImmutable();
 };
 
@@ -81,6 +84,7 @@ export const newShip = (x, y, a, imgKey) => {
     x,
     y,
     a,
-    imgKey
+    imgKey,
+    glow: 0
   });
 };

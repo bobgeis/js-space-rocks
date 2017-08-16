@@ -242,13 +242,17 @@ Lots of dependencies!  What do they all do?
 
 * ~~gh-pages script~~
 
-* Experiment with canvas paths
+* ~~Canvas path for player~~
+
+* Canvas path for ships
+
+* Canvas path for loot
 
 * Player cargo counts
 
 * Rock behaviors
 
-* Rock appearance needs to not be confusing: 1) don't blend in with bg, 2) more distinct from friendly ships.  This is a problem for gray rocks.
+* Ship behaviors
 
 * Player death releases some/all undelivered cargo
 
@@ -264,16 +268,29 @@ Lots of dependencies!  What do they all do?
 
 * Code cleanup!
 
-* Tests!
+* Tests!  Automated, with readme icons!
 
-* Bug fixes.  Eg: ship double flash bug, 4-rock omission.
+* Experiment with SVGs, and/or img elements?
 
-* Experiment with SVGs, and/or img elements
-
-* Compare bundle squishing with Uglify vs Google Closure Compiler vs Prepack.
+* Compare bundle squishing with Uglify vs Google Closure Compiler?
 
 * Automated testing?
 
 * Sound / Music?
 
-* Hooligan ships? (Or other big game feature...)
+* Hooligan ships?
+
+* Other major gameplay features...
+
+
+### Bugs
+
+* ~~Hmr -> multiple calls to rAF~~
+
+* ~~Player rendering fizzbuzz~~
+
+* ~~Rock rendering fizzbuzz~~
+
+* Ship double flash
+
+* Rock colors (esp grays) blending in with bg/friendly ships

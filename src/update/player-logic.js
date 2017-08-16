@@ -5,7 +5,9 @@ import {
   TURN,
   WPN_COOLDOWN,
   DAMP,
-  GLOW_MAX
+  GLOW_MAX,
+  GLOW_THRUST,
+  GLOW_BANG
 } from '../constants/player-constants';
 import * as mode from '../mode-types';
 import { getVecX, getVecY, wrap } from './physics';
@@ -38,9 +40,9 @@ export const update = (state, keys) => {
     .update('vy', (vy) => vy * DAMP)
     .update('glow', (glow) => {
       if (bang) {
-        return GLOW_MAX;
+        return GLOW_MAX * GLOW_BANG;
       } else if (acc !== 0) {
-        return Math.max(glow, GLOW_MAX /2);
+        return Math.max(glow, GLOW_MAX * GLOW_THRUST);
       } else {
         return Math.max(glow - 1, 0);
       }
