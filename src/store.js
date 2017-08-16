@@ -6,6 +6,7 @@ import { getSeed } from './detrand';
 import * as mode from './mode-types';
 import * as CANVAS from './constants/canvas-constants';
 import * as ROCK from './constants/rock-constants';
+import * as SHIP from './constants/ship-constants';
 import * as PLAYER from './constants/player-constants';
 import * as MISC from './constants/misc-constants';
 
@@ -64,5 +65,7 @@ export const initialStore = Map({
   cargo: Map({lifepod: 0, crystal: 0}),
   score: Map({lifepod: 0, crystal: 0, ship: 0}),
   mode: mode.SPLASH,
-  seed: getSeed()
+  seed: getSeed(),
+  shipTimer: SHIP.SPAWN_DELAY,
+  rockTimer: ROCK.SPAWN_DELAY
 });

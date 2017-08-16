@@ -11,6 +11,8 @@ export const PT_R = 0.55;  // point radius wiggle (fraction)
 
 export const SPAWN_CHANCE = 0.5; // chance of a rock spawning (probability)
 export const SPAWN_DELAY = 190; // time between spawn chances (ticks)
+export const SPAWN_SPEEDUP = 1.5; // how much to reduce spawn delay
+export const MIN_SPAWN_DELAY = 30; // the delay cannot be reduced below this (ticks)
 
 // sizes
 export const SMALL = 'small';
@@ -39,27 +41,28 @@ export const SIZE_TO_RADIUS = { // radii (px)
 // types
 export const TYPE_S = 'S';
 export const TYPE_C = 'C';
-// export const TYPE_M = 'M';
+export const TYPE_M = 'M';
 export const TYPES = [
   TYPE_S,
-  TYPE_C
-  // TYPE_M
+  TYPE_C,
+  TYPE_M
 ];
 
 // colors: irl, most asteroids are some shade of gray
 // but dark grays especially have a hard time standing out
 export const COLORS = {};
 COLORS[TYPE_S] = [
-  'burlywood',
-  'sandybrown',
+  'moccasin',
   'wheat',
-  'tan'
+  'bisque'
 ];
 COLORS[TYPE_C] = [
-  'whitesmoke',
-  'gainsboro',
-  'lightgray',
-  'silver'
+  'burlywood',
+  'tan',
+  'sandybrown'
 ];
-// COLORS[TYPE_M] = [
-// ];
+COLORS[TYPE_M] = [
+  'lightsteelblue',
+  'lightblue',
+  'powderblue'
+];
