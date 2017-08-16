@@ -13,6 +13,8 @@ import Score from './score-component';
 
 import stars from '../res/img/stars.jpg';
 
+let rafId = 0; // used in unmount to keep hmr from speeding up the game
+
 export default class Game extends React.Component {
 
   componentDidMount() {
@@ -24,20 +26,18 @@ export default class Game extends React.Component {
     this.setState({ context: this.refs.canvas.getContext('2d') });
     // call rAF
     requestAnimationFrame(() => this.updateGame());
+
   }
 
   componentWillUnmount() {
     // remove listeners
     window.removeEventListener('keyup', this.handleKeys);
     window.removeEventListener('keydown', this.handleKeys);
+    // cancel rAF
+    cancelAnimationFrame(rafId);
   }
 
   handleKeys(e) {
-    if (!e) {
-      // IE is weird, this might fix it.  Nope!
-      this.handleKeys(window.event());
-      return;
-    }
     // i don't like that we're handling this here,
     // but i wasn't sure of a better way to do this.
     if (this.omegaCheck(e)) {
@@ -49,7 +49,7 @@ export default class Game extends React.Component {
   }
 
   omegaCheck(e) {
-    const mode = this.props.data.get('mode')
+    const mode = this.props.data.get('mode');
     return KEYS_TO_COMMANDS[e.code] === 'omega13' && this.props.omegaReady && (mode === modes.GAMEOVER || mode === modes.PLAY);
   }
 
@@ -58,7 +58,8 @@ export default class Game extends React.Component {
       this.props.tick(this.props.keys);
       renderCanvas(this.state.context, this.props.data);
     }
-    requestAnimationFrame(() => this.updateGame());
+    // rafId is used in unmount to keep hmr from speeding the game up
+    rafId = requestAnimationFrame(() => this.updateGame());
   }
 
   render() {

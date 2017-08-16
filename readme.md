@@ -22,7 +22,7 @@ Keyboard:
 
 ## Objectives
 
-Oh No! Some hooligans are dumping space rocks in to Subspace Locus 1457 again!
+Oh no! Some hooligans are dumping space rocks in to Subspace Locus 1457 again!
 
 Luckily, a dedicated rescue and rock-buster ship is already prepped and on-site.  That's you!
 
@@ -41,7 +41,7 @@ All other sprites were made by the programmer.
 
 ## Developers
 
-Download or clone this repo onto your local drive, then cd into the folder containing package.json.
+Download or clone this repo onto your local drive, then cd into the folder containing package.json and ```yarn``` or ```npm install```.
 
 * For a hot reloading dev server: ```yarn start``` or ```npm start``` and go to http://localhost:3000 in your browser.
 * For the minified bundle: ```yarn prod``` or ```npm run prod``` and then open index.html in your browser.

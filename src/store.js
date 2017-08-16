@@ -19,7 +19,8 @@ const intialPlayer = Map({
   vy: 0,  // starting y velocity (px/tick)
   a: MISC.NORTH, // starting angle (rad) facing North
   r: PLAYER.RADIUS,  // radius (px)
-  cd: 0  // remaining weapon cooldown (ticks)
+  cd: 0,  // remaining weapon cooldown (ticks)
+  glow: 0 // initial glow state
 });
 
 // prospector base initial state

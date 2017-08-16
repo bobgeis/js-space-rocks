@@ -21,15 +21,24 @@ export const drawRocks = (ctx, state) => {
     const color = rock.get('color');
     drawRock(ctx, x, y, r, a, color, pts);
     // handle drawing near the edges
+    let xWrapped, yWrapped;
     if (x + r > CANVAS.WIDTH) {
-      drawRock(ctx, x - CANVAS.WIDTH, y, r, a, color, pts);
+      xWrapped = x - CANVAS.WIDTH;
+      drawRock(ctx, xWrapped, y, r, a, color, pts);
     } else if (x - r < 0) {
-      drawRock(ctx, x + CANVAS.WIDTH, y, r, a, color, pts);
+      xWrapped = x + CANVAS.WIDTH;
+      drawRock(ctx, xWrapped, y, r, a, color, pts);
     }
     if (y + r > CANVAS.HEIGHT) {
-      drawRock(ctx, x, y - CANVAS.HEIGHT, r, a, color, pts);
+      yWrapped = y - CANVAS.HEIGHT;
+      drawRock(ctx, x, yWrapped, r, a, color, pts);
     } else if (y - r < 0) {
-      drawRock(ctx, x, y + CANVAS.HEIGHT, r, a, color, pts);
+      yWrapped = y + CANVAS.HEIGHT;
+      drawRock(ctx, x, yWrapped, r, a, color, pts);
+    }
+    // fizzbuzz
+    if (xWrapped && yWrapped) {
+      drawRock(ctx, xWrapped, yWrapped, r, a, color, pts);
     }
   });
   return;
