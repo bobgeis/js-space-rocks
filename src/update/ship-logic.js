@@ -88,6 +88,14 @@ export const newShip = (x, y, a, imgKey) => {
     y,
     a,
     imgKey,
+    type: SHIP.IMG_KEY_TO_TYPE[imgKey],
     glow: 0
   });
 };
+
+const imgKeyToType = [
+  'civ',
+  'guild',
+  'med',
+  'sci'
+];

@@ -32,37 +32,41 @@ export const SIZE_STEP = { // what is the next size down?
   huge: 'large'
 };
 export const SIZE_TO_RADIUS = { // radii (px)
-  small: 8,
-  medium: 15,
+  small: 9,
+  medium: 16,
   large: 25,
-  huge: 35
+  huge: 36
 };
 
 // types
 export const TYPE_S = 'S';
 export const TYPE_C = 'C';
 export const TYPE_M = 'M';
+export const TYPE_ICE = 'ICE';
 export const TYPES = [
   TYPE_S,
   TYPE_C,
-  TYPE_M
+  TYPE_M,
+  TYPE_ICE
 ];
 
 // colors: irl, most asteroids are some shade of gray
-// but dark grays especially have a hard time standing out
+// but grays, especially dark ones, have a hard time standing out
+// so these colors are NOT realistic!
 export const COLORS = {};
+// S would be most colorful
 COLORS[TYPE_S] = [
-  'moccasin',
-  'wheat',
-  'bisque'
-];
-COLORS[TYPE_C] = [
-  'burlywood',
-  'tan',
   'sandybrown'
 ];
+// C would be darkest
+COLORS[TYPE_C] = [
+  'rosybrown'
+];
+// M would be shiniest
 COLORS[TYPE_M] = [
-  'lightsteelblue',
-  'lightblue',
-  'powderblue'
+  'tan'
+];
+// Dirty snowballs are still probably a shade of gray...
+COLORS[TYPE_ICE] = [
+  'skyblue'
 ];

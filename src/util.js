@@ -30,7 +30,20 @@ export const clampA = (a) => clamp(a, MISC.TAU);
 export const clampX = (x) => clamp(x, CANVAS.WIDTH);
 export const clampY = (y) => clamp(y, CANVAS.HEIGHT);
 
+// engine glow color formula
+export const glowColor = (g) => {
+  const red = (Math.floor(50 + 55 * g)).toString(16);
+  const green = (Math.floor(175 + 80 * g).toString(16));
+  const blue = (Math.floor(175 + 80 * g).toString(16));
+  return `#${red}${green}${blue}`;
+};
 
+export const dimGlowColor = (g) => {
+  const red = (50).toString(16);
+  const green = (Math.floor(150 + 75 * g).toString(16));
+  const blue = (Math.floor(125 + 100 * g).toString(16));
+  return `#${red}${green}${blue}`;
+};
 
 // debug helper
 export const log = (arg) => {
