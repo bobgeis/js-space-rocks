@@ -56,10 +56,6 @@ Lots of dependencies!  What do they all do?
 
 * redux: state management library
 
-* redux-loop: an approach to handle side effects in redux. (change in the reducer return)
-
-* redux-thunk: an approach to handle side effects in redux. (change in the actions)
-
 * redux-undo: lib to make a reducer undoable, enabling the omega-13 feature.
 
 
@@ -100,7 +96,7 @@ Lots of dependencies!  What do they all do?
 * webpack-hot-middleware: for using hot module replacement in dev
 
 
-#### Things unused.
+#### Considered but Not Currently Used
 
 * [eslint-loader](https://github.com/MoOx/eslint-loader): for linting while you webpack.
 
@@ -112,10 +108,14 @@ Lots of dependencies!  What do they all do?
 
 * [redux-actions](https://github.com/acdlite/redux-actions): a library for doing common things with redux actions.
 
+* [redux-thunk](https://github.com/gaearon/redux-thunk): an approach to handle side effects in redux. (change in the actions)
+
+* [redux-loop](https://github.com/redux-loop/redux-loop): an approach to handle side effects in redux. (change in the reducer return)
+
 
 ## Things Learned
 
-* By default, React components do not accept Immutable data structures (like Maps) as props, and will throw an error.  This is a little surprising considering how much React/Redux promote the use of such data structures.  Apparently a common work-around is to pass the immutable data but wrapped in a normal js object, eg: ```{data: immutableMap}```
+* By default, React components do not accept Immutable data structures (like Maps) as props, and will throw an error.  This is a little surprising considering how much React/Redux promote the use of such data structures.  Apparently a common work-around is to pass the immutable data but wrapped in a normal js object, eg: ```{data: immutableMap}```.  It seems that there is a library used to help with this (redux-immutablejs) but I'd already implemented the workaround and didn't investigate further.
 
 * Chrome dev tool extensions are useful and pretty.  Overview of Chrome DevTools [here](https://developer.chrome.com/devtools).  Some useful DevTool extensions: [Immutable.js Object formatter](https://chrome.google.com/webstore/detail/immutablejs-object-format/hgldghadipiblonfkkicmgcbbijnpeog), and [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
@@ -168,6 +168,8 @@ Lots of dependencies!  What do they all do?
 * Getting css in required css-loader and style-loader, and after using file-loader and image-webpack-loader I found only url-loader was actually necessary for imagees.  And I needed to move the res folder into the src folder (might want to think about that), but then HMR worked!  Adding the loaders to the prod and dev config appeared to make those work as well.  Getting all the resources packed into the bundle increased its size:  dev (not ugly) is 2 MB (up from 1.6 MB) and prod (uglified!) is 863 KB (up from 443 KB).
 
 * I also discovered that webpack doesn't like dynamic require()s much.  This mattered for requiring images.  If I passed the image path in as a variable: ```require(imgString)```, then webpack wouldn't find it and would complain, even if hardcoding the same string worked fine: ```require('./res/img/something.jpg')```.  If I made it a template string with only part of it as a variable, then it worked! ```require(`./res/img/${sourceFile}`)```  The documentation [here](https://webpack.github.io/docs/context.html) explains this some, even though it's out of date.  I didn't find comparable doc for the current webpack.
+
+* Hot module replacement (hmr) can trigger the mounting of a component multiple times as modules get replaced.  In this project, requestAnimationFrame (rAF) is called by code triggered by the mounting of a component.  This means that as you develop using the hmr server, the game will speed up (there will be two tick updates per frame instead of one, then three, then four, etc).  The fix is to store the return value from requestAnimationFrame on the component, eg: ```this.rafId = requestAnimationFrame(() => this.update())``` and then call ```cancelAnimationFrame(this.rafId)``` in componentWillUnmount.  I was warned that componentWillUnmount cannot always be relied upon, though it has worked so far.  A more complicated workaround may be necessary if this is found to be insufficient.
 
 
 ### Feature Checklist
@@ -246,9 +248,11 @@ Lots of dependencies!  What do they all do?
 
 * ~~Accelerate spawning as player progresses~~
 
-* Canvas path for ships
+* ~~Canvas path for ships~~
 
-* Canvas path for loot
+* ~~Canvas path for loot~~
+
+* ~~Graphical indicator of loot age~~
 
 * Canvas path for bases
 
@@ -262,11 +266,11 @@ Lots of dependencies!  What do they all do?
 
 * Use redux-thunk or redux-loop for side effects (eg local storage)
 
-* Graphical indicator of loot age.
-
 * Graphical indicator of player position post Omega-13.
 
 * Graphical indicator of player docking with bases.
+
+* Allow swapping of graphics moders: sprites <-> paths
 
 * Code doc!
 
@@ -293,8 +297,8 @@ Lots of dependencies!  What do they all do?
 
 * ~~Player rendering fizzbuzz~~
 
+* Rock colors (esp grays) blending in with bg/friendly ships (rock colors ongoing...)
+
 * ~~Rock rendering fizzbuzz~~
 
 * Ship double flash
-
-* Rock colors (esp grays) blending in with bg/friendly ships

@@ -1,12 +1,13 @@
 
 import { BULLET_LIFETIME } from '../constants/bullet-constants';
+import { glowColor } from '../util';
 
 export const drawBullets = (ctx, state) => {
   const bullets = state.get('bullets');
   bullets.map((bullet) => {
     const x = bullet.get('x');
     const y = bullet.get('y');
-    const color = getColor(bullet.get('life'));
+    const color = glowColor(bullet.get('life')/BULLET_LIFETIME);
     drawBullet(ctx, x, y, color);
   });
 };
@@ -20,9 +21,4 @@ const drawBullet = (ctx, x, y, color) => {
   ctx.fill();
   ctx.closePath();
   ctx.restore();
-};
-
-const getColor = (life) => {
-  const dec = Math.floor(100 + 150 * life / BULLET_LIFETIME);
-  return `#55${dec.toString(16)}FF`;
 };

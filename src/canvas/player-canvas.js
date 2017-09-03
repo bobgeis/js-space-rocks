@@ -1,6 +1,7 @@
 
 import { img, draw, loadImageFile } from './images';
 import { GLOW_MAX } from '../constants/player-constants';
+import { glowColor, dimGlowColor } from '../util';
 import * as CANVAS from '../constants/canvas-constants';
 import * as mode from '../mode-types';
 
@@ -49,10 +50,11 @@ export const drawPlayer = (ctx, state) => {
   }
 };
 
-
 const drawPlayerShape = (ctx, x, y, a, g) => {
   const r = 10;
+  // save ctx
   ctx.save();
+  // draw body
   ctx.fillStyle = '#FFFFFF';
   ctx.strokeStyle = '#FF0000';
   ctx.lineWidth = 1;
@@ -60,12 +62,13 @@ const drawPlayerShape = (ctx, x, y, a, g) => {
   ctx.translate(x, y);
   ctx.rotate(-a);
   ctx.moveTo(0, r);
-  ctx.bezierCurveTo(r*1.35, r, r*1.35, -r, 0, -r);
+  ctx.bezierCurveTo(r*1.5, r, r*1.5, -r, 0, -r);
   ctx.quadraticCurveTo(r/2, -r/4, -r, 0);
   ctx.quadraticCurveTo(r/2, r/4, 0, r);
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
+  // draw emblem
   ctx.lineWidth = 2;
   ctx.beginPath();
   ctx.moveTo(r/2, -r/4);
@@ -75,20 +78,20 @@ const drawPlayerShape = (ctx, x, y, a, g) => {
   ctx.lineTo(r/2 - r/4, 0);
   ctx.stroke();
   ctx.closePath();
-  ctx.fillStyle = gToColor(g);
-  ctx.lineWidth = 0;
+  // draw engines
+  ctx.fillStyle = glowColor(g);
+  ctx.strokeStyle = dimGlowColor(g);
+  ctx.lineWidth = 0.5;
   ctx.beginPath();
-  ctx.ellipse(r/12, -r/2, r/3, r/8, 0, 0, Math.PI * 2);
+  ctx.ellipse(r/12, -r/2, r/2, r/8, 0, 0, Math.PI * 2);
   ctx.fill();
+  ctx.stroke();
   ctx.closePath();
   ctx.beginPath();
-  ctx.ellipse(r/12, r/2, r/3, r/8, 0, 0, Math.PI * 2);
+  ctx.ellipse(r/12, r/2, r/2, r/8, 0, 0, Math.PI * 2);
   ctx.fill();
+  ctx.stroke();
   ctx.closePath();
+  // restore ctx
   ctx.restore();
-};
-
-const gToColor = (g) => {
-  const dec = Math.floor(100 + 150 * g);
-  return `#55${dec.toString(16)}FF`;
 };

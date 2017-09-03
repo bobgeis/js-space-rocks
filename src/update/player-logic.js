@@ -42,7 +42,7 @@ export const update = (state, keys) => {
       if (bang) {
         return GLOW_MAX * GLOW_BANG;
       } else if (acc !== 0) {
-        return Math.max(glow, GLOW_MAX * GLOW_THRUST);
+        return Math.max(glow - 1, GLOW_MAX * GLOW_THRUST);
       } else {
         return Math.max(glow - 1, 0);
       }
